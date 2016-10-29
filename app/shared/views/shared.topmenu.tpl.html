@@ -1,0 +1,24 @@
+
+<md-toolbar class="md-medium-tall md-hue-2 md-toolbar-tools" layout="row" layout-wrap>
+    <div flex="10"></div>
+    <section layout="row" layout-sm="column"  layout-align="start center">
+        <h2>OuRecipe</h2>
+    </section>
+    <div flex></div>
+    <section hide="hide" show-gt-sm="show-gt-sm" layout-align="end center">
+        <md-button>
+            <md-icon class="material-icons">perm_identity</md-icon>
+            <span>Register</span>
+        </md-button>
+        <md-button>
+            <md-icon class="material-icons">exit_to_app</md-icon>
+            <span>Login</span>
+        </md-button>
+    </section>
+    <section hide-gt-sm="hide-gt-sm" layout-align="end center">
+        <md-button ng-click="shared.toggleSidenav('left')" class="md-icon-button">
+            <md-icon class="material-icons">reorder</md-icon>
+        </md-button>
+    </section>
+    <div flex="10"></div>
+</md-toolbar>

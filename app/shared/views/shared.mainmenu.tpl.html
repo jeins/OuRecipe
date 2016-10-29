@@ -1,0 +1,16 @@
+<md-toolbar class="md-toolbar-tools" layout="row" layout-wrap>
+    <div flex="10"></div>
+    <section hide="hide" show-gt-sm="show-gt-sm" layout="row" layout-sm="column" layout-align="start center">
+        <md-button>Home</md-button>
+        <md-button>Recipes</md-button>
+        <md-button>Members</md-button>
+    </section>
+    <div flex></div>
+    <section layout-align="end center" show-gt-sm="show-gt-sm" layout="row" layout-sm="column" >
+        <ng-include ng-controller="SearchController as search" src="'shared/views/search.tpl.html'"></ng-include>
+        <md-button>
+            <md-icon class="material-icons">search</md-icon>
+        </md-button>
+    </section>
+    <div flex="10"></div>
+</md-toolbar>
