@@ -1,0 +1,26 @@
+@import './bower_components/angular-material/angular-material.scss';
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+.material-icons{
+  font-size: 20px;
+}
+
+//Search Style
+.or-autocomplete li {
+  border-bottom: 1px solid #ccc;
+  height: auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  white-space: normal; }
+
+.or-autocomplete li:last-child {
+  border-bottom-width: 0; }
+
+.or-autocomplete .item-title,
+.or-autocomplete .item-metadata {
+  display: block;
+  line-height: 2; }
+
+.or-autocomplete .item-title md-icon {
+  height: 18px;
+  width: 18px; }
