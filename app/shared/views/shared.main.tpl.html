@@ -2,6 +2,12 @@
 <ng-include src="'shared/views/shared.mainmenu.tpl.html'"></ng-include>
 <ng-include src="'shared/views/shared.sidenav.tpl.html'"></ng-include>
 
-<md-content layout-padding ui-view flex-offset="10">
+<!--<md-content layout-padding ui-view flex-offset="10">-->
 
-</md-content>
+<!--</md-content>-->
+
+<div layout-padding layout="row">
+    <md-content ui-view flex="80" flex-offset="10"></md-content>
+
+    <div flex></div>
+</div>

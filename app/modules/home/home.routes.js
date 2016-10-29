@@ -7,7 +7,7 @@ function routes($stateProvider) {
         .state('home', {
             parent: 'main',
             url: '/',
-            controller: 'HomeController as vm',
-            templateUrl: 'modules/home/index.tpl.html'
+            controller: 'HomeController as home',
+            templateUrl: 'modules/home/views/index.tpl.html'
         });
 }

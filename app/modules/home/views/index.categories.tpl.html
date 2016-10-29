@@ -1,0 +1,30 @@
+<md-toolbar layout="row" class="md-toolbar-tools or-home-title-toolbar" >
+    <section layout="row" layout-sm="column" layout-align="start center">
+        <md-icon class="material-icons or-dark-36">filter_list</md-icon>
+        <h3>Quick Filter</h3>
+    </section>
+    <div flex></div>
+    <section hide="hide" show-gt-sm="show-gt-sm" layout-align="end center">
+        <md-button md-colors="{background: 'blue'}">
+            <span style="font-size: 12px;">All Categories</span>
+        </md-button>
+    </section>
+</md-toolbar>
+
+<md-grid-list layout-padding
+        md-cols-xs="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="3"
+        md-row-height-gt-md="5:1" md-row-height="5:1"
+        md-gutter="50px" md-gutter-gt-sm="50px" >
+
+    <md-grid-tile ng-repeat="categorie in home.loadCategories">
+        <a href="#">
+            <md-grid-tile-header class="md-whiteframe-5dp or-index-box-categories">
+                <div layout="row">
+                    <md-icon class="material-icons or-index-icon-categories">{{categorie.icon}}</md-icon>
+                    <h3>{{categorie.name}}</h3>
+                </div>
+            </md-grid-tile-header>
+        </a>
+    </md-grid-tile>
+
+</md-grid-list>

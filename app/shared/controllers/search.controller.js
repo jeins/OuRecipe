@@ -34,7 +34,7 @@ function SearchController($timeout, $q, $log){
         $log.info('Item changed to ' + JSON.stringify(item));
     }
 
-    function loadAll() {console.log("OK")
+    function loadAll() {
         var repos = [
             {
                 'name'      : 'Angular 1',
