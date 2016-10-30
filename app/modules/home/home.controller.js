@@ -30,4 +30,27 @@ function HomeController() {
             "icon": "home"
         }
     ];
+    vm.loadNewRecipes = [
+        {
+            name: "French Onion Soup Gratinee",
+            description: "About as good as it gets! This is the version of French Onion Soup that people seek when they go to restaurants. Healthy and easy.",
+            author: "Nick Slick",
+            "people": "4",
+            "time": "5m"
+        },
+        {
+            name: "Avocado panzanella salad",
+            description: "This high fibre salad is a vibrant mix of tomatoes, avocado and crunchy pieces of ciabatta. Thissalad is full of the authentic flavours of Italy.",
+            author: "Nick Slick",
+            "people": "4",
+            "time": "5m"
+        },
+        {
+            name: "Kale and Feta Salad",
+            description: "Salads can be healthy, satisfying meals on their own or perfect accompaniments to main dishes. We’ve got a great selection of salads.",
+            author: "Nick Slick",
+            "people": "4",
+            "time": "5m"
+        }
+    ];
 }

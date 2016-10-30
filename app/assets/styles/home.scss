@@ -1,0 +1,34 @@
+.md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar).or-home-index-title-toolbar{
+  background-color: transparent;
+  color: #676767;
+  font-size: 28px;
+  font-weight: 400;
+  border-bottom: 1px dashed #999;
+  border-top: 1px dashed #999;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.or-home-index-box-categories{
+  background: #ffffff;
+  color: #000;
+  font-weight: bolder;
+}
+
+.or-home-index-box-categories:hover{
+  background: deepskyblue;
+  color: #fff;
+}
+
+.or-home-index-icon-categories{
+  margin-left: 15px;
+  margin-right: 15px;
+  width: 40px;
+  border-right: 1px solid #9e9e9e;
+}
+
+.or-home-index-card-footer{
+  margin-right: 30px;
+  margin-top: 10px;
+  font-size: 13px;
+}

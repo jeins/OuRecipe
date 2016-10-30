@@ -1,4 +1,4 @@
-<md-toolbar layout="row" class="md-toolbar-tools or-home-title-toolbar" >
+<md-toolbar layout="row" class="md-toolbar-tools or-home-index-title-toolbar" >
     <section layout="row" layout-sm="column" layout-align="start center">
         <md-icon class="material-icons or-dark-36">filter_list</md-icon>
         <h3>Quick Filter</h3>
@@ -18,9 +18,9 @@
 
     <md-grid-tile ng-repeat="categorie in home.loadCategories">
         <a href="#">
-            <md-grid-tile-header class="md-whiteframe-5dp or-index-box-categories">
+            <md-grid-tile-header class="md-whiteframe-5dp or-home-index-box-categories">
                 <div layout="row">
-                    <md-icon class="material-icons or-index-icon-categories">{{categorie.icon}}</md-icon>
+                    <md-icon class="material-icons or-home-index-icon-categories">{{categorie.icon}}</md-icon>
                     <h3>{{categorie.name}}</h3>
                 </div>
             </md-grid-tile-header>

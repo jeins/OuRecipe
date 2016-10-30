@@ -1,5 +1,6 @@
 @import './bower_components/angular-material/angular-material.scss';
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+@import './home.scss';
 
 .material-icons{
   font-size: 20px;
@@ -25,17 +26,6 @@
   height: 18px;
   width: 18px; }
 
-.md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar).or-home-title-toolbar{
-  background-color: transparent;
-  color: #676767;
-  font-size: 28px;
-  font-weight: 400;
-  border-bottom: 1px dashed #999;
-  border-top: 1px dashed #999;
-  margin-bottom: 50px;
-  margin-top: 30px;
-}
-
 .material-icons.or-dark-36{
   color: #676767;
   font-size: 35px;
@@ -43,20 +33,3 @@
   margin-bottom: 12px;
 }
 
-.or-index-box-categories{
-  background: #ffffff;
-  color: #000;
-  font-weight: bolder;
-}
-
-.or-index-box-categories:hover{
-  background: deepskyblue;
-  color: #fff;
-}
-
-.or-index-icon-categories{
-  margin-left: 15px;
-  margin-right: 15px;
-  width: 40px;
-  border-right: 1px solid #9e9e9e;
-}
