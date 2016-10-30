@@ -1,6 +1,8 @@
 @import './bower_components/angular-material/angular-material.scss';
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+@import './bower_components/components-font-awesome/scss/font-awesome.scss';
 @import './home.scss';
+@fa-font-path: "./components-font-awesome/fonts";
 
 .material-icons{
   font-size: 20px;

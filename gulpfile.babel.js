@@ -28,7 +28,8 @@ const PATHS = {
   sass: 'app/assets/styles/app.scss',
   sassAll: 'app/**/*.scss',
   assets: 'app/assets/images/**/*',
-  bower: 'bower_components/**/*'
+  bower: 'bower_components/**/*',
+  font_awesome_fonts: 'bower_components/components-font-awesome/fonts/*'
 };
 
 gulp.task('prepare', [
@@ -37,6 +38,7 @@ gulp.task('prepare', [
   'copy:templates',
   'copy:assets',
   'copy:bower',
+  'copy:fontawesome_fonts'
 ]);
 
 gulp.task('run', cb => {
@@ -111,6 +113,12 @@ gulp.task('index:compressed', () => {
     }))
     .pipe(gulp.dest('dist/'))
     .pipe(connect.reload());
+});
+
+gulp.task('copy:fontawesome_fonts', ()=>{
+  return gulp.src(PATHS.font_awesome_fonts)
+      .pipe(gulp.dest('dist/fonts'))
+      .pipe(connect.reload());
 });
 
 gulp.task('copy:assets', () => {

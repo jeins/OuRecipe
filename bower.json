@@ -5,6 +5,7 @@
     "angular-ui-router": "^0.3.1",
     "angular-material": "^1.1.1",
     "angular-cookies": "^1.5.8",
-    "satellizer": "^0.15.5"
+    "satellizer": "^0.15.5",
+    "components-font-awesome": "^4.7.0"
   }
 }
