@@ -1,0 +1,40 @@
+<md-toolbar layout="row" class="md-toolbar-tools or-home-index-title-toolbar" >
+    <section layout="row" layout-sm="column" layout-align="start center">
+        <md-icon class="material-icons or-dark-36">star</md-icon>
+        <h3>Top Recipes</h3>
+    </section>
+    <div flex></div>
+    <section hide="hide" show-gt-sm="show-gt-sm" layout-align="end center">
+        <md-button md-colors="{background: 'blue'}">
+            <span style="font-size: 12px;">All Top Recipes</span>
+        </md-button>
+    </section>
+</md-toolbar>
+
+<md-grid-list layout="row" layout-xs="column"
+              md-cols-xs="1" md-cols-sm="3" md-cols-md="3" md-cols-gt-md="3"
+              md-row-height-gt-md="1:1" md-row-height="1:1"
+              md-gutter="50px" md-gutter-gt-sm="50px" >
+
+    <md-card ng-repeat="categorie in home.loadTopRecipes">
+        <img ng-src="assets/washedout.png" class="md-card-image" alt="Washed Out">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{categorie.name}}</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <p>{{categorie.description}} </p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="center center" style="border-top: 1px solid #9e9e9e;">
+            <div class="or-home-index-card-footer">
+                <md-icon class="material-icons">access_time</md-icon>
+                <span>{{categorie.time}}</span>
+            </div>
+            <div class="or-home-index-card-footer">
+                <md-icon class="material-icons">people</md-icon>
+                <span>{{categorie.people}} People</span>
+            </div>
+        </md-card-actions>
+    </md-card>
+</md-grid-list>

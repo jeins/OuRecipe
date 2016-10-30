@@ -1,7 +1,7 @@
-<md-toolbar layout="row" class="md-toolbar-tools or-home-title-toolbar" >
+<md-toolbar layout="row" class="md-toolbar-tools or-home-index-title-toolbar" >
     <section layout="row" layout-sm="column" layout-align="start center">
         <md-icon class="material-icons or-dark-36">people</md-icon>
-        <h3>Top Rated Authors</h3>
+        <h3>Top Authors</h3>
     </section>
     <div flex></div>
     <section hide="hide" show-gt-sm="show-gt-sm" layout-align="end center">
@@ -11,44 +11,20 @@
     </section>
 </md-toolbar>
 
-<md-grid-list layout-padding
+<md-grid-list layout="row" layout-xs="column"
               md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6"
               md-row-height-gt-md="1:1" md-row-height="2:2"
               md-gutter="12px" md-gutter-gt-sm="8px" >
 
-    <md-grid-tile style="background-color: #000">
-        <md-grid-tile-footer>
-            <h3>#1: (1r x 1c)</h3>
+    <md-grid-tile style="background-color: #eee;" ng-repeat="author in home.loadTopAuthors">
+        <md-grid-tile>
+            <img src="assets/no_photo_profile.png">
+        </md-grid-tile>
+        <md-grid-tile-footer layout-align="center center">
+            <h3 style="color: #000; font-weight: bolder">{{author.name}}</h3>
         </md-grid-tile-footer>
     </md-grid-tile>
-
-    <md-grid-tile style="background-color: #000">
-        <md-grid-tile-footer>
-            <h3>#2: (1r x 1c)</h3>
-        </md-grid-tile-footer>
-    </md-grid-tile>
-
-    <md-grid-tile style="background-color: #000">
-        <md-grid-tile-footer>
-            <h3>#3: (1r x 1c)</h3>
-        </md-grid-tile-footer>
-    </md-grid-tile>
-
-    <md-grid-tile style="background-color: #000">
-        <md-grid-tile-footer>
-            <h3>#1: (1r x 1c)</h3>
-        </md-grid-tile-footer>
-    </md-grid-tile>
-
-    <md-grid-tile style="background-color: #000">
-        <md-grid-tile-footer>
-            <h3>#2: (1r x 1c)</h3>
-        </md-grid-tile-footer>
-    </md-grid-tile>
-
-    <md-grid-tile style="background-color: #000">
-        <md-grid-tile-footer>
-            <h3>#3: (1r x 1c)</h3>
-        </md-grid-tile-footer>
-    </md-grid-tile>
+    <!--<div class="image" ng-repeat="author in home.loadTopAuthors" data-content="{{author.name}}" >-->
+        <!--<img src="assets/no_photo_profile.png" alt="" />-->
+    <!--</div>-->
 </md-grid-list>

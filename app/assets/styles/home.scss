@@ -32,3 +32,41 @@
   margin-top: 10px;
   font-size: 13px;
 }
+
+//.image {
+//  position:relative;
+//  width:200px;
+//  height:200px;
+//}
+//.image img {
+//  width:100%;
+//  vertical-align:top;
+//}
+//.image:after, .image:before {
+//  position:absolute;
+//  opacity:0;
+//  transition: all 0.5s;
+//  -webkit-transition: all 0.5s;
+//}
+//.image:after {
+//  content:'\A';
+//  width:100%; height:100%;
+//  top:0; left:0;
+//  background:rgba(0,0,0,0.6);
+//}
+//.image:before {
+//  content: attr(data-content);
+//  width:100%;
+//  color:#fff;
+//  z-index:1;
+//  bottom:0;
+//  padding:4px 10px;
+//  text-align:center;
+//  background:deepskyblue;
+//  box-sizing:border-box;
+//  -moz-box-sizing:border-box;
+//  margin-left: -8px;
+//}
+//.image:hover:after, .image:hover:before {
+//  opacity:1;
+//}
