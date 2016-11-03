@@ -4,7 +4,8 @@ angular
         'ngMaterial',
         'app.config',
         'app.shared',
-        'app.home'
+        'app.home',
+        'app.user'
     ])
     .config(['$logProvider', '$provide',
         function($logProvider, $provide){
