@@ -5,7 +5,11 @@
     </md-toolbar>
 
     <md-content layout="column" class="layout-padding md-hue-1 flex noSelect" layout-align="start center">
-        <md-button translate="g.b.register"></md-button>
+        <md-button translate="g.b.register"
+                   ng-controller="UserRegisterController as userRegister"
+                   ng-click="userRegister.showDialog($event)">
+
+        </md-button>
 
         <md-button translate="g.b.login"
                    ng-controller="UserLoginController as userLogin"
