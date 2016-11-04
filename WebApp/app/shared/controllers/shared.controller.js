@@ -4,7 +4,7 @@ angular
 
 SharedController.$inject = ['$log', '$state', '$mdSidenav'];
 function SharedController($log, $state, $mdSidenav){
-    let vm = this;
+    var vm = this;
     vm.toggleSidenav = toggleSidenav;
     vm.closeSidenav = closeSidenav;
 

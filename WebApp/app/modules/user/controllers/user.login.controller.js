@@ -21,7 +21,7 @@ function UserLoginController($log, $mdDialog){
         ;
     };
 
-    function dialogController($log, $scope, $mdDialog){
+    function dialogController($log, $mdDialog){
         var vm = this;
         vm.cancel = cancel;
 

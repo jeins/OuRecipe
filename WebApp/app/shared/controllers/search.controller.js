@@ -4,7 +4,7 @@ angular
 
 SearchController.$inject = ['$timeout', '$q', '$log'];
 function SearchController($timeout, $q, $log){
-    let vm = this;
+    var vm = this;
 
     vm.simlateQuery = false;
     vm.isDisabled = false;

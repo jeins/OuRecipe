@@ -8,10 +8,13 @@ angular
         'app.config', 'app.shared',
         'app.home', 'app.user'
     ])
-    .config(['$logProvider', '$provide', '$translateProvider', 'translation',
-        function($logProvider, $provide, $translateProvider, translation){
+    .config(['$logProvider', '$provide', '$translateProvider', 'translation', '$mdAriaProvider',
+        function($logProvider, $provide, $translateProvider, translation, $mdAriaProvider){
             // Setup Logging/Debug
             $logProvider.debugEnabled(true);
+
+            // Globally disables all ARIA warnings.
+            $mdAriaProvider.disableWarnings();
 
             $provide.decorator('$log', function($delegate) {
                 var origInfo = $delegate.info, origLog = $delegate.log,

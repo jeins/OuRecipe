@@ -3,7 +3,7 @@ angular
     .controller('HomeController', HomeController);
 
 function HomeController() {
-    let vm = this;
+    var vm = this;
     vm.loadCategories = [
         {
             "name": "Categorie 1",
