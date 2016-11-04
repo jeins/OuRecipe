@@ -1,14 +1,15 @@
 angular
     .module('app', [
-        'ui.router',
-        'ngMaterial',
-        'app.config',
-        'app.shared',
-        'app.home',
-        'app.user'
+        //libraries
+        'ui.router', 'ngMaterial',
+        'pascalprecht.translate',
+
+        //modules
+        'app.config', 'app.shared',
+        'app.home', 'app.user'
     ])
-    .config(['$logProvider', '$provide',
-        function($logProvider, $provide){
+    .config(['$logProvider', '$provide', '$translateProvider', 'translation',
+        function($logProvider, $provide, $translateProvider, translation){
             // Setup Logging/Debug
             $logProvider.debugEnabled(true);
 
@@ -23,6 +24,16 @@ angular
 
                 return $delegate;
             });
+
+            // Setup Translation
+            $translateProvider
+                .useStaticFilesLoader({
+                    prefix: translation.path,
+                    suffix: translation.suffix
+                })
+                .useSanitizeValueStrategy(translation.sanitize)
+                .preferredLanguage(translation.default)
+            ;
         }
     ])
 ;

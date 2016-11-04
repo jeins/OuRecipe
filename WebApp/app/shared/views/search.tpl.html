@@ -8,7 +8,7 @@
         md-items="item in search.querySearch(search.searchText)"
         md-item-text="item.name"
         md-min-length="0"
-        placeholder="Find Recipes"
+        placeholder="{{'search.text' | translate}}"
         md-menu-class="or-autocomplete">
     <md-item-template>
           <span class="item-title">

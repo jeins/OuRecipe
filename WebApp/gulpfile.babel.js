@@ -29,6 +29,7 @@ const PATHS = {
   sassAll: 'app/**/*.scss',
   assets: 'app/assets/images/**/*',
   bower: 'bower_components/**/*',
+  translations: 'app/translations/*.json',
   font_awesome_fonts: 'bower_components/components-font-awesome/fonts/*'
 };
 
@@ -38,6 +39,7 @@ gulp.task('prepare', [
   'copy:templates',
   'copy:assets',
   'copy:bower',
+  'copy:translations',
   'copy:fontawesome_fonts'
 ]);
 
@@ -118,6 +120,12 @@ gulp.task('index:compressed', () => {
 gulp.task('copy:fontawesome_fonts', ()=>{
   return gulp.src(PATHS.font_awesome_fonts)
       .pipe(gulp.dest('dist/fonts'))
+      .pipe(connect.reload());
+});
+
+gulp.task('copy:translations', ()=>{
+  return gulp.src(PATHS.translations)
+      .pipe(gulp.dest('dist/translations'))
       .pipe(connect.reload());
 });
 

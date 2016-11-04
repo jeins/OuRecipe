@@ -1,21 +1,35 @@
 {
   "constants": {
     "development": {
-      "API_URL": ""
+      "API_URL": "",
+      "translation": {
+        "path": "translations/",
+        "suffix": ".json",
+        "sanitize": "escaped",
+        "default": "dev"
+      }
     },
     "production": {
-      "API_URL": ""
+      "API_URL": "",
+      "translation": {
+        "path": "translations/",
+        "suffix": ".json",
+        "sanitize": "escaped",
+        "default": "en"
+      }
     }
   },
   "libs": {
     "scripts": [
       "/angular/angular.js",
       "/angular-ui-router/release/angular-ui-router.js",
-      "/angular-cookies/angular-cookies.js",
+      "/angular-cookies/angular-cookies.min.js",
       "/angular-animate/angular-animate.min.js",
       "/angular-aria/angular-aria.min.js",
       "/angular-messages/angular-messages.min.js",
-      "/angular-material/angular-material.js"
+      "/angular-material/angular-material.min.js",
+      "/angular-translate/angular-translate.min.js",
+      "/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"
     ],
     "styles": [
       ""

@@ -1,0 +1,52 @@
+{
+  "app":{
+    "name": "OuRecipe"
+  },
+  "g":{
+    "b":{
+      "title": "Button",
+      "login": "Login",
+      "logout": "Logout",
+      "register": "Register",
+      "cancel": "Cancel"
+    },
+    "m":{
+      "title": "Menu",
+      "home": "Home",
+      "recipes": "Recipes",
+      "members": "Members"
+    }
+  },
+  "footer": {
+    "copyright": "All rights reserved © OuRecipe"
+  },
+  "search": {
+    "text": "Find Recipes"
+  },
+  "m_home":{
+    "title": {
+      "categories": "Quick Filter",
+      "new_recipes": "New Recipes",
+      "top_recipes": "Top Recipes",
+      "top_authors": "Top Authors"
+    },
+    "button": {
+      "all_categories": "All Categories",
+      "all_new_recipes": "All New Recipes",
+      "all_top_recipes": "All Top Recipes",
+      "all_top_authors": "All Authors"
+    }
+  },
+  "m_user":{
+    "title":{
+      "login": "User Login",
+      "register": "User Register"
+    },
+    "label":{
+      "email": "Email",
+      "password": "Password",
+      "first_name": "First Name",
+      "last_name": "Last Name"
+    }
+  }
+}

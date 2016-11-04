@@ -1,14 +1,15 @@
 <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop md-whiteframe="4">
     <md-toolbar class="md-theme-indigo" layout="row">
-        <h1 class="md-toolbar-tools">Menu</h1>
+        <h1 class="md-toolbar-tools" translate="g.m.title"></h1>
         <md-icon class="material-icons" ng-click="shared.closeSidenav('left')">close</md-icon>
     </md-toolbar>
 
     <md-content layout="column" class="layout-padding md-hue-1 flex noSelect" layout-align="start center">
-        <md-button>Register</md-button>
+        <md-button translate="g.b.register"></md-button>
 
-        <md-button ng-controller="UserLoginController as userLogin" ng-click="userLogin.showDialog($event)">
-            Login
+        <md-button translate="g.b.login"
+                   ng-controller="UserLoginController as userLogin"
+                   ng-click="userLogin.showDialog($event)">
         </md-button>
     </md-content>
 
