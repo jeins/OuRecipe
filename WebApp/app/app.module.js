@@ -6,7 +6,7 @@ angular
 
         //modules
         'app.config', 'app.shared',
-        'app.home', 'app.user'
+        'app.home', 'app.user', 'app.recipe'
     ])
     .config(['$logProvider', '$provide', '$translateProvider', 'translation', '$mdAriaProvider',
         function($logProvider, $provide, $translateProvider, translation, $mdAriaProvider){

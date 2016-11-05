@@ -1,0 +1,42 @@
+.or-recipe-profile{
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+}
+.or-recipe-profile-tab-content{
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  position: absolute;
+}
+.or-recipe-profile-title-description{
+  margin-bottom: 30px;
+  color: #676767;
+  line-height: 1.25;
+}
+hr{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-color: #eee;
+}
+.or-recipe-profile-list .md-checked .md-label span{
+  text-decoration: line-through;
+  color: #aaa;
+}
+.or-recipe-profile-detail {
+  padding: 5px 0px;
+  list-style-type: none;
+
+}
+.or-recipe-profile-detail li{
+  clear: both;
+  padding: 10px 0px;
+  border-bottom:  1px solid #eee;
+}
+.or-recipe-profile-detail .value{
+  float: right;
+}

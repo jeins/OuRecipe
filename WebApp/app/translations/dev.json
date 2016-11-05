@@ -48,5 +48,16 @@
       "first_name": "First Name",
       "last_name": "Last Name"
     }
+  },
+  "m_recipe":{
+    "title":{
+      "ingredients": "Ingredients",
+      "steps": "Steps"
+    },
+    "label":{
+      "tab_image": "Image",
+      "tab_gallery": "Gallery",
+      "tab_video": "Video"
+    }
   }
 }
