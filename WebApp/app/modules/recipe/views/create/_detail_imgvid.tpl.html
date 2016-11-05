@@ -1,0 +1,50 @@
+
+<md-card class="md-whiteframe-10dp">
+    <md-card-content layout="column" layout-xs="column">
+        <md-content layout-gt-sm="row">
+            <div>
+                <!--Prep Time-->
+                <md-input-container>
+                    <label translate="m_recipe.label.pre_time"></label>
+                    <input ng-model="recipeCreate.recipe.PreTime">
+                </md-input-container>
+
+                <!--Cook Time-->
+                <md-input-container>
+                    <label translate="m_recipe.label.cook_time"></label>
+                    <input ng-model="recipeCreate.recipe.cookTime">
+                </md-input-container>
+            </div>
+        </md-content>
+        <md-content layout-gt-sm="row">
+            <div>
+                <!--Servings-->
+                <md-input-container>
+                    <label translate="m_recipe.label.servings"></label>
+                    <input ng-model="recipeCreate.recipe.numServings">
+                </md-input-container>
+
+                <!--Cuisine-->
+                <md-input-container>
+                    <label translate="m_recipe.label.cuisine"></label>
+                    <input ng-model="recipeCreate.recipe.cuisine">
+                </md-input-container>
+            </div>
+        </md-content>
+        <md-content layout-gt-sm="row">
+            <div>
+                <!--Category-->
+                <md-input-container>
+                    <label translate="m_recipe.label.category"></label>
+                    <input ng-model="recipeCreate.recipe.category">
+                </md-input-container>
+
+                <!--Difficulty Level-->
+                <md-input-container>
+                    <label translate="m_recipe.label.difficulty_level"></label>
+                    <input ng-model="recipeCreate.recipe.difficultyLevel">
+                </md-input-container>
+            </div>
+        </md-content>
+    </md-card-content>
+</md-card>

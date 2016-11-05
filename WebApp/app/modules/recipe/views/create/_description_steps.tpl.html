@@ -1,0 +1,41 @@
+
+<md-card class="md-whiteframe-10dp">
+    <md-card-content layout="column" layout-xs="column">
+
+        <!--Title-->
+        <md-input-container>
+            <label translate="m_recipe.label.recipe_title"></label>
+            <input ng-model="recipeCreate.recipe.title">
+        </md-input-container>
+
+        <!--Description-->
+        <md-input-container>
+            <label translate="m_recipe.label.description"></label>
+            <textarea ng-model="recipeCreate.recipe.description" md-maxlength="500" rows="3" md-select-on-focus></textarea>
+        </md-input-container>
+
+        <!--Ingredients-->
+        <md-input-container ng-repeat="ingredient in recipeCreate.ingredients">
+            <label>({{ingredient.id}}) - {{'m_recipe.label.ingredient' | translate}}</label>
+            <input type="text" ng-model="ingredient.name" flex-xs flex-gt-xs="80">
+            <md-button ng-show="$first" ng-click="recipeCreate.addMoreIngredient()" class="md-primary">
+                <md-icon class="material-icons">add</md-icon>
+            </md-button>
+            <md-button ng-show="!$first && $last" ng-click="recipeCreate.removeIngredient()" class="md-warn">
+                <md-icon class="material-icons">remove</md-icon>
+            </md-button>
+        </md-input-container>
+
+        <!--Steps-->
+        <md-input-container ng-repeat="step in recipeCreate.steps">
+            <label>({{step.id}}) - {{'m_recipe.label.step' | translate}}</label>
+            <input type="text" ng-model="step.description" flex-xs flex-gt-xs="80" style="resize:both;">
+            <md-button ng-show="$first" ng-click="recipeCreate.addMoreStep()" class="md-primary">
+                <md-icon class="material-icons">add</md-icon>
+            </md-button>
+            <md-button ng-show="!$first && $last" ng-click="recipeCreate.removeStep()" class="md-warn">
+                <md-icon class="material-icons">remove</md-icon>
+            </md-button>
+        </md-input-container>
+    </md-card-content>
+</md-card>

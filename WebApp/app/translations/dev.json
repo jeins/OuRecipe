@@ -52,12 +52,25 @@
   "m_recipe":{
     "title":{
       "ingredients": "Ingredients",
-      "steps": "Steps"
+      "steps": "Steps",
+      "add_ingredient": "Add Food Ingredient"
     },
     "label":{
       "tab_image": "Image",
       "tab_gallery": "Gallery",
-      "tab_video": "Video"
+      "tab_video": "Video",
+      "ingredient": "Ingredient",
+      "step": "Step",
+      "recipe_title": "Recipe Title",
+      "description": "Description",
+      "pre_time": "Preparation Time",
+      "cook_time": "Cook Time",
+      "servings": "Number of servings",
+      "cuisine": "Cuisine",
+      "category": "Category",
+      "difficulty_level": "Difficulty Level",
+      "ratings": "Ratings",
+      "created": "Created"
     }
   }
 }
