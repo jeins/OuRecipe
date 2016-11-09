@@ -70,7 +70,9 @@
       "category": "Category",
       "difficulty_level": "Difficulty Level",
       "ratings": "Ratings",
-      "created": "Created"
+      "created": "Created",
+      "video_url": "Video URL",
+      "add_image": "Add a photo"
     }
   }
 }

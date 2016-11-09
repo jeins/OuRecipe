@@ -1,7 +1,22 @@
-
 <md-card class="md-whiteframe-10dp">
     <md-card-content layout="column" layout-xs="column">
-        <md-content layout-gt-sm="row">
+        <md-input-container class="or-recipe-upload">
+            <div ngf-select="recipeCreate.uploadImage($file)" ngf-drop="recipeCreate.uploadImage(file)"
+                 ngf-drag-over-class="'dragover'" ngf-multiple="false">
+                <md-icon md-font-icon="fa-camera" class="fa or-recipe-upload-img" style="font-size: 5em"></md-icon>
+                <span class="or-recipe-upload-img" translate="m_recipe.label.add_image"></span>
+
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <label translate="m_recipe.label.video_url"></label>
+            <input ng-model="recipeCreate.recipe.video">
+        </md-input-container>
+    </md-card-content>
+</md-card>
+<md-card class="md-whiteframe-10dp">
+    <md-card-content layout="column" layout-xs="column" layout-align="center center">
+        <div layout-gt-sm="row">
             <div>
                 <!--Prep Time-->
                 <md-input-container>
@@ -15,8 +30,8 @@
                     <input ng-model="recipeCreate.recipe.cookTime">
                 </md-input-container>
             </div>
-        </md-content>
-        <md-content layout-gt-sm="row">
+        </div>
+        <div layout-gt-sm="row">
             <div>
                 <!--Servings-->
                 <md-input-container>
@@ -30,8 +45,8 @@
                     <input ng-model="recipeCreate.recipe.cuisine">
                 </md-input-container>
             </div>
-        </md-content>
-        <md-content layout-gt-sm="row">
+        </div>
+        <div layout-gt-sm="row">
             <div>
                 <!--Category-->
                 <md-input-container>
@@ -45,6 +60,6 @@
                     <input ng-model="recipeCreate.recipe.difficultyLevel">
                 </md-input-container>
             </div>
-        </md-content>
+        </div>
     </md-card-content>
 </md-card>
