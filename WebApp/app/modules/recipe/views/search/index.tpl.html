@@ -4,3 +4,14 @@
 <div style="height: 60px"></div>
 
 <ng-include src="'modules/recipe/views/search/_recipe_list.tpl.html'"></ng-include>
+
+<section layout="row" layout-padding="">
+    <or-pagination flex
+                   or-pages="recipeSearch.pagination.total"
+                   or-steps="recipeSearch.pagination.steps"
+                   or-page-changed="recipeSearch.onPageChanged()"
+                   or-align="center center"
+                   or-current-page="recipeSearch.pagination.current"
+    ></or-pagination>
+
+</section>

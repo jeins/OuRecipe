@@ -6,6 +6,7 @@ RecipeSearchController.$inject = ['$log'];
 function RecipeSearchController($log) {
     var vm = this;
     vm.doSearch = doSearch;
+    vm.onPageChanged = onPageChanged;
 
     init();
 
@@ -107,10 +108,16 @@ function RecipeSearchController($log) {
         vm.loadCategories = ["a", "b", "c"];
         vm.loadCuisine = ["a", "b", "c"];
         vm.loadSort = _getSortRecipes();
+        vm.pagination = {total: 10, current: 1, steps: 5};
     }
 
     function doSearch() {
         $log.info("Filter: %s", JSON.stringify(vm.filter));
+    }
+
+    function onPageChanged() {
+        $log.info("Current page is: %s", vm.pagination.current);
+        // TODO: load current page data
     }
 
     function _getSortRecipes() {
@@ -120,7 +127,7 @@ function RecipeSearchController($log) {
             "rating_desc": "Ratings (highest first)",
             "rating_asc": "Ratings (lowest first)",
             "date_desc": "Date (newest first)",
-            "date_asc": "Date (oldest first)",
-        }
+            "date_asc": "Date (oldest first)"
+        };
     }
 }
