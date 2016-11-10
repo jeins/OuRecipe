@@ -1,0 +1,18 @@
+<md-toolbar layout="row" class="md-toolbar-tools or-home-index-title-toolbar"  layout-align="center center">
+    <section layout="row" layout-sm="column">
+        <md-icon class="material-icons or-dark-36">people</md-icon>
+        <h3 translate="m_home.title.top_authors" style="margin-top: 5px"></h3>
+    </section>
+</md-toolbar>
+
+<ng-include src="'modules/user/views/list/_list.tpl.html'"></ng-include>
+
+<section layout="row" layout-padding="">
+    <or-pagination flex
+                   or-pages="userList.pagination.total"
+                   or-steps="userList.pagination.steps"
+                   or-page-changed="userList.onPageChanged()"
+                   or-align="center center"
+                   or-current-page="userList.pagination.current"
+    ></or-pagination>
+</section>

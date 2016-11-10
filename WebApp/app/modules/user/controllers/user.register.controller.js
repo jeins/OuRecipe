@@ -6,7 +6,7 @@ UserRegisterController.$inject = ['$log', '$mdDialog'];
 function UserRegisterController($log, $mdDialog) {
     this.showDialog = function(ev){
         $mdDialog.show({
-            templateUrl: 'modules/user/views/user.dialog.register.tpl.html',
+            templateUrl: 'modules/user/views/auth/user.dialog.register.tpl.html',
             controller: dialogController,
             controllerAs: 'userRegister',
             targetEvent: ev,
