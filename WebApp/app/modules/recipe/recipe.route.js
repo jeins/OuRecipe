@@ -16,5 +16,11 @@ function routes($stateProvider) {
             controller: 'RecipeCreateController as recipeCreate',
             templateUrl: 'modules/recipe/views/create/index.tpl.html'
         })
+        .state('recipe_search', {
+            parent: 'main',
+            url: '/recipe-search',
+            controller: 'RecipeSearchController as recipeSearch',
+            templateUrl: 'modules/recipe/views/search/index.tpl.html'
+        })
     ;
 }

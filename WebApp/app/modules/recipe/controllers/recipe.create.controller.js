@@ -47,7 +47,7 @@ function RecipeCreateController($log, Upload) {
             Upload.upload({
                 url: 'assets/recipes',
                 data: {file: file}
-            }).then(function(response){$log.info(response)
+            }).then(function(response){
             });
         }
     }
