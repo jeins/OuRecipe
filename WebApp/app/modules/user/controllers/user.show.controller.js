@@ -2,8 +2,8 @@ angular
     .module('app.user')
     .controller('UserShowController', UserShowController);
 
-UserShowController.$inject = ['$log', '$stateParams'];
-function UserShowController($log, $stateParams) {
+UserShowController.$inject = ['$log', '$stateParams', '$location'];
+function UserShowController($log, $stateParams, $location) {
     var vm = this;
     vm.onPageChanged = onPageChanged;
     vm.doSearch = doSearch;
@@ -12,6 +12,7 @@ function UserShowController($log, $stateParams) {
 
     function init() {
         vm.userId = $stateParams.userId;
+        vm.selectedPage = ($stateParams.page != undefined) ? $stateParams.page : 0;
         vm.filter = {};
         vm.loadSort = _getSortRecipes();
         vm.loadFavoriteRecipe = [
@@ -201,6 +202,8 @@ function UserShowController($log, $stateParams) {
             }
         ];
         vm.pagination = {total: 10, current: 1, steps: 5};
+
+        if(vm.userId == undefined) $location.path('/');
 
         $log.info("Show User Profile Id: %s Page Opened", vm.userId);
     }

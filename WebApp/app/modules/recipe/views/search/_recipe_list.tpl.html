@@ -1,9 +1,13 @@
 <div class="md-padding" layout="row" layout-wrap layout-align="center">
-    <md-card ng-repeat="recipe in recipeSearch.loadNewRecipes" style="width: 350px; margin-top: 30px; margin-right: 40px; margin-bottom: 20px" class="md-whiteframe-10dp">
+    <md-card ng-repeat="recipe in recipeSearch.loadNewRecipes"
+             style="width: 350px; margin-top: 30px; margin-right: 40px; margin-bottom: 20px;" class="md-whiteframe-10dp"
+    >
         <img ng-src="assets/washedout.png" class="md-card-image" alt="Washed Out">
         <md-card-title>
             <md-card-title-text>
-                <span class="md-headline">{{recipe.name}}</span>
+                <a ng-href="/recipe-profile">
+                    <span class="md-headline">{{recipe.name}}</span>
+                </a>
             </md-card-title-text>
         </md-card-title>
         <md-card-content>

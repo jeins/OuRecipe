@@ -18,7 +18,7 @@ function routes($stateProvider) {
         })
         .state('profile_show', {
             parent: 'main',
-            url: '/profile-show?userId',
+            url: '/profile-show?userId?page',
             controller: 'UserShowController as userShow',
             templateUrl: 'modules/user/views/show/index.tpl.html'
         })

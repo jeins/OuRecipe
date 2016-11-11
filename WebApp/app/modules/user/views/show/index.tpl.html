@@ -1,7 +1,7 @@
 <div layout="column" layout-xs="column">
     <md-card class="md-whiteframe-10dp">
         <md-card-content layout="column" layout-xs="column">
-            <md-tabs md-dynamic-height md-border-bottom>
+            <md-tabs md-dynamic-height md-border-bottom md-selected="userShow.selectedPage">
                 <md-tab label="{{'m_user.label.tab_profile' | translate}}">
                     <ng-include src="'modules/user/views/show/_profile.tpl.html'"></ng-include>
                 </md-tab>

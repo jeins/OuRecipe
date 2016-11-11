@@ -1,9 +1,9 @@
 <md-toolbar class="md-toolbar-tools" layout="row" layout-wrap>
     <div flex="10"></div>
     <section hide="hide" show-gt-sm="show-gt-sm" layout="row" layout-sm="column" layout-align="start center">
-        <md-button translate="g.m.home"></md-button>
-        <md-button translate="g.m.recipes"></md-button>
-        <md-button translate="g.m.members"></md-button>
+        <md-button translate="g.m.home" ng-href="/" ng-class="shared.selectedNav('home') ? 'or-btn-selected': ''"></md-button>
+        <md-button translate="g.m.recipes" ng-href="/recipe-search" ng-class="shared.selectedNav('recipe-search') ? 'or-btn-selected': ''"></md-button>
+        <md-button translate="g.m.members" ng-href="/user-list" ng-class="shared.selectedNav('user-list') ? 'or-btn-selected': ''"></md-button>
     </section>
     <div flex></div>
     <section layout-align="end center" show-gt-sm="show-gt-sm" layout="row" layout-sm="column" >

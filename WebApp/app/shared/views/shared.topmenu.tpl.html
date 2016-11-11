@@ -6,6 +6,7 @@
     </section>
     <div flex></div>
     <section hide="hide" show-gt-sm="show-gt-sm" layout-align="end center">
+        <!--Guest Menu-->
         <md-button ng-controller="UserRegisterController as userRegister" ng-click="userRegister.showDialog($event)">
             <md-icon class="material-icons">perm_identity</md-icon>
             <span translate="g.b.register"></span>
@@ -14,6 +15,40 @@
             <md-icon class="material-icons">exit_to_app</md-icon>
             <span translate="g.b.login"></span>
         </md-button>
+
+        <!--User Menu-->
+        <md-menu>
+            <md-button ng-click="shared.openMenu($mdOpenMenu, $event)">
+                UserName
+                <md-icon class="fa" md-font-icon="fa-caret-square-o-down"></md-icon>
+            </md-button>
+            <md-menu-content width="4">
+                <md-menu-item>
+                    <md-button ng-href="/profile-edit">
+                        <md-icon class="fa" md-font-icon="fa-id-card"></md-icon>
+                        Profile
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button ng-href="/profile-show?page=1&userId=1">
+                        <md-icon class="fa" md-font-icon="fa-heart"></md-icon>
+                        Favorites
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button ng-href="/profile-show?page=2&userId=1">
+                        <md-icon class="fa" md-font-icon="fa-cutlery"></md-icon>
+                        My Recipe
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button ng-href="/recipe-create">
+                        <md-icon class="fa" md-font-icon="fa-plus"></md-icon>
+                        Add Recipe
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
     </section>
     <section hide-gt-sm="hide-gt-sm" layout-align="end center">
         <md-button ng-click="shared.toggleSidenav('left')" class="md-icon-button">
