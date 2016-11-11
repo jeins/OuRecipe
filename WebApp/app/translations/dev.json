@@ -44,6 +44,9 @@
       "register": "User Register"
     },
     "label":{
+      "tab_profile": "User Profile",
+      "tab_favorite_recipe": "Favorites Recipes",
+      "tab_personal_recipe": "Personal Recipes",
       "email": "Email",
       "password": "Password",
       "first_name": "First Name",
@@ -59,7 +62,11 @@
       "facebook": "Facebook",
       "twitter": "Twitter",
       "youtube": "Youtube",
-      "personal_blog": "Personal Blog / Site"
+      "personal_blog": "Personal Blog / Site",
+      "filter_sort": "Sort By",
+      "filter_search": "Find a saved recipe",
+      "add_recipe": "Add a Recipe",
+      "recipe_by": "Recipe by"
     }
   },
   "m_recipe":{

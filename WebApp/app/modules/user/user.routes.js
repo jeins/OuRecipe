@@ -16,5 +16,11 @@ function routes($stateProvider) {
             controller: 'UserEditController as userEdit',
             templateUrl: 'modules/user/views/edit/index.tpl.html'
         })
+        .state('profile_show', {
+            parent: 'main',
+            url: '/profile-show?userId',
+            controller: 'UserShowController as userShow',
+            templateUrl: 'modules/user/views/show/index.tpl.html'
+        })
     ;
 }

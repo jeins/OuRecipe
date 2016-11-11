@@ -1,0 +1,66 @@
+<md-content class="md-padding">
+    <section>
+        <md-card class="md-whiteframe-10dp">
+            <md-card-content>
+                <div layout="row" layout-xs="column" layout-align="center">
+                    <md-input-container flex="30" flex-xs="100">
+                        <label translate="m_user.label.filter_sort"></label>
+                        <md-select ng-model="userShow.filter.sort">
+                            <md-option ng-repeat="(key, value) in userShow.loadSort" value="{{key}}">{{value}}</md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <div flex="5" hide-xs hide-sm></div>
+
+                    <md-input-container flex="30" flex-xs="100">
+                        <label translate="m_user.label.filter_search"></label>
+                        <input ng-model="userShow.filter.search">
+                    </md-input-container>
+
+                    <div flex="5" hide-xs hide-sm></div>
+
+                    <md-input-container flex="30" flex-xs="100">
+                        <md-button md-colors="{background: 'green'}" style="width: 100%" ng-click="userShow.doSearch()">
+                            <span translate="m_recipe.button.filter_search" layout-align="center"></span>
+                        </md-button>
+                    </md-input-container>
+                </div>
+            </md-card-content>
+        </md-card>
+    </section>
+
+    <section layout="row" layout-wrap layout-align="center">
+        <md-card ng-repeat="recipe in userShow.loadFavoriteRecipe" style="width: 250px; margin-top: 30px; margin-right: 20px" class="md-whiteframe-10dp">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline" style="text-align: center">{{recipe.name}}</span>
+                    <span class="md-subhead">{{'m_user.label.recipe_by' | translate}} <strong>{{recipe.author}}</strong></span>
+                    <!--<ul class="md-subhead" style="margin-top: 30px; border-top: 1px dotted #e6e6e6; min-height: 51px; list-style: none;">-->
+                        <!--<li style="display: inline-block">-->
+                            <!--<span style="font-size: 12px"><md-icon class="material-icons">access_time</md-icon> {{recipe.time}}</span>-->
+                        <!--</li>-->
+                        <!--<li style="display: inline-block">-->
+                            <!--<span style="font-size: 12px"><md-icon class="material-icons">people</md-icon> {{recipe.people}}</span>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content layout="row" layout-align="center center">
+                <img ng-src="assets/washedout.png" class="md-media-xl card-media">
+            </md-card-content>
+        </md-card>
+    </section>
+
+    <div style="height: 60px"></div>
+
+    <section layout="row" layout-padding="">
+        <or-pagination flex
+                       or-pages="userShow.pagination.total"
+                       or-steps="userShow.pagination.steps"
+                       or-page-changed="userShow.onPageChanged()"
+                       or-align="center center"
+                       or-current-page="userShow.pagination.current"
+        ></or-pagination>
+
+    </section>
+</md-content>

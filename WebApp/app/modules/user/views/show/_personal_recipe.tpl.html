@@ -1,0 +1,50 @@
+<md-content class="md-padding">
+    <section layout="row" layout-wrap layout-align="center">
+        <!--TODO: display if current user view personal recipe-->
+        <md-card style="width: 250px; margin-top: 30px; margin-right: 20px; background: #f2f2f2; cursor: pointer" class="md-whiteframe-10dp">
+            <md-card-title>
+                <!--<md-card-title-text>-->
+                    <!--<span class="md-subhead" style="text-align: center">{{'m_user.label.add_recipe' | translate}}</span>-->
+                <!--</md-card-title-text>-->
+            </md-card-title>
+            <md-card-content layout="row" layout-align="center center" style="margin-top: -40px">
+                <div class="md-media-xl card-media">
+                    <md-icon md-font-icon="fa-plus-circle" class="fa" style="font-size: 5em; display: block; text-align: center"></md-icon>
+                    <span class="or-recipe-upload-img" translate="m_user.label.add_recipe"></span>
+                </div>
+            </md-card-content>
+        </md-card>
+
+        <md-card ng-repeat="recipe in userShow.loadPersonalRecipe" style="width: 250px; margin-top: 30px; margin-right: 20px" class="md-whiteframe-10dp">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline" style="text-align: center">{{recipe.name}}</span>
+                    <ul class="md-subhead" style="margin-top: 30px; border-top: 1px dotted #e6e6e6; min-height: 51px; list-style: none;">
+                        <li style="display: inline-block">
+                            <span style="font-size: 12px"><md-icon class="material-icons">access_time</md-icon> {{recipe.time}}</span>
+                        </li>
+                        <li style="display: inline-block">
+                            <span style="font-size: 12px"><md-icon class="material-icons">people</md-icon> {{recipe.people}}</span>
+                        </li>
+                    </ul>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content layout="row" layout-align="center center" style="margin-top: -40px">
+                <img ng-src="assets/washedout.png" class="md-media-xl card-media">
+            </md-card-content>
+        </md-card>
+    </section>
+
+    <div style="height: 60px"></div>
+
+    <section layout="row" layout-padding="">
+        <or-pagination flex
+                       or-pages="userShow.pagination.total"
+                       or-steps="userShow.pagination.steps"
+                       or-page-changed="userShow.onPageChanged()"
+                       or-align="center center"
+                       or-current-page="userShow.pagination.current"
+        ></or-pagination>
+
+    </section>
+</md-content>
