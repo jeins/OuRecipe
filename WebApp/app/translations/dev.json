@@ -8,7 +8,8 @@
       "login": "Login",
       "logout": "Logout",
       "register": "Register",
-      "cancel": "Cancel"
+      "cancel": "Cancel",
+      "save": "Save"
     },
     "m":{
       "title": "Menu",
@@ -46,7 +47,19 @@
       "email": "Email",
       "password": "Password",
       "first_name": "First Name",
-      "last_name": "Last Name"
+      "last_name": "Last Name",
+      "photo": "Profile Photo",
+      "country": "Country",
+      "city": "City",
+      "about": "About you",
+      "about_description": "Tell us about yourself!",
+      "promote_yourself": "Promote yourself",
+      "promote_yourself_description": "Add links to all your social networks",
+      "medsoc_description": "Paste the link to your",
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "youtube": "Youtube",
+      "personal_blog": "Personal Blog / Site"
     }
   },
   "m_recipe":{

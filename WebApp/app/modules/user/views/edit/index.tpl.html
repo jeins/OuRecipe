@@ -1,0 +1,22 @@
+<div layout="column" layout-xs="column">
+    <md-card class="md-whiteframe-10dp">
+        <md-card-content layout="column" layout-xs="column">
+            <ng-include src="'modules/user/views/edit/_detail_profile.tpl.html'"></ng-include>
+
+            <section layout="column" style="margin-bottom: 20px">
+                <span class="md-headline" translate="m_user.label.promote_yourself"></span>
+                <span class="md-subhead" translate="m_user.label.promote_yourself_description"></span>
+            </section>
+
+            <ng-include src="'modules/user/views/edit/_social_media.tpl.html'"></ng-include>
+
+            <section layout="row" layout-xs="column" layout-align="center center" layout-wrap>
+                <md-button class="md-raised md-primary" translate="g.b.save" ng-click="userEdit.save()">
+                </md-button>
+
+                <md-button class="md-raised" translate="g.b.cancel"></md-button>
+            </section>
+        </md-card-content>
+    </md-card>
+</div>
+

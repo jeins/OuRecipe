@@ -10,5 +10,11 @@ function routes($stateProvider) {
             controller: 'UserListController as userList',
             templateUrl: 'modules/user/views/list/index.tpl.html'
         })
+        .state('profile_edit', {
+            parent: 'main',
+            url: '/profile-edit',
+            controller: 'UserEditController as userEdit',
+            templateUrl: 'modules/user/views/edit/index.tpl.html'
+        })
     ;
 }

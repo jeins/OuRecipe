@@ -1,0 +1,45 @@
+<!--Photos-->
+<md-input-container class="md-block">
+    <span>Upload User Photo: </span>
+    <md-button ngf-select="userEdit.uploadImage($file)" md-colors="{background: 'amber'}" layout-padding
+         ngf-drag-over-class="'dragover'" ngf-multiple="false">
+        <md-icon md-font-icon="fa-camera" class="fa" style="color: #fff"></md-icon>
+        <span translate="m_user.label.photo" style="color: #fff"></span>
+    </md-button>
+</md-input-container>
+
+<!--FirstName-->
+<md-input-container class="md-block">
+    <label translate="m_user.label.first_name"></label>
+    <input ng-model="userEdit.user.first_name">
+</md-input-container>
+
+<!--LastName-->
+<md-input-container class="md-block">
+    <label translate="m_user.label.last_name"></label>
+    <input ng-model="userEdit.user.last_name">
+</md-input-container>
+
+<!--Country-->
+<md-input-container class="md-block">
+    <label translate="m_user.label.country"></label>
+    <md-select ng-model="userEdit.location.iCountry" ng-change="userEdit.getStates()">
+        <md-option ng-repeat="(index, country) in userEdit.loadCountries" ng-value="index">{{country}}</md-option>
+    </md-select>
+</md-input-container>
+
+<!--City-->
+<md-input-container class="md-block">
+    <label translate="m_user.label.city"></label>
+    <md-select ng-disabled="userEdit.location.iCountry == 0" ng-model="userEdit.location.state">
+        <md-option ng-repeat="state in userEdit.loadStates track by $index" ng-value="state">{{state}}</md-option>
+    </md-select>
+</md-input-container>
+
+<!--AboutMe-->
+<md-input-container class="md-block">
+    <label translate="m_user.label.about_description"></label>
+    <textarea ng-model="m_user.user.about"
+              md-maxlength="500" rows="3" md-select-on-focus >
+    </textarea>
+</md-input-container>
