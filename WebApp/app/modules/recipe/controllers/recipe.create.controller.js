@@ -2,8 +2,8 @@ angular
     .module('app.recipe')
     .controller('RecipeCreateController', RecipeCreateController);
 
-RecipeCreateController.$inject = ['$log', 'Upload'];
-function RecipeCreateController($log, Upload) {
+RecipeCreateController.$inject = ['$log', 'UploadService'];
+function RecipeCreateController($log, UploadService) {
     var vm = this;
     vm.addMoreIngredient = addMoreIngredient;
     vm.removeIngredient = removeIngredient;
@@ -17,7 +17,6 @@ function RecipeCreateController($log, Upload) {
         vm.recipe = [];
         vm.ingredients = [{id: 1, name: ""}];
         vm.steps = [{id: 1}];
-        vm.imageName = _generateHash("getcurrentuseremail");
     }
 
     function addMoreIngredient(){
@@ -41,35 +40,11 @@ function RecipeCreateController($log, Upload) {
     }
 
     function uploadImage(file) {
-        if(_isMimeTypeAllow(file.name) && !file.$error){
-            file = Upload.rename(file, _changeImgName(file.name));
+        UploadService.setUploadUrl("");
+        UploadService.uploadImage(file);
 
-            Upload.upload({
-                url: 'assets/recipes',
-                data: {file: file}
-            }).then(function(response){
-            });
-        }
-    }
-
-    function _changeImgName(name){
-        var tmpName = name.toLowerCase().split('.');
-        return vm.imageName + "." + tmpName[tmpName.length-1];
-    }
-
-    function _isMimeTypeAllow(name){
-        var res = name.toLowerCase().split('.');
-        return !!(res[res.length - 1] == 'jpg' || res[res.length - 1] == 'png' || res[res.length - 1] == 'jpeg');
-    }
-
-    function _generateHash(str)
-    {
-        var x = (str.charCodeAt(0) * 719) % 1138;
-        var hash = 837;
-        var i;
-        for (i = 1; i <= str.length; i++)
-            hash = (hash * i + 5 + (str.charCodeAt(i - 1) - 64) * x) % 98503;
-        return hash.toString();
+        vm.imageName = UploadService.getGeneratedImgName();
+        $log.info(vm.imageName);
     }
 
 }

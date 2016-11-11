@@ -1,6 +1,6 @@
 angular
     .module('app.shared', [
-        'ngCookies',
+        'ngCookies', 'ngFileUpload'
     ])
     .config(config);
 

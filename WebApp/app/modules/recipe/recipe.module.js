@@ -1,2 +1,2 @@
 angular
-    .module('app.recipe', ['ngFileUpload']);
+    .module('app.recipe', []);
