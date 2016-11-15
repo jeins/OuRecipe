@@ -12,7 +12,7 @@ function UserShowController($log, $stateParams, $location) {
 
     function init() {
         vm.userId = $stateParams.userId;
-        vm.selectedPage = ($stateParams.page != undefined) ? $stateParams.page : 0;
+        vm.selectedPage = ($stateParams.page !== undefined) ? $stateParams.page : 0;
         vm.filter = {};
         vm.loadSort = _getSortRecipes();
         vm.loadFavoriteRecipe = [
@@ -203,7 +203,7 @@ function UserShowController($log, $stateParams, $location) {
         ];
         vm.pagination = {total: 10, current: 1, steps: 5};
 
-        if(vm.userId == undefined) $location.path('/');
+        if(vm.userId === undefined) $location.path('/');
 
         $log.info("Show User Profile Id: %s Page Opened", vm.userId);
     }

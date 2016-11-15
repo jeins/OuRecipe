@@ -19,10 +19,10 @@
             <label>({{ingredient.id}}) - {{'m_recipe.label.ingredient' | translate}}</label>
             <input type="text" ng-model="ingredient.name" flex-xs flex-gt-xs="80">
             <md-button ng-show="$first" ng-click="recipeCreate.addMoreIngredient()" class="md-primary">
-                <md-icon class="material-icons">add</md-icon>
+                <md-icon md-font-icon="fa-plus" class="fa"></md-icon>
             </md-button>
             <md-button ng-show="!$first && $last" ng-click="recipeCreate.removeIngredient()" class="md-warn">
-                <md-icon class="material-icons">remove</md-icon>
+                <md-icon md-font-icon="fa-times" class="fa"></md-icon>
             </md-button>
         </md-input-container>
 
@@ -31,10 +31,10 @@
             <label>({{step.id}}) - {{'m_recipe.label.step' | translate}}</label>
             <input type="text" ng-model="step.description" flex-xs flex-gt-xs="80" style="resize:both;">
             <md-button ng-show="$first" ng-click="recipeCreate.addMoreStep()" class="md-primary">
-                <md-icon class="material-icons">add</md-icon>
+                <md-icon md-font-icon="fa-plus" class="fa"></md-icon>
             </md-button>
             <md-button ng-show="!$first && $last" ng-click="recipeCreate.removeStep()" class="md-warn">
-                <md-icon class="material-icons">remove</md-icon>
+                <md-icon md-font-icon="fa-times" class="fa"></md-icon>
             </md-button>
         </md-input-container>
     </md-card-content>
