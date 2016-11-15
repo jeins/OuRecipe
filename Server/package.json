@@ -1,13 +1,4 @@
 {
-  "name": "OuRecipe Backend",
-  "version": "0.0.1",
-  "description": "Backend of OuRecipe Web-App",
-  "main": "index.js",
-  "scripts": {
-    "start server": "node index.js",
-    "run migrate": "node_modules\\.bin\\sequelize db:migrate",
-    "run seed": "node_modules\\.bin\\sequelize db:seed:all"
-  },
   "devDependencies": {
     "babel-cli": "^6.16.0",
     "babel-eslint": "^7.0.0",
@@ -21,11 +12,17 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "faker": "^3.1.0",
+    "jsonwebtoken": "^7.1.9",
+    "lodash": "^4.17.1",
     "moment": "^2.15.1",
     "morgan": "^1.7.0",
     "multer": "^1.2.0",
     "mysql": "^2.11.1",
-    "sequelize": "^3.24.3",
-    "jsonwebtoken": "^7.1.9"
+    "sequelize": "^3.24.3"
+  },
+  "scripts": {
+    "start server": "node index.js",
+    "run migrate": "node_modules\\.bin\\sequelize db:migrate",
+    "run seed": "node_modules\\.bin\\sequelize db:seed:all"
   }
 }
