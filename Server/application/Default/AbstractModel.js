@@ -1,4 +1,5 @@
 import Sequelize from 'sequelize';
+import _ from 'lodash';
 import dbConf from '../../config/database';
 
 class AbstractModel{
@@ -15,8 +16,18 @@ class AbstractModel{
         );
     }
 
-    getDataType(reqType){
-        return Sequelize[reqType.toUpperCase()];
+    generateEntities(fieldEntites){
+        let entities = {};
+
+        _.forEach(fieldEntites, function(entity){
+            if(entity.name != "id"){
+                entities[entity.name] = {};
+                entities[entity.name]['type'] = Sequelize[entity.type];
+                if(_.hasIn(entity, 'validate')) entities[entity.name]['validate'] = entity.validate;
+            }
+        });
+
+        return entities;
     }
 }
 

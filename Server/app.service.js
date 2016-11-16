@@ -6,6 +6,7 @@ import morgan from 'morgan';
 import config from './config/config';
 import corsMiddleware from './middleware/cors';
 import UserController from './application/User/UserController';
+import RecipeController from './application/Recipe/RecipeController';
 
 var conf = config.server[process.env.NODE_ENV] || config.server.development;
 
@@ -22,6 +23,7 @@ app.use(corsMiddleware);
 app.use(morgan('dev'));
 
 app.use('/', UserController());
+app.use('/', RecipeController());
 
 app.server.listen(conf.port, conf.host, ()=>{
     console.log("Server is running on: %s:%s", conf.host, conf.port);

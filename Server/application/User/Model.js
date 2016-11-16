@@ -1,28 +1,12 @@
 import AbstractModel from '../Default/AbstractModel';
 import UserField from './Field';
-import _ from 'lodash';
 
 class User extends AbstractModel{
     constructor(){
         super();
 
         this.db = this.getConnection();
-        this.user = this.db.define(UserField.tableName, this._generateEntities());
-    }
-
-    _generateEntities() {
-        let entities = {};
-        let me = this;
-
-        _.forEach(UserField.entity, function(entity){
-            if(entity.name != "id"){
-                entities[entity.name] = {};
-                entities[entity.name]['type'] = me.getDataType(entity.type);
-                if(_.hasIn(entity, 'validate')) entities[entity.name]['validate'] = entity.validate;
-            }
-        });
-
-        return entities;
+        this.user = this.db.define(UserField.tableName, this.generateEntities(UserField.entity));
     }
 
     getUser(){
