@@ -14,6 +14,7 @@ app.server = http.createServer(app);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(__dirname + conf.client));
 
 // Middleware
 app.use(corsMiddleware);
@@ -21,12 +22,6 @@ app.use(corsMiddleware);
 app.use(morgan('dev'));
 
 app.use('/', UserController());
-
-// app.get('/*', (req, res)=>{
-//     console.log(__dirname)
-//     res.sendFile('index.html', { root: __dirname + "/dist" });
-// });
-
 
 app.server.listen(conf.port, conf.host, ()=>{
     console.log("Server is running on: %s:%s", conf.host, conf.port);
