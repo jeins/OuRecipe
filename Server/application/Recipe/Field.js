@@ -41,6 +41,12 @@ module.exports = {
         },
         videoUrl:{
             name: 'video_url', type:'STRING'
+        },
+        createdAt: {
+            name: 'created_at', type: 'DATE'
+        },
+        updatedAt: {
+            name: 'updated_at', type: 'DATE'
         }
     }
 };

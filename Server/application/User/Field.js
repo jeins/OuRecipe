@@ -34,6 +34,12 @@ module.exports = {
         },
         socialMedia: {
             name: 'social_media', type: 'TEXT'
+        },
+        createdAt: {
+            name: 'created_at', type: 'DATE'
+        },
+        updatedAt: {
+            name: 'updated_at', type: 'DATE'
         }
     }
 };

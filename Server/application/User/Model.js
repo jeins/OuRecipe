@@ -13,7 +13,7 @@ class User extends AbstractModel{
         return this.user;
     }
 
-    getMembersList(callback){
+    getMembersList(offset, limit, callback){
         let attributes = [
             UserField.entity.id.name,
             UserField.entity.firstName.name,
@@ -21,7 +21,7 @@ class User extends AbstractModel{
             UserField.entity.photoName.name
         ];
 
-        this.user.findAll({attributes: attributes}).then((user)=>{
+        this.user.findAll({attributes: attributes, offset: offset, limit: limit}).then((user)=>{
             callback(user);
         });
     }
