@@ -1,7 +1,6 @@
 
 module.exports = {
-    sha256: {secret: 'thisShouldBeChange!!!!!'},
-    token: {secret: 'thisShouldBeChangeAlso!!!!!'},
+    secret: 'thisShouldBeChange!!!',
     server: {
         development: {
             host: 'localhost',
