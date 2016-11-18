@@ -8,8 +8,11 @@ angular
         'app.config', 'app.shared',
         'app.home', 'app.user', 'app.recipe'
     ])
-    .config(['$logProvider', '$provide', '$translateProvider', 'translation', '$mdAriaProvider',
-        function($logProvider, $provide, $translateProvider, translation, $mdAriaProvider){
+    .config(['$logProvider', '$provide', '$translateProvider', 'translation', '$mdAriaProvider', '$httpProvider',
+        function($logProvider, $provide, $translateProvider, translation, $mdAriaProvider, $httpProvider){
+            // Inject interceptors
+            $httpProvider.interceptors.push('SessionInjector');
+
             // Setup Logging/Debug
             $logProvider.debugEnabled(true);
 

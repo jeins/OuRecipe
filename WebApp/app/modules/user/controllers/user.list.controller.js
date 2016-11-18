@@ -2,8 +2,8 @@ angular
     .module('app.user')
     .controller('UserListController', UserListController);
 
-UserListController.$inject = ['$log'];
-function UserListController($log) {
+UserListController.$inject = ['$log', 'ApiUser'];
+function UserListController($log, ApiUser) {
     var vm = this;
     vm.onPageChanged = onPageChanged;
 
@@ -11,7 +11,9 @@ function UserListController($log) {
 
     function init() {
         vm.pagination = {total: 10, current: 1, steps: 5};
-
+        ApiUser.userList({limit: 4, offset: 4}, function(response){
+           $log.info(response);
+        });
         $log.info("User Search Page Opened");
     }
 

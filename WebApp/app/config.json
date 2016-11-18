@@ -1,7 +1,7 @@
 {
   "constants": {
     "development": {
-      "API_URL": "",
+      "API_URL": "/api/",
       "translation": {
         "path": "translations/",
         "suffix": ".json",
