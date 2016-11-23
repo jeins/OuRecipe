@@ -27,26 +27,26 @@ module.exports = {
     };
 
     arrData.push({
-      first_name: 'Budi',
-      last_name: 'Santoso',
+      firstName: 'Budi',
+      lastName: 'Santoso',
       email: "admin@demo.com",
       password: getHash("admin"),
       country: 'Indonesia',
       city: 'Bekasi',
-      created_at: moment().format('YYYY-MM-DD HH:mm:ss'),
-      updated_at:  moment().format('YYYY-MM-DD HH:mm:ss')
+      createdAt: moment().format('YYYY-MM-DD HH:mm:ss'),
+      updatedAt:  moment().format('YYYY-MM-DD HH:mm:ss')
     });
 
     for(var i=0; i<100; i++){
       arrData.push({
-        first_name: faker.name.firstName(),
-        last_name: faker.name.lastName(),
+        firstName: faker.name.firstName(),
+        lastName: faker.name.lastName(),
         email: faker.internet.email(),
         password: getHash(faker.internet.email()),
         country: faker.address.county(),
         city: faker.address.city(),
-        created_at: moment().format('YYYY-MM-DD HH:mm:ss'),
-        updated_at:  moment().format('YYYY-MM-DD HH:mm:ss')
+        createdAt: moment().format('YYYY-MM-DD HH:mm:ss'),
+        updatedAt:  moment().format('YYYY-MM-DD HH:mm:ss')
       });
     }
 

@@ -7,10 +7,10 @@ module.exports = {
             primaryKey: true, autoIncrement: true
         },
         firstName: {
-            name: 'first_name', type: 'STRING'
+            name: 'firstName', type: 'STRING'
         },
         lastName: {
-            name: 'last_name', type: 'STRING'
+            name: 'lastName', type: 'STRING'
         },
         email: {
             name: 'email', type: 'STRING',
@@ -21,7 +21,7 @@ module.exports = {
             validate:{isEmail: true, notNull: true}
         },
         photoName: {
-            name: 'photo_name', type: 'STRING'
+            name: 'photoName', type: 'STRING'
         },
         country: {
             name: 'country', type: 'STRING'
@@ -30,16 +30,16 @@ module.exports = {
             name: 'city', type: 'STRING'
         },
         aboutMe: {
-            name: 'about_me', type: 'TEXT'
+            name: 'aboutMe', type: 'TEXT'
         },
         socialMedia: {
-            name: 'social_media', type: 'TEXT'
+            name: 'socialMedia', type: 'TEXT'
         },
         createdAt: {
-            name: 'created_at', type: 'DATE'
+            name: 'createdAt', type: 'DATE'
         },
         updatedAt: {
-            name: 'updated_at', type: 'DATE'
+            name: 'updatedAt', type: 'DATE'
         }
     }
 };

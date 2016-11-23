@@ -1,7 +1,7 @@
 
 class Paginator{
-    static getPagination(model, currPage, limitPage, callback){
-        model.count()
+    static getPagination(model, filter, currPage, limitPage, callback){
+        model.count({where: filter})
             .then((count)=>{
                 let totalPage = Math.ceil(count / limitPage) - 1;
 

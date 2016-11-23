@@ -1,5 +1,7 @@
 import AbstractModel from '../Default/AbstractModel';
 import RecipeField from './Field';
+import User from '../User/Model';
+import UserField from '../User/Field';
 
 class Recipe extends AbstractModel{
     constructor(){
@@ -7,28 +9,48 @@ class Recipe extends AbstractModel{
 
         this.db = this.getConnection();
         this.recipe = this.db.define(RecipeField.tableName, this.generateEntities(RecipeField.entity));
+
+        //e-relation definitions
+        this.user = new User().getModel();
+        this.recipe.belongsTo(this.user);
+        this.user.hasMany(this.recipe);
     }
 
     getModel(){
         return this.recipe;
     }
 
-    getList(currPage, limit, callback){
+    getList(filter, currPage, limit, cb){
         currPage = (currPage === 1) ? 0 : currPage;
         let offset = currPage * limit;
-        let attributes = [
+        let recipeAttributes = [
             RecipeField.entity.id.name,
             RecipeField.entity.title.name,
             RecipeField.entity.description.name,
-            RecipeField.entity.photoName.name,
             RecipeField.entity.cookTime.name,
-            RecipeField.entity.difficultyLevel.name,
-            RecipeField.entity.serving.name
+            RecipeField.entity.serving.name,
+            RecipeField.entity.photoName
+        ];
+        let userAttributes = [
+            UserField.entity.id.name,
+            UserField.entity.firstName.name,
+            UserField.entity.lastName.name
         ];
 
-        this.recipe.findAll({attributes: attributes, offset: offset, limit: limit}).then((recipes)=>{
-            callback(recipes);
-        });
+        this.recipe.findAll({
+            // attributes: recipeAttributes,
+            where: filter,
+            include: [
+                {model: this.user, attributes: userAttributes}
+            ],
+            offset: offset,
+            limit: limit
+        })
+            .then((recipes)=>{
+                cb(null, recipes);
+            })
+            .catch((err)=>{cb(err.message, null);})
+        ;
     }
 }
 

@@ -23,9 +23,12 @@ class User extends AbstractModel{
             UserField.entity.photoName.name
         ];
 
-        this.user.findAll({attributes: attributes, offset: offset, limit: limit}).then((user)=>{
-            callback(user);
-        });
+        this.user.findAll({attributes: attributes, offset: offset, limit: limit})
+            .then((user)=>{
+                callback(null, user);
+            })
+            .catch((err)=>{callback(err.message, null)})
+        ;
     }
 }
 

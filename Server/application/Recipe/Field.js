@@ -6,6 +6,10 @@ module.exports = {
             name: 'id', type: 'INTEGER',
             primaryKey: true, autoIncrement: true
         },
+        userId: {
+            name: 'userId', type: 'INTEGER',
+            references: {model: 'users', key: 'id'}, onUpdate: 'cascade', onDelete: 'cascade'
+        },
         title: {
             name: 'title', type: 'STRING'
         },
@@ -19,10 +23,10 @@ module.exports = {
             name: 'steps', type: 'TEXT'
         },
         preparationTime:{
-            name: 'preparation_time', type: 'STRING'
+            name: 'preparationTime', type: 'STRING'
         },
         cookTime:{
-            name: 'cook_time', type: 'STRING'
+            name: 'cookTime', type: 'STRING'
         },
         serving:{
             name: 'serving', type: 'INTEGER'
@@ -34,19 +38,19 @@ module.exports = {
             name: 'category', type: 'STRING'
         },
         difficultyLevel:{
-            name: 'difficulty_level', type: 'INTEGER'
+            name: 'difficultyLevel', type: 'INTEGER'
         },
         photoName:{
-            name: 'photo_name', type: 'STRING'
+            name: 'photoName', type: 'STRING'
         },
         videoUrl:{
-            name: 'video_url', type:'STRING'
+            name: 'videoUrl', type:'STRING'
         },
         createdAt: {
-            name: 'created_at', type: 'DATE'
+            name: 'createdAt', type: 'DATE'
         },
         updatedAt: {
-            name: 'updated_at', type: 'DATE'
+            name: 'updatedAt', type: 'DATE'
         }
     }
 };
