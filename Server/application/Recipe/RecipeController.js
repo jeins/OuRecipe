@@ -32,5 +32,16 @@ export default ()=>{
         });
     });
 
+    router.post(prefix + 'view', (req, res)=>{
+        recipeModel.getById(req.body.recipeId, (err, result)=>{
+            if(!err){
+                res.json(result);
+            }
+            else res.send(err);
+        });
+    });
+    router.post(prefix, (req, res)=>{});
+    router.put(prefix, (req, res)=>{});
+
     return router;
 }

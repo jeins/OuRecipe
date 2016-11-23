@@ -52,6 +52,29 @@ class Recipe extends AbstractModel{
             .catch((err)=>{cb(err.message, null);})
         ;
     }
+
+    getById(id, cb){
+        let userAttributes = [
+            UserField.entity.id.name,
+            UserField.entity.firstName.name,
+            UserField.entity.lastName.name,
+            UserField.entity.photoName.name
+        ];
+        let filter = {};
+        filter[RecipeField.entity.id.name] = id;
+
+        this.recipe.find({
+            where: filter,
+            include: [
+                {model: this.user, attributes: userAttributes}
+            ]
+        })
+            .then((recipe)=>{
+                cb(null, recipe)
+            })
+            .catch((err)=>{cb(err.message, null);})
+        ;
+    }
 }
 
 module.exports = Recipe;
