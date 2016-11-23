@@ -9,11 +9,13 @@ class User extends AbstractModel{
         this.user = this.db.define(UserField.tableName, this.generateEntities(UserField.entity));
     }
 
-    getUser(){
+    getModel(){
         return this.user;
     }
 
-    getMembersList(offset, limit, callback){
+    getList(currPage, limit, callback){
+        currPage = (currPage === 1) ? 0 : currPage;
+        let offset = currPage * limit;
         let attributes = [
             UserField.entity.id.name,
             UserField.entity.firstName.name,

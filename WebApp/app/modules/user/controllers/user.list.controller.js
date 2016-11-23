@@ -12,7 +12,8 @@ function UserListController($log, ApiUser) {
     function init() {
         vm.pagination = {total: 10, current: 1, steps: 5};
         ApiUser.userList({limit: 4, offset: 4}, function(response){
-           $log.info(response);
+            vm.loadUsers = response.data;
+            $log.info("Response - User List: %s", JSON.stringify(response.data));
         });
         $log.info("User Search Page Opened");
     }

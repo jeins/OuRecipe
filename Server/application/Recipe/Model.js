@@ -9,7 +9,13 @@ class Recipe extends AbstractModel{
         this.recipe = this.db.define(RecipeField.tableName, this.generateEntities(RecipeField.entity));
     }
 
-    getRecipeList(callback){
+    getModel(){
+        return this.recipe;
+    }
+
+    getList(currPage, limit, callback){
+        currPage = (currPage === 1) ? 0 : currPage;
+        let offset = currPage * limit;
         let attributes = [
             RecipeField.entity.id.name,
             RecipeField.entity.title.name,
@@ -20,7 +26,7 @@ class Recipe extends AbstractModel{
             RecipeField.entity.serving.name
         ];
 
-        this.recipe.findAll({attributes: attributes}).then((recipes)=>{
+        this.recipe.findAll({attributes: attributes, offset: offset, limit: limit}).then((recipes)=>{
             callback(recipes);
         });
     }

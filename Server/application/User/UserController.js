@@ -1,13 +1,29 @@
 import User from './Model';
+import Paginator from '../Default/Paginator';
 import {Router} from 'express';
+import waterfall from 'async/waterfall';
 
 export default ()=>{
     let userModel = new User();
     let router = new Router();
 
     router.post('/api/user/list', (req, res)=>{
-        userModel.getMembersList(req.body.offset, req.body.limit, (result)=>{
-            res.json(result);
+        let currPage = req.body.currPage;
+        let limitPage = req.body.limit;
+
+        waterfall([
+            (cb)=>{
+                Paginator.getPagination(userModel.getModel(), currPage, limitPage, (result)=>{
+                    cb(null, result);
+                });
+            },
+            (pagination, cb)=>{
+                userModel.getList(pagination.currPage, limitPage, (result)=>{
+                    cb(null, {data: result, pagination: pagination});
+                });
+            }
+        ], (err, result)=>{
+            if(!err) res.json(result);
         });
     });
 

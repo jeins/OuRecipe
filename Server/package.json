@@ -8,6 +8,7 @@
     "sequelize-cli": "^2.4.0"
   },
   "dependencies": {
+    "async": "^2.1.4",
     "babel-register": "^6.16.3",
     "body-parser": "^1.15.2",
     "csurf": "^1.9.0",

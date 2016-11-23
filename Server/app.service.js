@@ -22,10 +22,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Middleware
 app.use(corsMiddleware);
-app.use(csrfMiddleware.setupSession());
-app.use(csrfMiddleware.setupCsrf());
-app.use(csrfMiddleware.sendCsrfToClient);
-app.use(csrfMiddleware.errorHandler);
+// app.use(csrfMiddleware.setupSession());
+// app.use(csrfMiddleware.setupCsrf());
+// app.use(csrfMiddleware.sendCsrfToClient);
+// app.use(csrfMiddleware.errorHandler);
 
 // API URI
 app.use('/', UserController());
