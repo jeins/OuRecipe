@@ -75,6 +75,65 @@ class Recipe extends AbstractModel{
             .catch((err)=>{cb(err.message, null);})
         ;
     }
+
+    add(data, cb){
+        let allowedFields = [
+            RecipeField.entity.userId.name,
+            RecipeField.entity.title.name,
+            RecipeField.entity.description.name,
+            RecipeField.entity.ingredients.name,
+            RecipeField.entity.steps.name,
+            RecipeField.entity.preparationTime.name,
+            RecipeField.entity.cookTime.name,
+            RecipeField.entity.serving.name,
+            RecipeField.entity.cuisine.name,
+            RecipeField.entity.category.name,
+            RecipeField.entity.difficultyLevel.name,
+            RecipeField.entity.photoName.name,
+            RecipeField.entity.videoUrl.name
+        ];
+        let newRecipeData = this.validateBody(data, allowedFields);
+
+        this.recipe.create(newRecipeData)
+            .then((recipe)=>{cb(null, recipe.get())})
+            .catch((err)=>{cb(err.message, null)})
+        ;
+    }
+
+    update(id, data, cb){
+        let allowedFields = [
+            RecipeField.entity.title.name,
+            RecipeField.entity.description.name,
+            RecipeField.entity.ingredients.name,
+            RecipeField.entity.steps.name,
+            RecipeField.entity.preparationTime.name,
+            RecipeField.entity.cookTime.name,
+            RecipeField.entity.serving.name,
+            RecipeField.entity.cuisine.name,
+            RecipeField.entity.category.name,
+            RecipeField.entity.difficultyLevel.name,
+            RecipeField.entity.photoName.name,
+            RecipeField.entity.videoUrl.name
+        ];
+        let newRecipeData = this.validateBody(data, allowedFields);
+        let condition = {};
+        condition[RecipeField.entity.id.name] = id;
+
+        this.recipe.update(newRecipeData, {where: condition})
+            .then((recipe)=>{cb(null, recipe);})
+            .catch((err)=>{cb(err.message, null)})
+        ;
+    }
+
+    delete(id, cb){
+        let condition = {};
+        condition[RecipeField.entity.id.name] = id;
+
+        this.recipe.destroy({where: condition})
+            .then((result)=>{cb(null, result);})
+            .catch((err)=>{cb(err.message, null)})
+        ;
+    }
 }
 
 module.exports = Recipe;

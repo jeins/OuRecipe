@@ -29,6 +29,16 @@ class AbstractModel{
 
         return entities;
     }
+
+    validateBody(body, fields){
+        let obj = {};
+
+        _.forEach(fields, (field)=>{
+             obj[field] = _.hasIn(body, field) ? body[field] : '';
+        });
+
+        return obj;
+    }
 }
 
 module.exports = AbstractModel;
