@@ -100,7 +100,8 @@
       "filter_ingredients": "Ingredients (separate with comma)"
     },
     "button":{
-      "filter_search": "Search For Recipes"
+      "filter_search": "Search For Recipes",
+      "save_new_recipe": "Save New Recipe"
     }
   }
 }

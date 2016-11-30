@@ -15,51 +15,58 @@
     </md-card-content>
 </md-card>
 <md-card class="md-whiteframe-10dp">
-    <md-card-content layout="column" layout-xs="column" layout-align="center center">
-        <div layout-gt-sm="row">
-            <div>
-                <!--Prep Time-->
-                <md-input-container>
-                    <label translate="m_recipe.label.pre_time"></label>
-                    <input ng-model="recipeCreate.recipe.PreTime">
-                </md-input-container>
+    <md-card-content>
+        <div layout-gt-sm="row" layout-xs="column" layout-align="center">
+            <!--Prep Time-->
+            <md-input-container flex="30" flex-xs="100">
+                <label translate="m_recipe.label.pre_time"></label>
+                <input ng-model="recipeCreate.recipe.PreTime">
+            </md-input-container>
 
-                <!--Cook Time-->
-                <md-input-container>
-                    <label translate="m_recipe.label.cook_time"></label>
-                    <input ng-model="recipeCreate.recipe.cookTime">
-                </md-input-container>
-            </div>
+            <div flex="5" hide-xs hide-sm></div>
+
+            <!--Servings-->
+            <md-input-container flex="30" flex-xs="100">
+                <label translate="m_recipe.label.servings"></label>
+                <input ng-model="recipeCreate.recipe.numServings">
+            </md-input-container>
+
+            <div flex="5" hide-xs hide-sm></div>
+
+            <!--Cook Time-->
+            <md-input-container flex="30" flex-xs="100">
+                <label translate="m_recipe.label.cook_time"></label>
+                <input ng-model="recipeCreate.recipe.cookTime">
+            </md-input-container>
         </div>
-        <div layout-gt-sm="row">
-            <div>
-                <!--Servings-->
-                <md-input-container>
-                    <label translate="m_recipe.label.servings"></label>
-                    <input ng-model="recipeCreate.recipe.numServings">
-                </md-input-container>
+        <div layout-gt-sm="row" layout-xs="column" layout-align="center">
+            <!--Category-->
+            <md-input-container flex="30" flex-xs="100">
+                <label translate="m_recipe.label.category"></label>
+                <md-select ng-model="recipeCreate.recipe.category">
+                    <md-option ng-repeat="lc in recipeCreate.loadCategories" value="{{lc.name}}">{{lc.name}}</md-option>
+                </md-select>
+            </md-input-container>
 
-                <!--Cuisine-->
-                <md-input-container>
-                    <label translate="m_recipe.label.cuisine"></label>
-                    <input ng-model="recipeCreate.recipe.cuisine">
-                </md-input-container>
-            </div>
-        </div>
-        <div layout-gt-sm="row">
-            <div>
-                <!--Category-->
-                <md-input-container>
-                    <label translate="m_recipe.label.category"></label>
-                    <input ng-model="recipeCreate.recipe.category">
-                </md-input-container>
+            <div flex="5" hide-xs hide-sm></div>
 
-                <!--Difficulty Level-->
-                <md-input-container>
-                    <label translate="m_recipe.label.difficulty_level"></label>
-                    <input ng-model="recipeCreate.recipe.difficultyLevel">
-                </md-input-container>
-            </div>
+            <!--Cuisine-->
+            <md-input-container flex="30" flex-xs="100">
+                <label translate="m_recipe.label.cuisine"></label>
+                <md-select ng-model="recipeCreate.recipe.cuisine">
+                    <md-option ng-repeat="lc in recipeCreate.loadCuisine" value="{{lc}}">{{lc}}</md-option>
+                </md-select>
+            </md-input-container>
+
+            <div flex="5" hide-xs hide-sm></div>
+
+            <!--Difficulty Level-->
+            <md-input-container flex="30" flex-xs="100">
+                <label translate="m_recipe.label.difficulty_level"></label>
+                <md-select ng-model="recipeCreate.recipe.difficultyLevel">
+                    <md-option ng-repeat="lc in recipeCreate.loadDifficultyLevel" value="{{lc}}">{{lc}}</md-option>
+                </md-select>
+            </md-input-container>
         </div>
     </md-card-content>
 </md-card>

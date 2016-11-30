@@ -2,21 +2,32 @@ angular
     .module('app.recipe')
     .controller('RecipeCreateController', RecipeCreateController);
 
-RecipeCreateController.$inject = ['$log', 'UploadService'];
-function RecipeCreateController($log, UploadService) {
+RecipeCreateController.$inject = ['$log', 'UploadService', 'Recipe'];
+function RecipeCreateController($log, UploadService, Recipe) {
     var vm = this;
     vm.addMoreIngredient = addMoreIngredient;
     vm.removeIngredient = removeIngredient;
     vm.addMoreStep = addMoreStep;
     vm.removeStep = removeStep;
     vm.uploadImage = uploadImage;
+    vm.onSave = onSave;
 
     init();
 
     function init(){
-        vm.recipe = [];
+        vm.recipe = {};
         vm.ingredients = [{id: 1, name: ""}];
         vm.steps = [{id: 1}];
+        vm.loadCategories = Recipe.categories();
+        vm.loadCuisine = Recipe.cuisine();
+        vm.loadDifficultyLevel = Recipe.difficultyLevel();
+    }
+
+    function onSave(){
+        vm.recipe.ingredients = vm.ingredients;
+        vm.recipe.steps = vm.steps;
+
+        $log.info(vm.recipe);
     }
 
     function addMoreIngredient(){
