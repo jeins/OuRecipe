@@ -6,7 +6,7 @@ function routes($stateProvider) {
     $stateProvider
         .state('recipe_profile', {
             parent: 'main',
-            url: '/recipe-profile',
+            url: '/recipe-profile?recipeId',
             controller: 'RecipeProfileController as recipeProfile',
             templateUrl: 'modules/recipe/views/profile/index.tpl.html'
         })
