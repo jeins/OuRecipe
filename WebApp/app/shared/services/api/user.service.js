@@ -11,7 +11,7 @@ function ApiUser($log, API_URL, $http) {
     function userList(query, callback){$log.info(query);
         return $http(_setupRequest('user/list', 'POST', query))
             .then(function(response){
-                callback(response);
+                callback(response.data);
             });
     }
 

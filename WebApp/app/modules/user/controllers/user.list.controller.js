@@ -10,16 +10,23 @@ function UserListController($log, ApiUser) {
     init();
 
     function init() {
-        vm.pagination = {total: 10, current: 1, steps: 5};
-        ApiUser.userList({limit: 4, offset: 4}, function(response){
-            vm.loadUsers = response.data;
-            $log.info("Response - User List: %s", JSON.stringify(response.data));
-        });
-        $log.info("User Search Page Opened");
+        vm.pagination = {current: 1, steps: 5, limit: 9};
+
+        _loadUsers();
     }
 
     function onPageChanged() {
+        _loadUsers();
+
         $log.info("Current page is: %s", vm.pagination.current);
-        // TODO: load current page data
+    }
+
+    function _loadUsers(){
+        ApiUser.userList({limit: vm.pagination.limit, currPage: vm.pagination.current}, function(response){
+            vm.loadUsers = response.data;
+            vm.pagination.total = response.pagination.totalPage;
+
+            $log.info("Response - User List: %s", JSON.stringify(response.data));
+        });
     }
 }
