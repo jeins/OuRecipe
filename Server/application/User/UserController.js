@@ -11,16 +11,20 @@ export default ()=>{
     router.post(prefix + '/list', (req, res)=>{
         let currPage = req.body.currPage;
         let limitPage = req.body.limit;
+        let filter = req.body.filter;
 
         waterfall([
             (cb)=>{
-                Paginator.getPagination(userModel.getModel(), currPage, limitPage, (result)=>{
+                Paginator.getPagination(userModel.getModel(), filter, currPage, limitPage, (result)=>{
                     cb(null, result);
                 });
             },
             (pagination, cb)=>{
-                userModel.getList(pagination.currPage, limitPage, (result)=>{
-                    cb(null, {data: result, pagination: pagination});
+                userModel.getList(filter, pagination.currPage, limitPage, (err, result)=>{
+                    if(!err){
+                        cb(null, {data: result, pagination: pagination});
+                    }
+                    else cb(err, null);
                 });
             }
         ], (err, result)=>{

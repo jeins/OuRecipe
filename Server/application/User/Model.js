@@ -13,7 +13,7 @@ class User extends AbstractModel{
         return this.user;
     }
 
-    getList(currPage, limit, callback){
+    getList(filter, currPage, limit, callback){
         currPage = (currPage === 1) ? 0 : currPage;
         let offset = currPage * limit;
         let attributes = [
@@ -23,7 +23,12 @@ class User extends AbstractModel{
             UserField.entity.photoName.name
         ];
 
-        this.user.findAll({attributes: attributes, offset: offset, limit: limit})
+        this.user.findAll({
+            attributes: attributes,
+            where: filter,
+            offset: offset,
+            limit: limit
+        })
             .then((user)=>{
                 callback(null, user);
             })
