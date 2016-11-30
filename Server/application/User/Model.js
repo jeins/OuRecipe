@@ -35,6 +35,22 @@ class User extends AbstractModel{
             .catch((err)=>{callback(err.message, null)})
         ;
     }
+
+    getById(id, cb){
+        let filter = {};
+        let excludeAttributes = [UserField.entity.password.name, UserField.entity.updatedAt.name];
+        filter[UserField.entity.id.name] = id;
+
+        this.user.find({
+            attributes: {exclude: excludeAttributes},
+            where: filter
+        })
+            .then((user)=>{
+                cb(null, user)
+            })
+            .catch((err)=>{cb(err.message, null);})
+        ;
+    }
 }
 
 module.exports = User;

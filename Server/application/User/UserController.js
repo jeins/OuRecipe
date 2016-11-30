@@ -8,6 +8,10 @@ export default ()=>{
     let router = new Router();
     let prefix = '/api/user';
 
+    /**
+     * get users list
+     * exp request: {"currPage": 1, "limit": 5}
+     */
     router.post(prefix + '/list', (req, res)=>{
         let currPage = req.body.currPage;
         let limitPage = req.body.limit;
@@ -27,14 +31,39 @@ export default ()=>{
                     else cb(err, null);
                 });
             }
-        ], (err, result)=>{
-            if(!err) res.json(result);
-        });
+        ], (err, result)=>{_response(res, err, result)});
     });
 
-    router.post(prefix + '/view', (req, res)=>{});
+    /**
+     * view specific user profile by id
+     * exp request: {"userId": 1}
+     */
+    router.post(prefix + '/view', (req, res)=>{
+        let userId = req.body.userId;
+
+        userModel.getById(
+            userId,
+            (err, result)=>{_response(res, err, result)}
+        );
+    });
     router.post(prefix, (req, res)=>{});
     router.put(prefix, (req, res)=>{});
+
+    /**
+     *
+     * @param res
+     * @param err
+     * @param result
+     * @private
+     */
+    function _response(res, err, result){
+        if(!err){
+            res.json(result);
+        } else{
+            res.status(500)
+                .send(err);
+        }
+    }
 
     return router;
 }
