@@ -33,16 +33,21 @@ export default ()=>{
 
         fs.readFile(imgPath + path + img, (err ,data)=>{
             if(err) throw err;
-            res.writeHead(200, {'Content-Type': 'image/jpg' });
+            let imgExtension = 'image/' + _getImgExtension(img);
+            res.writeHead(200, {'Content-Type': imgExtension });
             res.end(data, 'binary');
         })
     });
 
     function _imgValidation(img){
-        let tmpArr = img.split('.');
-        let imgExtension = tmpArr[tmpArr.length-1];
+        let imgExtension = _getImgExtension(img);
 
         return imgExtension === 'png' || imgExtension === 'jpg' || imgExtension === 'jpeg';
+    }
+
+    function _getImgExtension(img){
+        let tmpArr = img.split('.');
+        return tmpArr[tmpArr.length-1].toLowerCase();
     }
 
     return router;
