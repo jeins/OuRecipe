@@ -2,9 +2,9 @@ angular
     .module('app.recipe')
     .controller('RecipeCreateController', RecipeCreateController);
 
-RecipeCreateController.$inject = ['$log', 'UploadService', 'Recipe'];
-function RecipeCreateController($log, UploadService, Recipe) {
-    var vm = this;
+RecipeCreateController.$inject = ['$log', 'UploadService', 'Recipe', 'ApiRecipe', '$state'];
+function RecipeCreateController($log, UploadService, Recipe, ApiRecipe, $state) {
+    let vm = this;
     vm.addMoreIngredient = addMoreIngredient;
     vm.removeIngredient = removeIngredient;
     vm.addMoreStep = addMoreStep;
@@ -15,7 +15,7 @@ function RecipeCreateController($log, UploadService, Recipe) {
     init();
 
     function init(){
-        vm.recipe = {};
+        vm.recipe = {userId: 1}; //TODO:: need fix
         vm.ingredients = [{id: 1, name: ""}];
         vm.steps = [{id: 1}];
         vm.loadCategories = Recipe.categories();
@@ -27,26 +27,32 @@ function RecipeCreateController($log, UploadService, Recipe) {
         vm.recipe.ingredients = vm.ingredients;
         vm.recipe.steps = vm.steps;
 
+        ApiRecipe.addNewRecipe(vm.recipe, function (result) {
+            if(result){
+                $state.go('recipe_profile', {recipeId: result.id});
+            }
+        });
+
         $log.info(vm.recipe);
     }
 
     function addMoreIngredient(){
-        var newId = vm.ingredients.length+1;
+        let newId = vm.ingredients.length+1;
         vm.ingredients.push({'id': newId});
     }
 
     function removeIngredient() {
-        var lastId = vm.ingredients.length-1;
+        let lastId = vm.ingredients.length-1;
         vm.ingredients.splice(lastId);
     }
 
     function addMoreStep() {
-        var newId = vm.steps.length+1;
+        let newId = vm.steps.length+1;
         vm.steps.push({'id': newId});
     }
 
     function removeStep() {
-        var lastId = vm.steps.length-1;
+        let lastId = vm.steps.length-1;
         vm.steps.splice(lastId);
     }
 

@@ -7,11 +7,19 @@ function ApiRecipe($log, API_URL, $http) {
     var recipePrefix = 'recipe';
 
     return{
-        getRecipeList: getRecipeList
+        getRecipeList: getRecipeList,
+        addNewRecipe: addNewRecipe
     };
 
     function getRecipeList(reqBody, cb){
         return $http(_setupRequest('POST', recipePrefix + '/list', reqBody))
+            .then(function(res){
+                cb(res.data);
+            });
+    }
+
+    function addNewRecipe(reqBody, cb){
+        return $http(_setupRequest('POST', recipePrefix, reqBody))
             .then(function(res){
                 cb(res.data);
             });
