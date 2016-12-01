@@ -53,7 +53,7 @@ export default ()=>{
      */
     router.post(prefix, (req, res)=>{
         recipeModel.add(
-            req.body.data,
+            req.body,
             (err, result)=>{_response(res, err, result)}
         );
     });

@@ -34,7 +34,11 @@ class AbstractModel{
         let obj = {};
 
         _.forEach(fields, (field)=>{
-             obj[field] = _.hasIn(body, field) ? body[field] : '';
+            if(_.isArray(body[field])){
+                body[field] = JSON.stringify(body[field]);
+            }
+
+            obj[field] = _.hasIn(body, field) ? body[field] : '';
         });
 
         return obj;
