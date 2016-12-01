@@ -2,6 +2,8 @@
   "constants": {
     "development": {
       "API_URL": "/api/",
+      "IMG_URL_RECIPE": "/images/recipe/",
+      "IMG_URL_PROFILE": "/images/profile/",
       "translation": {
         "path": "translations/",
         "suffix": ".json",

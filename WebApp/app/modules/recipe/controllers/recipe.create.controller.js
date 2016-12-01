@@ -2,8 +2,8 @@ angular
     .module('app.recipe')
     .controller('RecipeCreateController', RecipeCreateController);
 
-RecipeCreateController.$inject = ['$log', 'UploadService', 'Recipe', 'ApiRecipe', '$state'];
-function RecipeCreateController($log, UploadService, Recipe, ApiRecipe, $state) {
+RecipeCreateController.$inject = ['$log', 'UploadService', 'Recipe', 'ApiRecipe', '$state', 'API_URL', 'IMG_URL_RECIPE'];
+function RecipeCreateController($log, UploadService, Recipe, ApiRecipe, $state, API_URL, IMG_URL_RECIPE) {
     let vm = this;
     vm.addMoreIngredient = addMoreIngredient;
     vm.removeIngredient = removeIngredient;
@@ -21,11 +21,13 @@ function RecipeCreateController($log, UploadService, Recipe, ApiRecipe, $state) 
         vm.loadCategories = Recipe.categories();
         vm.loadCuisine = Recipe.cuisine();
         vm.loadDifficultyLevel = Recipe.difficultyLevel();
+        vm.imageName = null;
     }
 
     function onSave(){
         vm.recipe.ingredients = vm.ingredients;
         vm.recipe.steps = vm.steps;
+        vm.recipe.photoName = vm.imageName;
 
         ApiRecipe.addNewRecipe(vm.recipe, function (result) {
             if(result){
@@ -57,11 +59,15 @@ function RecipeCreateController($log, UploadService, Recipe, ApiRecipe, $state) 
     }
 
     function uploadImage(file) {
-        UploadService.setUploadUrl("");
-        UploadService.uploadImage(file);
+        UploadService.setUploadUrl(API_URL + 'image/upload/recipe');
+        UploadService.uploadImage(file, function(res){
+            if(res.data.success){
+                vm.imageName = UploadService.getGeneratedImgName();
+                vm.imageUrl = IMG_URL_RECIPE + vm.imageName;
 
-        vm.imageName = UploadService.getGeneratedImgName();
-        $log.info(vm.imageName);
+                $log.info("uploaded image name" + vm.imageName);
+            }
+        });
     }
 
 }

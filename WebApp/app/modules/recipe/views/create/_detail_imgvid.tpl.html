@@ -3,8 +3,11 @@
         <md-input-container class="or-recipe-upload">
             <div ngf-select="recipeCreate.uploadImage($file)" ngf-drop="recipeCreate.uploadImage(file)"
                  ngf-drag-over-class="'dragover'" ngf-multiple="false">
-                <md-icon md-font-icon="fa-camera" class="fa or-recipe-upload-img" style="font-size: 5em"></md-icon>
-                <span class="or-recipe-upload-img" translate="m_recipe.label.add_image"></span>
+
+                <md-icon ng-if="recipeCreate.imageName === null" md-font-icon="fa-camera" class="fa or-recipe-upload-img" style="font-size: 5em"></md-icon>
+                <span ng-if="recipeCreate.imageName === null" class="or-recipe-upload-img" translate="m_recipe.label.add_image"></span>
+
+                <img ng-if="recipeCreate.imageName != null " src="{{recipeCreate.imageUrl}}">
 
             </div>
         </md-input-container>
@@ -64,7 +67,7 @@
             <md-input-container flex="30" flex-xs="100">
                 <label translate="m_recipe.label.difficulty_level"></label>
                 <md-select ng-model="recipeCreate.recipe.difficultyLevel">
-                    <md-option ng-repeat="lc in recipeCreate.loadDifficultyLevel" value="{{lc}}">{{lc}}</md-option>
+                    <md-option ng-repeat="lc in recipeCreate.loadDifficultyLevel" value="{{$index}}">{{lc}}</md-option>
                 </md-select>
             </md-input-container>
         </div>
