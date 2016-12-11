@@ -38,7 +38,7 @@ module.exports = {
             name: 'category', type: 'STRING'
         },
         difficultyLevel:{
-            name: 'difficultyLevel', type: 'INTEGER'
+            name: 'difficultyLevel', type: 'STRING'
         },
         photoName:{
             name: 'photoName', type: 'STRING'
