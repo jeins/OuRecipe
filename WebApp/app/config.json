@@ -32,7 +32,8 @@
       "/angular-material/angular-material.min.js",
       "/angular-translate/angular-translate.min.js",
       "/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js",
-      "/ng-file-upload/ng-file-upload.min.js"
+      "/ng-file-upload/ng-file-upload.min.js",
+      "/angular-sanitize/angular-sanitize.min.js"
     ],
     "styles": [
       ""

@@ -23,7 +23,10 @@ hr{
   margin-bottom: 30px;
   border-color: #eee;
 }
-.or-recipe-profile-list .md-checked .md-label span{
+.or-recipe-profile-list{
+  text-align: justify;
+}
+.or-recipe-profile-list .md-checked .md-label{
   text-decoration: line-through;
   color: #aaa;
 }
@@ -51,4 +54,32 @@ hr{
   text-align: center;
   display: block;
   margin-top: 35px;
+}
+
+.or-level-1, .or-level-2, .or-level-3{
+  display: inline-block;
+  margin: 0px;
+  width: 5px;
+  height: 3px;
+  background: #676767;
+}
+
+.or-level-2{
+  height: 7px;
+}
+
+.or-level-3{
+  height: 11px;
+}
+
+.or-level.easy .or-level-1{
+  background: #6BA72B;
+}
+
+.or-level.medium .or-level-1, .or-level.medium .or-level-2{
+  background: #d35400;
+}
+
+.or-level.advance .or-level-1, .or-level.advance .or-level-2, .or-level.advance .or-level-3{
+  background: #c0392b;
 }

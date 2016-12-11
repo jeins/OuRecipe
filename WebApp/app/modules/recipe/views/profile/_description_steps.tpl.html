@@ -5,23 +5,15 @@
             <md-tab-label>{{'m_recipe.label.tab_image' | translate}}</md-tab-label>
             <md-tab-body>
                 <div class="or-recipe-profile">
-                    <img class="or-recipe-profile-tab-content" src="http://demo.djmimi.net/themes/recipe/wp-content/uploads/2015/02/beef-468171_1920-848x477.jpg">
+                    <img class="or-recipe-profile-tab-content" ng-src="{{recipeProfile.recipe.photoName}}">
                 </div>
             </md-tab-body>
         </md-tab>
-        <md-tab class="or-recipe-profile-tab">
-            <md-tab-label>{{'m_recipe.label.tab_gallery' | translate}}</md-tab-label>
-            <md-tab-body>
-                <div class="or-recipe-profile">
-                    <img class="or-recipe-profile-tab-content" src="assets/no_photo_profile.png">
-                </div>
-            </md-tab-body>
-        </md-tab>
-        <md-tab>
+        <md-tab ng-if="recipeProfile.recipe.videoUrl">
             <md-tab-label>{{'m_recipe.label.tab_video' | translate}}</md-tab-label>
             <md-tab-body>
                 <div class="or-recipe-profile">
-                    <iframe class="or-recipe-profile-tab-content" src="http://www.youtube.com/embed/oivVIFfT-io?rel=0"></iframe>
+                    <iframe class="or-recipe-profile-tab-content" ng-src="{{recipeProfile.trustSrc(recipeProfile.recipe.videoUrl)}}"></iframe>
                 </div>
             </md-tab-body>
         </md-tab>
@@ -29,12 +21,10 @@
 
     <md-card-content>
         <div>
-            <h2 class="or-recipe-profile-title-description">Vegetarian Korma</h2>
+            <h2 class="or-recipe-profile-title-description">{{recipeProfile.recipe.title}}</h2>
         </div>
         <div>
-            <p>
-                I’ve been making variations of this salad for years. I recently learned how to massage the kale and it makes a huge difference. I had a friend ask for my recipe and I realized I don’t have one. This is my first attempt at writing a recipe, so please let me know how it works out! I like to change up the ingredients: sometimes a pear instead of an apple, cranberries instead of currants, Parmesan instead of feta, etc. Great as a side dish or by itself the next day for lunch!
-            </p>
+            <p>{{recipeProfile.recipe.description}}</p>
         </div>
 
         <hr>
@@ -48,10 +38,7 @@
                     {{'m_recipe.title.ingredients' | translate}}
                 </h3>
                 <div layout="column" class="or-recipe-profile-list">
-                    <md-checkbox> Check 1 </md-checkbox>
-                    <md-checkbox> Check 2 </md-checkbox>
-                    <md-checkbox> Check 3 </md-checkbox>
-                    <md-checkbox> Check 4 </md-checkbox>
+                    <md-checkbox ng-repeat="ingredient in recipeProfile.recipe.ingredients"> {{ingredient.name}} </md-checkbox>
                 </div>
             </div>
             <div flex-xs flex-gt-xs="5"></div>
@@ -61,10 +48,7 @@
                     {{'m_recipe.title.steps' | translate}}
                 </h3>
                 <div layout="column" class="or-recipe-profile-list">
-                    <md-checkbox> Check 1 </md-checkbox>
-                    <md-checkbox> Check 2 </md-checkbox>
-                    <md-checkbox> Check 3 </md-checkbox>
-                    <md-checkbox> Check 4 </md-checkbox>
+                    <md-checkbox ng-repeat="step in recipeProfile.recipe.steps"> {{step.description}} </md-checkbox>
                 </div>
             </div>
         </md-grid-list>

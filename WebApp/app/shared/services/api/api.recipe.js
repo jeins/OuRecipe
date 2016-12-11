@@ -4,12 +4,20 @@ angular
 
 ApiRecipe.$inject = ['$log', 'API_URL', '$http'];
 function ApiRecipe($log, API_URL, $http) {
-    var recipePrefix = 'recipe';
+    let recipePrefix = 'recipe';
 
     return{
         getRecipeList: getRecipeList,
+        getRecipeById: getRecipeById,
         addNewRecipe: addNewRecipe
     };
+
+    function getRecipeById(reqBody, cb){
+        return $http(_setupRequest('POST', recipePrefix + '/view', reqBody))
+            .then(function(res){
+                cb(res.data);
+            });
+    }
 
     function getRecipeList(reqBody, cb){
         return $http(_setupRequest('POST', recipePrefix + '/list', reqBody))

@@ -67,7 +67,7 @@
             <md-input-container flex="30" flex-xs="100">
                 <label translate="m_recipe.label.difficulty_level"></label>
                 <md-select ng-model="recipeCreate.recipe.difficultyLevel">
-                    <md-option ng-repeat="lc in recipeCreate.loadDifficultyLevel" value="{{$index}}">{{lc}}</md-option>
+                    <md-option ng-repeat="lc in recipeCreate.loadDifficultyLevel" value="{{lc.toLowerCase()}}">{{lc}}</md-option>
                 </md-select>
             </md-input-container>
         </div>

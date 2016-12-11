@@ -32,10 +32,10 @@ function Recipe($log) {
             "Indian",
             "Western",
             "Southern"
-        ]
+        ];
     }
 
     function difficultyLevel(){
-        return ["Easy", "Medium", "Hard"];
+        return ["Easy", "Medium", "Advance"];
     }
 }

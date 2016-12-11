@@ -3,35 +3,40 @@
         <ul class="or-recipe-profile-detail">
             <li>
                 Preparation Time:
-                <span class="value">10min</span>
+                <span class="value">{{recipeProfile.recipe.preparationTime}}</span>
             </li>
             <li>
                 Cook Time:
-                <span class="value">35min</span>
+                <span class="value">{{recipeProfile.recipe.cookTime}}</span>
             </li>
             <li>
                 Serving:
-                <span class="value">4 People</span>
+                <span class="value">{{recipeProfile.recipe.serving}} People</span>
             </li>
             <li>
                 Cuisine:
-                <span class="value">Asia</span>
+                <span class="value">{{recipeProfile.recipe.cuisine}}</span>
             </li>
             <li>
                 Category:
-                <span class="value">Vegan</span>
-            </li>
-            <li>
-                Ratings::
-                <span class="value">4 People</span>
+                <span class="value">{{recipeProfile.recipe.category}}</span>
             </li>
             <li>
                 Difficulty Level::
-                <span class="value">4 People</span>
+                <span class="value">
+                    <span class="or-level {{recipeProfile.recipe.difficultyLevel}}">
+                        <md-tooltip md-direction="bottom">
+                          Difficulty: {{recipeProfile.recipe.difficultyLevel.charAt(0).toUpperCase() + recipeProfile.recipe.difficultyLevel.substr(1).toLowerCase()}}
+                        </md-tooltip>
+                        <span class="or-level-1"></span>
+                        <span class="or-level-2"></span>
+                        <span class="or-level-3"></span>
+                    </span>
+                </span>
             </li>
             <li>
                 Created:
-                <span class="value">Feb 24, 2016</span>
+                <span class="value">{{recipeProfile.recipe.createdAt | date:'MMM dd, yyyy'}}</span>
             </li>
         </ul>
     </md-card-content>

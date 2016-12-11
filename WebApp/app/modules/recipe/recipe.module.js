@@ -1,2 +1,2 @@
 angular
-    .module('app.recipe', []);
+    .module('app.recipe', ['ngSanitize']);
