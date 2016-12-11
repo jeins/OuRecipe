@@ -1,7 +1,9 @@
 import Recipe from './Model';
+import RecipeField from './Field';
 import Paginator from '../Default/Paginator';
 import {Router} from 'express';
 import waterfall from 'async/waterfall';
+import _ from 'lodash';
 
 export default ()=>{
     let recipeModel = new Recipe();
@@ -43,7 +45,10 @@ export default ()=>{
 
         recipeModel.getById(
             recipeId,
-            (err, result)=>{_response(res, err, result)}
+            (err, result)=>{
+                _jsonDecode([RecipeField.entity.ingredients.name, RecipeField.entity.steps.name], result);
+                _response(res, err, result)
+            }
         );
     });
 
@@ -99,6 +104,12 @@ export default ()=>{
             res.status(500)
                .send(err);
         }
+    }
+
+    function _jsonDecode(keys, obj){
+        _.forEach(keys, (key)=>{
+            obj[key] = (JSON).parse(obj[key]);
+        });
     }
 
     return router;

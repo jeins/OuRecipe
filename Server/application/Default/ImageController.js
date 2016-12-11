@@ -1,7 +1,7 @@
 import {Router} from 'express';
 import fs from 'fs';
 import multer from 'multer';
-
+//TODO:: implement sharp to autoresize image: https://github.com/lovell/sharp
 export default ()=>{
     let imgPath = __dirname + '/../../public/images/';
     let router = new Router();
