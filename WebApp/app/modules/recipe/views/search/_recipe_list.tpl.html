@@ -5,22 +5,34 @@
         <img ng-src="assets/washedout.png" class="md-card-image" alt="Washed Out">
         <md-card-title>
             <md-card-title-text>
-                <a ng-href="/recipe-profile">
-                    <span class="md-headline">{{recipe.name}}</span>
+                <a ng-href="/recipe-profile?recipeId={{recipe.id}}">
+                    <span class="md-headline">{{recipe.title}}</span>
                 </a>
             </md-card-title-text>
         </md-card-title>
         <md-card-content>
-            <p>{{recipe.description}} </p>
+            <p class="or-home-index-description">{{recipe.description}} </p>
         </md-card-content>
         <md-card-actions layout="row" layout-align="center center" style="border-top: 1px solid #9e9e9e;">
             <div class="or-home-index-card-footer">
+                <md-tooltip md-direction="bottom">Cooking time</md-tooltip>
                 <md-icon md-font-icon="fa-clock-o" class="fa"></md-icon>
-                <span>{{recipe.time}}</span>
+                <span>{{recipe.cookTime }}</span>
             </div>
             <div class="or-home-index-card-footer">
+                <md-tooltip md-direction="bottom">Serving for</md-tooltip>
                 <md-icon md-font-icon="fa-users" class="fa"></md-icon>
-                <span>{{recipe.people}} People</span>
+                <span>{{recipe.serving}} People</span>
+            </div>
+            <div class="or-home-index-card-footer">
+                <span class="or-level {{recipe.difficultyLevel}}">
+                        <md-tooltip md-direction="bottom">
+                          Difficulty: {{recipe.difficultyLevel.charAt(0).toUpperCase() + recipe.difficultyLevel.substr(1).toLowerCase()}}
+                        </md-tooltip>
+                        <span class="or-level-1"></span>
+                        <span class="or-level-2"></span>
+                        <span class="or-level-3"></span>
+                    </span>
             </div>
         </md-card-actions>
     </md-card>

@@ -8,7 +8,8 @@
             <md-input-container flex="30" flex-xs="100">
                 <label translate="m_recipe.label.filter_category"></label>
                 <md-select ng-model="recipeSearch.filter.category">
-                    <md-option ng-repeat="lc in recipeSearch.loadCategories" value="{{lc}}">{{lc.charAt(0).toUpperCase()}}</md-option>
+                    <md-option value=""></md-option>
+                    <md-option ng-repeat="lc in recipeSearch.loadCategories" value="{{lc.name}}">{{lc.name}}</md-option>
                 </md-select>
             </md-input-container>
 
@@ -17,7 +18,8 @@
             <md-input-container flex="30" flex-xs="100">
                 <label translate="m_recipe.label.filter_cuisine"></label>
                 <md-select ng-model="recipeSearch.filter.cuisine">
-                    <md-option ng-repeat="lc in recipeSearch.loadCuisine" value="{{lc}}">{{lc.charAt(0).toUpperCase()}}</md-option>
+                    <md-option value=""></md-option>
+                    <md-option ng-repeat="lc in recipeSearch.loadCuisine" value="{{lc}}">{{lc}}</md-option>
                 </md-select>
             </md-input-container>
 
@@ -26,16 +28,19 @@
             <md-input-container flex="30" flex-xs="100">
                 <label translate="m_recipe.label.filter_sort"></label>
                 <md-select ng-model="recipeSearch.filter.sort">
+                    <md-option value=""></md-option>
                     <md-option ng-repeat="(key, value) in recipeSearch.loadSort" value="{{key}}">{{value}}</md-option>
                 </md-select>
             </md-input-container>
         </div>
 
         <div layout="row" layout-xs="column" layout-align="center">
-            <md-input-container flex="30" flex-xs="100">
-                <label translate="m_recipe.label.filter_ingredients"></label>
-                <input ng-model="recipeSearch.filter.ingredients">
-            </md-input-container>
+            <md-chips flex="30" flex-xs="100"
+                    ng-model="recipeSearch.filter.ingredients"
+                    md-separator-keys="recipeSearch.chipKeys"
+                    placeholder="{{'m_recipe.label.filter_ingredients' | translate}}">
+
+            </md-chips>
 
             <div flex="5" hide-xs hide-sm></div>
 
@@ -47,7 +52,7 @@
             <div flex="5" hide-xs hide-sm></div>
 
             <md-input-container flex="30" flex-xs="100">
-                <md-button md-colors="{background: 'green'}" style="width: 100%" ng-click="recipeSearch.doSearch()">
+                <md-button md-colors="{background: 'green'}" style="width: 100%" ng-click="recipeSearch.loadRecipe()">
                     <span translate="m_recipe.button.filter_search" layout-align="center"></span>
                 </md-button>
             </md-input-container>

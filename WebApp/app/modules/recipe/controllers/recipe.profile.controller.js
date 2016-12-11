@@ -23,7 +23,7 @@ function RecipeProfileController($log, $stateParams, $location, ApiRecipe, $sce)
 
     function loadRecipeData(){
         ApiRecipe.getRecipeById({recipeId: vm.recipeId}, function(res){
-            if(res.videoUrl !== null){
+            if(res.videoUrl !== ""){
                 res.videoUrl = String("https://www.youtube.com/embed/"+res.videoUrl.split('v=')[1]+"?rel=0");
             }
             vm.recipe = res;

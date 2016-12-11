@@ -5,11 +5,11 @@
 
 <ng-include src="'modules/recipe/views/search/_recipe_list.tpl.html'"></ng-include>
 
-<section layout="row" layout-padding="">
+<section ng-if="recipeSearch.pagination.total > 1"  layout="row" layout-padding="">
     <or-pagination flex
                    or-pages="recipeSearch.pagination.total"
                    or-steps="recipeSearch.pagination.steps"
-                   or-page-changed="recipeSearch.onPageChanged()"
+                   or-page-changed="recipeSearch.loadRecipe()"
                    or-align="center center"
                    or-current-page="recipeSearch.pagination.current"
     ></or-pagination>
