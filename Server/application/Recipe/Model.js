@@ -20,7 +20,7 @@ class Recipe extends AbstractModel{
         return this.recipe;
     }
 
-    getList(filter, currPage, limit, cb){
+    getList(filter, order, currPage, limit, cb){
         currPage = (currPage === 1) ? 0 : currPage;
         let offset = currPage * limit;
         let recipeAttributes = [
@@ -40,6 +40,7 @@ class Recipe extends AbstractModel{
         this.recipe.findAll({
             // attributes: recipeAttributes,
             where: filter,
+            order: order,
             include: [
                 {model: this.user, attributes: userAttributes}
             ],
