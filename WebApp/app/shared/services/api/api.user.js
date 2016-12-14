@@ -8,7 +8,8 @@ function ApiUser($log, API_URL, $http) {
 
     return{
         userList: userList,
-        getUserById: getUserById
+        getUserById: getUserById,
+        getTopUser: getTopUser
     };
 
     function userList(reqBody, cb){
@@ -20,6 +21,13 @@ function ApiUser($log, API_URL, $http) {
 
     function getUserById(reqBody, cb){
         return $http(_setupRequest('POST', userPrefix + '/view', reqBody))
+            .then(function(res){
+                cb(res.data);
+            });
+    }
+
+    function getTopUser(cb){
+        return $http(_setupRequest('POST', userPrefix + '/top'))
             .then(function(res){
                 cb(res.data);
             });

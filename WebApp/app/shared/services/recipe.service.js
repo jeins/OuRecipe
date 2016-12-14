@@ -12,15 +12,15 @@ function Recipe($log) {
 
     function categories(){
         return [
-            {name: "Salad", icon: ""},
-            {name: "Drinks", icon: ""},
-            {name: "Soups", icon: ""},
-            {name: "Pasta and Noodles", icon: ""},
-            {name: "Main Dishes", icon: ""},
-            {name: "Seafood", icon: ""},
-            {name: "Cake and Snacks", icon: ""},
-            {name: "Diet", icon: ""},
-            {name: "Simple Recipe", icon: ""},
+            {name: "Salad", icon: "fa-home", uri: 'salad'},
+            {name: "Drinks", icon: "fa-home", uri: 'drinks'},
+            {name: "Soups", icon: "fa-home", uri: 'soups'},
+            {name: "Pasta and Noodles", icon: "fa-home", uri: 'pasta_and_noodles'},
+            {name: "Main Dishes", icon: "fa-home", uri: 'main_dishes'},
+            {name: "Seafood", icon: "fa-home", uri: 'seafood'},
+            {name: "Cake and Snacks", icon: "fa-home", uri: 'cake_and_snacks'},
+            {name: "Diet", icon: "fa-home", uri: 'diet'},
+            {name: "Simple Recipe", icon: "fa-home", uri: 'simple_recipe'},
         ];
     }
 

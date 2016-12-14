@@ -5,7 +5,7 @@
     </section>
     <div flex></div>
     <section hide="hide" show-gt-sm="show-gt-sm" layout-align="end center">
-        <md-button md-colors="{background: 'blue'}">
+        <md-button md-colors="{background: 'blue'}" ng-href="/recipe-search">
             <span style="font-size: 12px;" translate="m_home.button.all_categories"></span>
         </md-button>
     </section>
@@ -17,7 +17,7 @@
         md-gutter="50px" md-gutter-gt-sm="50px" >
 
     <md-grid-tile ng-repeat="categorie in home.loadCategories">
-        <a href="#">
+        <a ng-href="/recipe-search?category={{categorie.uri}}">
             <md-grid-tile-header class="md-whiteframe-5dp or-home-index-box-categories">
                 <div layout="row">
                     <md-icon md-font-icon="{{categorie.icon}}" class="fa  or-home-index-icon-categories"></md-icon>

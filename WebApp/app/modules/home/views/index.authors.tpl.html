@@ -18,10 +18,13 @@
 
     <md-grid-tile style="background-color: #eee;" ng-repeat="author in home.loadTopAuthors">
         <md-grid-tile>
-            <img src="assets/no_photo_profile.png">
+            <img ng-if="author.photoName == null" src="assets/no_photo_profile.png">
+            <img ng-if="author.photoName != null" src="{{author.photoName}}">
         </md-grid-tile>
         <md-grid-tile-footer layout-align="center center">
-            <h3 style="color: #000; font-weight: bolder">{{author.name}}</h3>
+            <a ng-href="/profile-show?userId={{author.id}}">
+                <h3 style="color: #000; font-weight: bolder">{{author.lastName}}</h3>
+            </a>
         </md-grid-tile-footer>
     </md-grid-tile>
     <!--<div class="image" ng-repeat="author in home.loadTopAuthors" data-content="{{author.name}}" >-->

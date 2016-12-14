@@ -2,8 +2,8 @@ angular
     .module('app.recipe')
     .controller('RecipeSearchController', RecipeSearchController);
 
-RecipeSearchController.$inject = ['$log', 'ApiRecipe', 'Recipe', '$mdConstant'];
-function RecipeSearchController($log, ApiRecipe, Recipe, $mdConstant) {
+RecipeSearchController.$inject = ['$log', 'ApiRecipe', 'Recipe', '$mdConstant', '$stateParams'];
+function RecipeSearchController($log, ApiRecipe, Recipe, $mdConstant, $stateParams) {
     var vm = this;
     vm.loadRecipe = loadRecipe;
 
@@ -18,6 +18,7 @@ function RecipeSearchController($log, ApiRecipe, Recipe, $mdConstant) {
         vm.pagination = {limit: 6, current: 1, steps: 5};
 
         loadRecipe();
+        isUriCategorySelected();
     }
 
     function loadRecipe(){
@@ -35,6 +36,19 @@ function RecipeSearchController($log, ApiRecipe, Recipe, $mdConstant) {
 
             $log.info("RecipeList: " + JSON.stringify(res.data));
         });
+    }
+
+    function isUriCategorySelected(){
+        if($stateParams.category !== undefined){
+            var categoryUri = $stateParams.category;
+
+            vm.loadCategories.forEach(function(category){
+                if(category.uri === categoryUri){
+                    vm.filter.category = category.name;
+                    return;
+                }
+            });
+        }
     }
 
     function _getSortRecipes() {
