@@ -46,7 +46,16 @@ export default ()=>{
             (err, result)=>{_response(res, err, result)}
         );
     });
-    router.post(prefix, (req, res)=>{});
+
+    /**
+     * view top user. User with most recipe
+     * exp request: {}
+     */
+    router.post(prefix + '/top', (req, res)=>{
+        userModel.getUserWithMostRecipe(
+            (err, result)=>{_response(res, err, result)}
+            );
+    });
     router.put(prefix, (req, res)=>{});
 
     /**

@@ -7,6 +7,9 @@ class User extends AbstractModel{
 
         this.db = this.getConnection();
         this.user = this.db.define(UserField.tableName, this.generateEntities(UserField.entity));
+
+        // this.recipe = new Recipe().getModel();
+        // this.recipe.belongsTo(this.user);
     }
 
     getModel(){
@@ -50,6 +53,18 @@ class User extends AbstractModel{
             })
             .catch((err)=>{cb(err.message, null);})
         ;
+    }
+
+    getUserWithMostRecipe(cb){
+        this.db
+            .query(
+            "SELECT u.id, u.firstName, u.lastName, u.photoName " +
+            "FROM recipes AS r " +
+            "LEFT JOIN users AS u ON u.id=r.userId " +
+            "GROUP BY r.userId ORDER BY count(r.userId) DESC")
+            .spread((results, metadata)=>{
+                cb(null, results);
+            })
     }
 }
 

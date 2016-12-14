@@ -128,12 +128,15 @@ export default ()=>{
 
         if(_.size(filter) === 0) return query;
 
-        let tmpCategoryCuisineIngredients = {};
+        let tmpFilterField = {};
         if(_.has(filter, RecipeField.entity.category.name) && filter[RecipeField.entity.category.name] != ""){
-            tmpCategoryCuisineIngredients[RecipeField.entity.category.name] = filter[RecipeField.entity.category.name];
+            tmpFilterField[RecipeField.entity.category.name] = filter[RecipeField.entity.category.name];
         }
         if(_.has(filter, RecipeField.entity.cuisine.name) && filter[RecipeField.entity.cuisine.name] != ""){
-            tmpCategoryCuisineIngredients[RecipeField.entity.cuisine.name] = filter[RecipeField.entity.cuisine.name];
+            tmpFilterField[RecipeField.entity.cuisine.name] = filter[RecipeField.entity.cuisine.name];
+        }
+        if(_.has(filter, RecipeField.entity.userId.name) && filter[RecipeField.entity.userId.name] != ""){
+            tmpFilterField[RecipeField.entity.userId.name] = filter[RecipeField.entity.userId.name];
         }
         if(_.has(filter, RecipeField.entity.ingredients.name) && filter[RecipeField.entity.ingredients.name] != ""){
             let tmpArr = [];
@@ -145,7 +148,7 @@ export default ()=>{
                 tmpArr.push(tmpObj);
             });
 
-            tmpCategoryCuisineIngredients['$and'] = tmpArr;
+            tmpFilterField['$and'] = tmpArr;
         }
 
         let tmpKeyword = {};
@@ -169,12 +172,12 @@ export default ()=>{
             query.order = order[0] + ' ' + order[1].toUpperCase();
         }
 
-        if(_.size(tmpCategoryCuisineIngredients) > 0 && _.size(tmpKeyword) > 0){
+        if(_.size(tmpFilterField) > 0 && _.size(tmpKeyword) > 0){
             query.filter = {
-                $and: [tmpCategoryCuisineIngredients, tmpKeyword]
+                $and: [tmpFilterField, tmpKeyword]
             };
         } else{
-            if(_.size(tmpCategoryCuisineIngredients) > 0) query.filter = tmpCategoryCuisineIngredients;
+            if(_.size(tmpFilterField) > 0) query.filter = tmpFilterField;
             if(_.size(tmpKeyword) > 0) query.filter = tmpKeyword;
         }
 
