@@ -1,27 +1,29 @@
-<md-autocomplete
+<md-autocomplete style="float: left;"
         ng-disabled="search.isDisabled"
-        md-no-cache="search.noCache"
         md-selected-item="search.selectedItem"
-        md-search-text-change="search.searchTextChange(search.searchText)"
         md-search-text="search.searchText"
-        md-selected-item-change="search.selectedItemChange(item)"
-        md-items="item in search.querySearch(search.searchText)"
-        md-item-text="item.name"
-        md-min-length="0"
+        md-items="recipe in search.querySearch(search.searchText)"
+        md-item-text="recipe.title"
+        md-delay="300"
+        md-min-length="3"
         placeholder="{{'search.text' | translate}}"
         md-menu-class="or-autocomplete">
     <md-item-template>
-          <span class="item-title">
-            <md-icon md-svg-icon="assets/icons/recipe_book.svg"></md-icon>
-            <span> {{item.name}} </span>
-          </span>
+      <span class="item-title">
+        <md-icon md-svg-icon="assets/icons/recipe_book.svg"></md-icon>
+        <span md-highlight-text="search.searchText">{{recipe.title}}</span>
+      </span>
         <span class="item-metadata">
-            <span class="item-metastat">
-              <strong>{{item.watchers}}</strong> watchers
-            </span>
-            <span class="item-metastat">
-              <strong>{{item.forks}}</strong> forks
-            </span>
-          </span>
+        <span class="item-metastat">
+          <strong>{{item.watchers}}</strong> watchers
+        </span>
+        <span class="item-metastat">
+          <strong>{{item.forks}}</strong> forks
+        </span>
+      </span>
     </md-item-template>
 </md-autocomplete>
+
+<md-button ng-href="/recipe-search?keyword={{search.searchText}}">
+    <md-icon md-font-icon="fa-search" class="fa"></md-icon>
+</md-button>

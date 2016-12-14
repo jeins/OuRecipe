@@ -71,7 +71,26 @@ class Recipe extends AbstractModel{
             ]
         })
             .then((recipe)=>{
-                cb(null, recipe)
+                cb(null, recipe);
+            })
+            .catch((err)=>{cb(err.message, null);})
+        ;
+    }
+
+    getBySuggestTitle(title, cb){
+        let recipeAttributes = [
+            RecipeField.entity.id.name,
+            RecipeField.entity.title.name
+        ];
+        let filter = {};
+        filter[RecipeField.entity.title.name] = {$like: '%' + title + '%'};
+
+        this.recipe.findAll({
+            attributes: recipeAttributes,
+            where: filter
+        })
+            .then((recipe)=>{
+                cb(null, recipe);
             })
             .catch((err)=>{cb(err.message, null);})
         ;

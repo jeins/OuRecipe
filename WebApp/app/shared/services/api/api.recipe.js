@@ -9,7 +9,8 @@ function ApiRecipe($log, API_URL, $http) {
     return{
         getRecipeList: getRecipeList,
         getRecipeById: getRecipeById,
-        addNewRecipe: addNewRecipe
+        addNewRecipe: addNewRecipe,
+        getRecipeBySuggestTitle: getRecipeBySuggestTitle
     };
 
     function getRecipeById(reqBody, cb){
@@ -28,6 +29,13 @@ function ApiRecipe($log, API_URL, $http) {
 
     function addNewRecipe(reqBody, cb){
         return $http(_setupRequest('POST', recipePrefix, reqBody))
+            .then(function(res){
+                cb(res.data);
+            });
+    }
+
+    function getRecipeBySuggestTitle(reqBody, cb){
+        return $http(_setupRequest('POST', recipePrefix + '/search', reqBody))
             .then(function(res){
                 cb(res.data);
             });

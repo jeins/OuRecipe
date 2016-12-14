@@ -18,7 +18,7 @@ function RecipeSearchController($log, ApiRecipe, Recipe, $mdConstant, $statePara
         vm.pagination = {limit: 6, current: 1, steps: 5};
 
         loadRecipe();
-        isUriCategorySelected();
+        isUriExist();
     }
 
     function loadRecipe(){
@@ -38,7 +38,7 @@ function RecipeSearchController($log, ApiRecipe, Recipe, $mdConstant, $statePara
         });
     }
 
-    function isUriCategorySelected(){
+    function isUriExist(){
         if($stateParams.category !== undefined){
             var categoryUri = $stateParams.category;
 
@@ -48,6 +48,10 @@ function RecipeSearchController($log, ApiRecipe, Recipe, $mdConstant, $statePara
                     return;
                 }
             });
+        }
+
+        if($stateParams.keyword !== undefined){
+            vm.filter.keyword = $stateParams.keyword;
         }
     }
 

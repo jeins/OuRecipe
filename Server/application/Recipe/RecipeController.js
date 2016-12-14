@@ -55,6 +55,19 @@ export default ()=>{
     });
 
     /**
+     * get recipe by search text
+     * exp request: {"text": "chicken"}
+     */
+    router.post(prefix + 'search', (req, res)=>{
+        let suggestTitle = req.body.text;
+
+        recipeModel.getBySuggestTitle(
+            suggestTitle,
+            (err, result)=>{_response(res, err, result)}
+        );
+    });
+
+    /**
      * added new recipe
      * exp request: {"data": {...}}
      */

@@ -18,7 +18,7 @@ function routes($stateProvider) {
         })
         .state('recipe_search', {
             parent: 'main',
-            url: '/recipe-search?category',
+            url: '/recipe-search?category&keyword',
             controller: 'RecipeSearchController as recipeSearch',
             templateUrl: 'modules/recipe/views/search/index.tpl.html'
         })

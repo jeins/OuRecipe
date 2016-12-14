@@ -2,28 +2,34 @@ angular
     .module('app.shared')
     .controller('SearchController', SearchController);
 
-SearchController.$inject = ['$timeout', '$q', '$log'];
-function SearchController($timeout, $q, $log){
+SearchController.$inject = ['$timeout', '$q', '$log', 'ApiRecipe'];
+function SearchController($timeout, $q, $log, ApiRecipe){
     var vm = this;
 
     vm.simlateQuery = false;
     vm.isDisabled = false;
 
-    vm.repos = loadAll();
     vm.querySearch = querySearch;
     vm.selectedItemChange = selectedItemChange;
     vm.searchTextChange   = searchTextChange;
 
     function querySearch (query) {
-        var results = query ? vm.repos.filter( createFilterFor(query) ) : vm.repos,
-            deferred;
-        if (vm.simulateQuery) {
-            deferred = $q.defer();
-            $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
-            return deferred.promise;
-        } else {
-            return results;
-        }
+        // var results = query ? vm.repos.filter( createFilterFor(query) ) : vm.repos,
+        //     deferred;
+        // if (vm.simulateQuery) {
+        //     deferred = $q.defer();
+        //     $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+        //     return deferred.promise;
+        // } else {
+        //     return results;
+        // }
+        var reqBody = {text: query};
+
+        ApiRecipe.getRecipeBySuggestTitle(reqBody, function(res){
+            $log.info("Response: " + JSON.stringify(res));
+
+            return res;
+        });
     }
 
     function searchTextChange(text) {
