@@ -30,34 +30,42 @@
     </section>
 
     <section layout="row" layout-wrap layout-align="center">
-        <md-card ng-repeat="recipe in userShow.loadFavoriteRecipe" style="width: 250px; margin-top: 30px; margin-right: 20px" class="md-whiteframe-10dp">
+        <md-card ng-repeat="favRecipe in userShow.loadFavoriteRecipe" style="width: 250px; margin-top: 30px; margin-right: 20px" class="md-whiteframe-10dp">
             <md-card-title>
                 <md-card-title-text>
-                    <span class="md-headline" style="text-align: center">{{recipe.name}}</span>
-                    <span class="md-subhead">{{'m_user.label.recipe_by' | translate}} <strong>{{recipe.author}}</strong></span>
+                    <a ng-href="/recipe-profile?recipeId={{favRecipe.recipe.id}}" style="text-align: center">
+                        <span class="md-headline">{{favRecipe.recipe.title}}</span>
+                    </a>
+
+                    <span class="md-subhead">
+                        {{'m_user.label.recipe_by' | translate}}
+                        <a ng-href="profile-show?userId={{favRecipe.recipe.user.id}}" style="text-align: center"><strong>{{favRecipe.recipe.user.lastName}}</strong></a>
+                    </span>
+
                     <!--<ul class="md-subhead" style="margin-top: 30px; border-top: 1px dotted #e6e6e6; min-height: 51px; list-style: none;">-->
-                        <!--<li style="display: inline-block">-->
-                            <!--<span style="font-size: 12px"><md-icon class="material-icons">access_time</md-icon> {{recipe.time}}</span>-->
+                        <!--<li style="display: inline-block; margin-right: 10px">-->
+                            <!--<span style="font-size: 10px"><md-icon md-font-icon="fa-clock-o" class="fa"></md-icon> {{favRecipe.recipe.cookTime}}</span>-->
                         <!--</li>-->
-                        <!--<li style="display: inline-block">-->
-                            <!--<span style="font-size: 12px"><md-icon class="material-icons">people</md-icon> {{recipe.people}}</span>-->
+                        <!--<li style="display: inline-block; margin-right: 10px">-->
+                            <!--<span style="font-size: 10px"><md-icon md-font-icon="fa-users" class="fa"></md-icon> {{favRecipe.recipe.serving}}</span>-->
                         <!--</li>-->
                     <!--</ul>-->
                 </md-card-title-text>
             </md-card-title>
             <md-card-content layout="row" layout-align="center center">
-                <img ng-src="assets/washedout.png" class="md-media-xl card-media">
+                <img ng-if="favRecipe.recipe.photoName == ''" ng-src="assets/washedout.png" class="md-media-xl card-media">
+                <img ng-if="favRecipe.recipe.photoName != ''" ng-src="{{favRecipe.recipe.photoName}}" class="md-media-xl card-media">
             </md-card-content>
         </md-card>
     </section>
 
     <div style="height: 60px"></div>
 
-    <section layout="row" layout-padding="">
+    <section ng-if="userShow.favoriteRecipepagination.total > 1"  layout="row" layout-padding="">
         <or-pagination flex
-                       or-pages="userShow.pagination.total"
-                       or-steps="userShow.pagination.steps"
-                       or-page-changed="userShow.onPageChanged()"
+                       or-pages="userShow.favoriteRecipepagination.total"
+                       or-steps="userShow.favoriteRecipepagination.steps"
+                       or-page-changed="userShow.loadFavoriteRecipe()"
                        or-align="center center"
                        or-current-page="userShow.pagination.current"
         ></or-pagination>

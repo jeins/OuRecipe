@@ -9,6 +9,7 @@ import corsMiddleware from './middleware/cors';
 import csrfMiddleware from './middleware/csrf';
 import UserController from './application/User/UserController';
 import RecipeController from './application/Recipe/RecipeController';
+import FavoriteController from './application/Favorite/FavoriteController';
 import ImageController from './application/Default/ImageController';
 
 var conf = config.server[process.env.NODE_ENV] || config.server.development;
@@ -31,6 +32,7 @@ app.use(corsMiddleware);
 // API URI
 app.use('/', UserController());
 app.use('/', RecipeController());
+app.use('/', FavoriteController());
 app.use('/', ImageController());
 
 // Angular Client

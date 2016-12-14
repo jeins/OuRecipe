@@ -2,8 +2,8 @@ angular
     .module('app.user')
     .controller('UserShowController', UserShowController);
 
-UserShowController.$inject = ['$log', '$stateParams', '$location', 'ApiUser', 'ApiRecipe'];
-function UserShowController($log, $stateParams, $location, ApiUser, ApiRecipe) {
+UserShowController.$inject = ['$log', '$stateParams', '$location', 'ApiUser', 'ApiRecipe', 'ApiFavorite'];
+function UserShowController($log, $stateParams, $location, ApiUser, ApiRecipe, ApiFavorite) {
     var vm = this;
     vm.onPageChanged = onPageChanged;
     vm.doSearch = doSearch;
@@ -15,7 +15,7 @@ function UserShowController($log, $stateParams, $location, ApiUser, ApiRecipe) {
         vm.selectedPage = ($stateParams.page !== undefined) ? $stateParams.page : 0;
         vm.filter = {};
         vm.loadSort = _getSortRecipes();
-        vm.pagination = {total: 10, current: 1, steps: 5};
+        vm.favoriteRecipepagination = {current: 1, limit: 6, steps: 5};
         vm.personalRecipePagination = {current: 1, limit: 6, steps: 5};
 
         if(vm.userId === undefined) $location.path('/');
@@ -34,99 +34,19 @@ function UserShowController($log, $stateParams, $location, ApiUser, ApiRecipe) {
     }
 
     function loadFavoriteRecipe(){
-        vm.loadFavoriteRecipe = [
-            {
-                name: "French Onion Soup Gratinee",
-                description: "About as good as it gets! This is the version of French Onion Soup that people seek when they go to restaurants. Healthy and easy.",
-                author: "Nick Slick",
-                "people": "4",
-                "time": "5m"
+        var reqBody = {
+            filter: {
+                userId: vm.userId
             },
-            {
-                name: "Avocado panzanella salad",
-                description: "This high fibre salad is a vibrant mix of tomatoes, avocado and crunchy pieces of ciabatta. Thissalad is full of the authentic flavours of Italy.",
-                author: "Nick Slick",
-                "people": "4",
-                "time": "5m"
-            },
-            {
-                name: "Kale and Feta Salad",
-                description: "Salads can be healthy, satisfying meals on their own or perfect accompaniments to main dishes. We’ve got a great selection of salads.",
-                author: "Nick Slick",
-                "people": "4",
-                "time": "5m"
-            },
-            {
-                name: "Avocado panzanella salad",
-                description: "This high fibre salad is a vibrant mix of tomatoes, avocado and crunchy pieces of ciabatta. Thissalad is full of the authentic flavours of Italy.",
-                author: "Nick Slick",
-                "people": "4",
-                "time": "5m"
-            },
-            {
-                name: "Kale and Feta Salad",
-                description: "Salads can be healthy, satisfying meals on their own or perfect accompaniments to main dishes. We’ve got a great selection of salads.",
-                author: "Nick Slick",
-                "people": "4",
-                "time": "5m"
-            },
-            {
-                name: "Avocado panzanella salad",
-                description: "This high fibre salad is a vibrant mix of tomatoes, avocado and crunchy pieces of ciabatta. Thissalad is full of the authentic flavours of Italy.",
-                author: "Nick Slick",
-                "people": "4",
-                "time": "5m"
-            },
-            {
-                name: "Kale and Feta Salad",
-                description: "Salads can be healthy, satisfying meals on their own or perfect accompaniments to main dishes. We’ve got a great selection of salads.",
-                author: "Nick Slick",
-                "people": "4",
-                "time": "5m"
-            },
-            {
-                name: "Avocado panzanella salad",
-                description: "This high fibre salad is a vibrant mix of tomatoes, avocado and crunchy pieces of ciabatta. Thissalad is full of the authentic flavours of Italy.",
-                author: "Nick Slick",
-                "people": "4",
-                "time": "5m"
-            },
-            {
-                name: "Kale and Feta Salad",
-                description: "Salads can be healthy, satisfying meals on their own or perfect accompaniments to main dishes. We’ve got a great selection of salads.",
-                author: "Nick Slick",
-                "people": "4",
-                "time": "5m"
-            },
-            {
-                name: "Avocado panzanella salad",
-                description: "This high fibre salad is a vibrant mix of tomatoes, avocado and crunchy pieces of ciabatta. Thissalad is full of the authentic flavours of Italy.",
-                author: "Nick Slick",
-                "people": "4",
-                "time": "5m"
-            },
-            {
-                name: "Kale and Feta Salad",
-                description: "Salads can be healthy, satisfying meals on their own or perfect accompaniments to main dishes. We’ve got a great selection of salads.",
-                author: "Nick Slick",
-                "people": "4",
-                "time": "5m"
-            },
-            {
-                name: "Avocado panzanella salad",
-                description: "This high fibre salad is a vibrant mix of tomatoes, avocado and crunchy pieces of ciabatta. Thissalad is full of the authentic flavours of Italy.",
-                author: "Nick Slick",
-                "people": "4",
-                "time": "5m"
-            },
-            {
-                name: "Kale and Feta Salad",
-                description: "Salads can be healthy, satisfying meals on their own or perfect accompaniments to main dishes. We’ve got a great selection of salads.",
-                author: "Nick Slick",
-                "people": "4",
-                "time": "5m"
-            }
-        ];
+            currPage: vm.favoriteRecipepagination.current,
+            limit: vm.favoriteRecipepagination.limit
+        };
+        ApiFavorite.getFavoriteRecipeByUserId(reqBody, function (res) {
+            vm.loadFavoriteRecipe = res.data;
+            vm.favoriteRecipepagination = res.pagination.totalPage;
+
+            $log.info("FavoriteRecipe: " + JSON.stringify(vm.loadFavoriteRecipe));
+        });
     }
 
     function loadPersonalRecipe(){
@@ -141,6 +61,8 @@ function UserShowController($log, $stateParams, $location, ApiUser, ApiRecipe) {
         ApiRecipe.getRecipeList(reqBody, function(res){
             vm.loadPersonalRecipe = res.data;
             vm.personalRecipePagination.total = res.pagination.totalPage;
+
+            $log.info("PersonalRecipe: " + JSON.stringify(vm.loadPersonalRecipe));
         });
     }
 
