@@ -97,7 +97,8 @@
       "filter_cuisine": "Recipe Cuisine",
       "filter_sort": "Sort Recipes",
       "filter_keyword": "Keyword",
-      "filter_ingredients": "Ingredients (separate with comma)"
+      "filter_ingredients": "Ingredients (separate with comma)",
+      "add_to_favorite": "Add To Favorite"
     },
     "button":{
       "filter_search": "Search For Recipes",

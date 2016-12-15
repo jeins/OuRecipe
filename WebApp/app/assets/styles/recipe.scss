@@ -83,3 +83,25 @@ hr{
 .or-level.advance .or-level-1, .or-level.advance .or-level-2, .or-level.advance .or-level-3{
   background: #c0392b;
 }
+
+.or-recipe-card-img {
+  position: relative;
+}
+
+.or-recipe-card-favorite {
+  background-color: rgba(0,0,0,0.5);
+  position: absolute;
+  width: 62px;
+  height: 62px;
+  background-position: 2px .5rem;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  background-image: url(/assets/icons/heart-icons.svg),none;
+  background-repeat: no-repeat;
+  border-color: rgba(0,0,0,0.5);
+}
+
+.or-recipe-card-favorite.marked{
+  background-image: url(/assets/icons/heart-icons-marked.svg),none;
+}

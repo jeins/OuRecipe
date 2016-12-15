@@ -2,6 +2,7 @@ import AbstractModel from '../Default/AbstractModel';
 import RecipeField from './Field';
 import User from '../User/Model';
 import UserField from '../User/Field';
+import FavoriteField from '../Favorite/Field';
 
 class Recipe extends AbstractModel{
     constructor(){
@@ -9,10 +10,15 @@ class Recipe extends AbstractModel{
 
         this.db = this.getConnection();
         this.recipe = this.db.define(RecipeField.tableName, this.generateEntities(RecipeField.entity));
+        this.favorite = this.db.define(FavoriteField.tableName, this.generateEntities(FavoriteField.entity));
 
         //e-relation definitions
         this.user = new User().getModel();
+
         this.recipe.belongsTo(this.user);
+        this.favorite.belongsTo(this.recipe);
+
+        this.recipe.hasMany(this.favorite);
         this.user.hasMany(this.recipe);
     }
 
@@ -38,11 +44,12 @@ class Recipe extends AbstractModel{
         ];
 
         this.recipe.findAll({
-            // attributes: recipeAttributes,
             where: filter,
+            //attributes: recipeAttributes,
             order: order,
             include: [
-                {model: this.user, attributes: userAttributes}
+                {model: this.user, attributes: userAttributes},
+                {model: this.favorite}
             ],
             offset: offset,
             limit: limit

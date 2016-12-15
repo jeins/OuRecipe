@@ -14,7 +14,10 @@
 <div class="md-padding" layout="row" layout-wrap layout-align="center">
     <md-card ng-repeat="recipe in home.loadNewRecipes"
              style="width: 350px; margin-top: 30px; margin-right: 40px; margin-bottom: 20px;" class="md-whiteframe-10dp">
-        <img ng-src="assets/washedout.png" class="md-card-image" alt="Washed Out">
+        <img ng-src="assets/washedout.png" class="md-card-image or-recipe-card-img" alt="Washed Out">
+        <button class="or-recipe-card-favorite">
+            <md-tooltip md-direction="bottom">{{'m_recipe.label.add_to_favorite'|translate}}</md-tooltip>
+        </button>
         <md-card-title>
             <md-card-title-text>
                 <a ng-href="/recipe-profile?recipeId={{recipe.id}}">

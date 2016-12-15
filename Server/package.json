@@ -21,7 +21,7 @@
     "morgan": "^1.7.0",
     "multer": "^1.2.0",
     "mysql": "^2.11.1",
-    "sequelize": "^3.24.3"
+    "sequelize": "^3.27.0"
   },
   "scripts": {
     "start server": "node index.js",
