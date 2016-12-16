@@ -7,19 +7,23 @@ export default (req, res, next)=>{
 
     if(token){
         try{
+            token = token.replace('Bearer ', '');
             let decodedToken = AuthToken.decodeToken(token);
 
             if(decodedToken.exp <= Date.now()){
                 return res.status(400).send({message: "Token Expired"});
             }
 
-            userModel.compareUserPassword(decodedToken.data, (err, result)=>{
+            userModel.isUserExistByEmail(decodedToken.data.email, (err, result)=>{
                 if(err) {
                     return res.status(500).send({message: err});
                 }
                 if(!result) {
                     return res.status(401).send({message: "Invalid User"});
                 }
+
+                req.user = decodedToken.data;
+                next();
             });
         } catch (err){
             return res.status(500).send({message: err.message});
@@ -27,6 +31,4 @@ export default (req, res, next)=>{
     } else{
         return res.status(401).send({message: "Invalid Token or Key"});
     }
-
-    next();
 }

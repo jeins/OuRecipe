@@ -2,7 +2,7 @@ angular
     .module('app.user')
     .controller('UserLoginController', UserLoginController);
 
-UserLoginController.$inject = ['$log', '$mdDialog'];
+UserLoginController.$inject = ['$log', '$mdDialog', '$auth', '$location', '$window'];
 function UserLoginController($log, $mdDialog){
     this.showDialog = function(ev){
         $mdDialog.show({
@@ -21,9 +21,10 @@ function UserLoginController($log, $mdDialog){
         ;
     };
 
-    function dialogController($log, $mdDialog){
+    function dialogController($log, $mdDialog, $auth, $location, $window){
         var vm = this;
         vm.cancel = cancel;
+        vm.login = login;
 
         init();
 
@@ -31,6 +32,22 @@ function UserLoginController($log, $mdDialog){
             vm.email = "";
             vm.password = "";
             $log.info("UserLogin dialog displayed");
+        }
+
+        function login(){
+            $auth.login({ email: vm.email, password: vm.password })
+                .then(function(response) {
+                    if(response.data.message){
+                        $log.error("Error: " + response.data.message);
+                    } else{
+                        $log.info("Response" + JSON.stringify(response.data));
+                        $location.path('/');
+                        $window.location.reload();
+                    }
+                })
+                .catch(function(response) {
+                    $log.error(response);
+                });
         }
 
         function cancel(){

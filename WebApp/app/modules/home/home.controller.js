@@ -2,8 +2,8 @@ angular
     .module('app.home')
     .controller('HomeController', HomeController);
 
-HomeController.$inject = ['$log', 'Recipe', 'ApiRecipe', 'ApiUser'];
-function HomeController($log, Recipe, ApiRecipe, ApiUser) {
+HomeController.$inject = ['$log', 'Recipe', 'ApiRecipe', 'ApiUser', 'Session'];
+function HomeController($log, Recipe, ApiRecipe, ApiUser, Session) {
     var vm = this;
     vm.loadNewRecipes = loadNewRecipes;
     vm.loadTopAuthors = loadTopAuthors;
@@ -12,9 +12,13 @@ function HomeController($log, Recipe, ApiRecipe, ApiUser) {
 
     function init(){
         vm.loadCategories = Recipe.categories();console.log(vm.loadCategories);
+        vm.session = Session.getSession();
+        vm.isUserLogedIn = vm.session.loggedIn;
 
         loadNewRecipes();
         loadTopAuthors();
+
+        $log.info(vm.session);
     }
 
     function loadNewRecipes(){

@@ -7,6 +7,10 @@ export default ()=>{
     let prefix = '/auth';
     let userModel = new User();
 
+    router.post('/api' +prefix + '/me', (req, res)=>{
+        res.json(req.user);
+    });
+
     router.post(prefix + '/signup', (req, res)=>{
         let data = req.body.data;
 

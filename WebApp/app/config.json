@@ -4,6 +4,7 @@
       "API_URL": "/api/",
       "IMG_URL_RECIPE": "/images/recipe/",
       "IMG_URL_PROFILE": "/images/profile/",
+      "TOKEN_KEY": "satellizer_token",
       "translation": {
         "path": "translations/",
         "suffix": ".json",
@@ -13,6 +14,7 @@
     },
     "production": {
       "API_URL": "",
+      "TOKEN_KEY": "satellizer_token",
       "translation": {
         "path": "translations/",
         "suffix": ".json",
@@ -33,7 +35,8 @@
       "/angular-translate/angular-translate.min.js",
       "/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js",
       "/ng-file-upload/ng-file-upload.min.js",
-      "/angular-sanitize/angular-sanitize.min.js"
+      "/angular-sanitize/angular-sanitize.min.js",
+      "/satellizer/dist/satellizer.js"
     ],
     "styles": [
       ""

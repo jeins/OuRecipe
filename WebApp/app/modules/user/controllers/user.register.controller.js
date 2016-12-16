@@ -2,8 +2,8 @@ angular
     .module('app.user')
     .controller('UserRegisterController', UserRegisterController);
 
-UserRegisterController.$inject = ['$log', '$mdDialog'];
-function UserRegisterController($log, $mdDialog) {
+UserRegisterController.$inject = ['$log', '$mdDialog', 'ApiAuth'];
+function UserRegisterController($log, $mdDialog, ApiAuth) {
     this.showDialog = function(ev){
         $mdDialog.show({
             templateUrl: 'modules/user/views/auth/user.dialog.register.tpl.html',
@@ -22,16 +22,23 @@ function UserRegisterController($log, $mdDialog) {
     function dialogController($log, $mdDialog) {
         var vm = this;
         vm.cancel = cancel;
+        vm.signUp = signUp;
 
         init();
 
         function init(){
-            vm.firstName = "";
-            vm.lastName = "";
-            vm.email = "";
-            vm.password = "";
+            vm.user = {
+                firstName: '', lastName: '',
+                email: '', password: ''
+            };
 
             $log.info("UserLogin dialog displayed");
+        }
+
+        function signUp(){
+            ApiAuth.signUp(vm.user, function(result){
+
+            });
         }
 
         function cancel(){

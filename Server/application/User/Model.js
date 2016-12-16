@@ -68,7 +68,7 @@ class User extends AbstractModel{
 
     isUserExistByEmail(email, cb){
         let filter = {};
-        let attributes = [UserField.entity.id.name, UserField.entity.email.name, UserField.entity.password.name];
+        let attributes = [UserField.entity.id.name, UserField.entity.email.name];
 
         filter[UserField.entity.email.name] = email;
 
@@ -85,8 +85,7 @@ class User extends AbstractModel{
     compareUserPassword(email, password, cb){
         let filter = {};
         let attributes = [
-            UserField.entity.id.name, UserField.entity.email.name,
-            UserField.entity.firstName.name, UserField.entity.lastName.name
+            UserField.entity.id.name, UserField.entity.email.name
         ];
 
         filter[UserField.entity.email.name] = email;

@@ -2,14 +2,15 @@ angular
     .module('app', [
         //libraries
         'ui.router', 'ngMaterial',
+        'satellizer',
         'pascalprecht.translate',
 
         //modules
         'app.config', 'app.shared',
         'app.home', 'app.user', 'app.recipe'
     ])
-    .config(['$logProvider', '$provide', '$translateProvider', 'translation', '$mdAriaProvider', '$httpProvider',
-        function($logProvider, $provide, $translateProvider, translation, $mdAriaProvider, $httpProvider){
+    .config(['$logProvider', '$provide', '$translateProvider', 'translation', '$mdAriaProvider', '$httpProvider', '$authProvider',
+        function($logProvider, $provide, $translateProvider, translation, $mdAriaProvider, $httpProvider, $authProvider){
             // Inject interceptors
             $httpProvider.interceptors.push('SessionInjector');
 
@@ -40,6 +41,10 @@ angular
                 .useSanitizeValueStrategy(translation.sanitize)
                 .preferredLanguage(translation.default)
             ;
+
+            // Auth
+            $authProvider.loginUrl = '/auth/login';
+            $authProvider.signupUrl = '/auth/signup';
         }
     ])
 ;
