@@ -1,5 +1,8 @@
 import AbstractModel from '../Default/AbstractModel';
 import UserField from './Field';
+import crypto from 'crypto';
+import config from '../../config/config';
+import _ from 'lodash';
 
 class User extends AbstractModel{
     constructor(){
@@ -16,7 +19,7 @@ class User extends AbstractModel{
         return this.user;
     }
 
-    getList(filter, currPage, limit, callback){
+    getList(filter, currPage, limit, cb){
         currPage = (currPage === 1) ? 0 : currPage;
         let offset = currPage * limit;
         let attributes = [
@@ -32,10 +35,8 @@ class User extends AbstractModel{
             offset: offset,
             limit: limit
         })
-            .then((user)=>{
-                callback(null, user);
-            })
-            .catch((err)=>{callback(err.message, null)})
+            .then((user)=>{cb(null, user);})
+            .catch((err)=>{cb(err.message, null);})
         ;
     }
 
@@ -48,9 +49,7 @@ class User extends AbstractModel{
             attributes: {exclude: excludeAttributes},
             where: filter
         })
-            .then((user)=>{
-                cb(null, user)
-            })
+            .then((user)=>{cb(null, user);})
             .catch((err)=>{cb(err.message, null);})
         ;
     }
@@ -66,6 +65,94 @@ class User extends AbstractModel{
                 cb(null, results);
             })
     }
+
+    isUserExistByEmail(email, cb){
+        let filter = {};
+        let attributes = [UserField.entity.id.name, UserField.entity.email.name, UserField.entity.password.name];
+
+        filter[UserField.entity.email.name] = email;
+
+
+        this.user.findOne({
+            attributes: attributes,
+            where: filter
+        })
+            .then((user)=>{cb(null, user);})
+            .catch((err)=>{cb(err.message, null);})
+        ;
+    }
+
+    compareUserPassword(email, password, cb){
+        let filter = {};
+        let attributes = [
+            UserField.entity.id.name, UserField.entity.email.name,
+            UserField.entity.firstName.name, UserField.entity.lastName.name
+        ];
+
+        filter[UserField.entity.email.name] = email;
+        filter[UserField.entity.password.name] = this._getHash(password);
+
+        this.user.findOne({
+            attributes: attributes,
+            where: filter
+        })
+            .then((user)=>{cb(null, user);})
+            .catch((err)=>{cb(err.message, null);})
+        ;
+    }
+
+    add(data, cb){
+        let allowedFields = [
+            UserField.entity.firstName.name,
+            UserField.entity.lastName.name,
+            UserField.entity.email.name,
+            UserField.entity.password.name,
+        ];
+
+        if(_.has(data, UserField.entity.password.name)){
+            data[UserField.entity.password.name] = this._getHash(data[UserField.entity.password.name]);
+        }
+
+        let newUserData = this.validateBody(data, allowedFields);
+
+        this.user.create(newUserData)
+            .then((user)=>{cb(null, user.get());})
+            .catch((err)=>{cb(err.message, null);})
+        ;
+    }
+
+    update(userId, data, cb){
+        let allowedFields = [
+            UserField.entity.firstName.name,
+            UserField.entity.lastName.name,
+            UserField.entity.password.name,
+            UserField.entity.country.name,
+            UserField.entity.city.name,
+            UserField.entity.aboutMe.name,
+            UserField.entity.socialMedia.name,
+            UserField.entity.photoName.name
+        ];
+        let filter = {};
+        filter[UserField.entity.id.name] = userId;
+
+        if(_.has(data, UserField.entity.password.name)){
+            data[UserField.entity.password.name] = this._getHash(data[UserField.entity.password.name]);
+        }
+
+        let newUserData = this.validateBody(data, allowedFields);
+
+        this.user.update(newUserData, {where: filter})
+            .then((user)=>{cb(null, user);})
+            .catch((err)=>{cb(err.message, null)})
+        ;
+    }
+
+    _getHash (string){
+        return crypto
+            .createHmac('sha256', config.secret)
+            .update(string)
+            .digest('hex');
+    };
 }
 
 module.exports = User;

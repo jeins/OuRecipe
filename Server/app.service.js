@@ -7,13 +7,15 @@ import fs from 'fs';
 import config from './config/config';
 import corsMiddleware from './middleware/cors';
 import csrfMiddleware from './middleware/csrf';
+import authMiddleware from './middleware/auth';
 import UserController from './application/User/UserController';
+import AuthController from './application/User/AuthController';
 import RecipeController from './application/Recipe/RecipeController';
 import FavoriteController from './application/Favorite/FavoriteController';
 import ImageController from './application/Default/ImageController';
 
-var conf = config.server[process.env.NODE_ENV] || config.server.development;
-var app = express();
+const conf = config.server[process.env.NODE_ENV] || config.server.development;
+const app = express();
 
 app.server = http.createServer(app);
 
@@ -28,9 +30,11 @@ app.use(corsMiddleware);
 // app.use(csrfMiddleware.setupCsrf());
 // app.use(csrfMiddleware.sendCsrfToClient);
 // app.use(csrfMiddleware.errorHandler);
+app.all('/api/auth/*', authMiddleware);
 
 // API URI
 app.use('/', UserController());
+app.use('/', AuthController());
 app.use('/', RecipeController());
 app.use('/', FavoriteController());
 app.use('/', ImageController());

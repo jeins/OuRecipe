@@ -9,7 +9,7 @@ import _ from 'lodash';
 export default ()=>{
     let favoriteModel = new Favorite();
     let router = new Router();
-    let prefix = '/api/favorite';
+    let prefix = '/api/auth/favorite';
 
     /**
      * get favorite recipe list by userId

@@ -56,7 +56,20 @@ export default ()=>{
             (err, result)=>{_response(res, err, result)}
             );
     });
-    router.put(prefix, (req, res)=>{});
+
+    /**
+     * update user information
+     * exp request: {"userId": 1, "data": ...}
+     */
+    router.put(prefix, (req, res)=>{
+        let userId = req.body.userId;
+        let data = req.body.data;
+
+        userModel.update(
+            userId, data,
+            (err, result)=>{_response(res, err, result)}
+        );
+    });
 
     /**
      *
@@ -69,8 +82,7 @@ export default ()=>{
         if(!err){
             res.json(result);
         } else{
-            res.status(500)
-                .send(err);
+            res.status(500).send({message: err});
         }
     }
 

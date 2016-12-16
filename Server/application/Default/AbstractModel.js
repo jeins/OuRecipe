@@ -23,7 +23,7 @@ class AbstractModel{
             if(entity.name != "id"){
                 entities[entity.name] = {};
                 entities[entity.name]['type'] = Sequelize[entity.type];
-                if(_.hasIn(entity, 'validate')) entities[entity.name]['validate'] = entity.validate;
+                //if(_.hasIn(entity, 'validate')) entities[entity.name]['validate'] = entity.validate;
             }
         });
 

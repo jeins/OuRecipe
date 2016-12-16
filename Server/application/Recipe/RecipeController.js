@@ -116,8 +116,7 @@ export default ()=>{
         if(!err){
             res.json(result);
         } else{
-            res.status(500)
-               .send(err);
+            res.status(500).send({message: err});
         }
     }
 
@@ -195,10 +194,6 @@ export default ()=>{
         }
 
         return query;
-    }
-
-    function _checkFilter (){
-
     }
 
     return router;
