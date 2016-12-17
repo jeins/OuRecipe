@@ -2,8 +2,8 @@ angular
     .module('app.recipe')
     .controller('RecipeCreateController', RecipeCreateController);
 
-RecipeCreateController.$inject = ['$log', 'UploadService', 'Recipe', 'ApiRecipe', '$state', 'API_URL', 'IMG_URL_RECIPE'];
-function RecipeCreateController($log, UploadService, Recipe, ApiRecipe, $state, API_URL, IMG_URL_RECIPE) {
+RecipeCreateController.$inject = ['$log', 'UploadService', 'Recipe', 'ApiRecipe', '$state', 'API_URL', 'IMG_URL_RECIPE', 'Session'];
+function RecipeCreateController($log, UploadService, Recipe, ApiRecipe, $state, API_URL, IMG_URL_RECIPE, Session) {
     let vm = this;
     vm.addMoreIngredient = addMoreIngredient;
     vm.removeIngredient = removeIngredient;
@@ -15,7 +15,8 @@ function RecipeCreateController($log, UploadService, Recipe, ApiRecipe, $state, 
     init();
 
     function init(){
-        vm.recipe = {userId: 1}; //TODO:: need fix
+        vm.user = Session.getUser();
+        vm.recipe = {userId: vm.user.id};
         vm.ingredients = [{id: 1, name: ""}];
         vm.steps = [{id: 1}];
         vm.loadCategories = Recipe.categories();

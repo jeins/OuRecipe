@@ -1,7 +1,6 @@
 <md-content class="md-padding">
     <section layout="row" layout-wrap layout-align="center">
-        <!--TODO: display if current user view personal recipe-->
-        <md-card style="width: 250px; margin-top: 30px; margin-right: 20px; background: #f2f2f2; cursor: pointer" class="md-whiteframe-10dp">
+        <md-card ng-if="session.user.id == userShow.userId" style="width: 250px; margin-top: 30px; margin-right: 20px; background: #f2f2f2; cursor: pointer" class="md-whiteframe-10dp">
             <md-card-title>
                 <!--<md-card-title-text>-->
                     <!--<span class="md-subhead" style="text-align: center">{{'m_user.label.add_recipe' | translate}}</span>-->
@@ -43,7 +42,7 @@
         <or-pagination flex
                        or-pages="userShow.personalRecipePagination.total"
                        or-steps="userShow.personalRecipePagination.steps"
-                       or-page-changed="userShow.loadPersonalRecipe()"
+                       or-page-changed="userShow.loadPersonalRecipeData()"
                        or-align="center center"
                        or-current-page="userShow.personalRecipePagination.current"
         ></or-pagination>

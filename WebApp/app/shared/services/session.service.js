@@ -9,7 +9,8 @@ function Session($log, $window, TOKEN_KEY, ApiAuth) {
     init();
 
     return {
-        getSession: getSession
+        getSession: getSession,
+        getUser: getUser
     };
 
     function init(){
@@ -19,6 +20,10 @@ function Session($log, $window, TOKEN_KEY, ApiAuth) {
         } else{
             resetSession();
         }
+    }
+
+    function getUser(){
+        return session.user;
     }
 
     function setSession(token){

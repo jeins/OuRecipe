@@ -4,7 +4,7 @@ angular
 
 ApiFavorite.$inject = ['$log', 'API_URL', '$http'];
 function ApiFavorite($log, API_URL, $http) {
-    let uriPrefix = 'favorite';
+    let uriPrefix = 'auth/favorite';
 
     return{
         getFavoriteRecipeByUserId: getFavoriteRecipeByUserId,

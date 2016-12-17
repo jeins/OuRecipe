@@ -7,19 +7,19 @@
     <div flex></div>
     <section hide="hide" show-gt-sm="show-gt-sm" layout-align="end center">
         <!--Guest Menu-->
-        <md-button ng-controller="UserRegisterController as userRegister" ng-click="userRegister.showDialog($event)">
+        <md-button ng-if="!isUserLogedIn" ng-controller="UserRegisterController as userRegister" ng-click="userRegister.showDialog($event)">
             <md-icon md-font-icon="fa-user" class="fa"></md-icon>
             <span translate="g.b.register"></span>
         </md-button>
-        <md-button ng-controller="UserLoginController as userLogin" ng-click="userLogin.showDialog($event)">
+        <md-button ng-if="!isUserLogedIn" ng-controller="UserLoginController as userLogin" ng-click="userLogin.showDialog($event)">
             <md-icon md-font-icon="fa-sign-in" class="fa"></md-icon>
             <span translate="g.b.login"></span>
         </md-button>
 
         <!--User Menu-->
-        <md-menu>
+        <md-menu ng-if="isUserLogedIn">
             <md-button ng-click="shared.openMenu($mdOpenMenu, $event)">
-                UserName
+                {{session.user.lastName}}
                 <md-icon class="fa" md-font-icon="fa-caret-square-o-down"></md-icon>
             </md-button>
             <md-menu-content width="4">
@@ -50,6 +50,12 @@
             </md-menu-content>
         </md-menu>
     </section>
+
+    <md-button ng-if="isUserLogedIn" ng-controller="UserLogoutController as userLogout" ng-click="userLogout.logout()">
+        <md-icon md-font-icon="fa-sign-out" class="fa"></md-icon>
+        <span translate="g.b.logout"></span>
+    </md-button>
+
     <section hide-gt-sm="hide-gt-sm" layout-align="end center">
         <md-button ng-click="shared.toggleSidenav('left')" class="md-icon-button">
             <md-icon md-font-icon="fa-bars" class="fa"></md-icon>

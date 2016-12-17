@@ -85,7 +85,8 @@ class User extends AbstractModel{
     compareUserPassword(email, password, cb){
         let filter = {};
         let attributes = [
-            UserField.entity.id.name, UserField.entity.email.name
+            UserField.entity.id.name, UserField.entity.email.name,
+            UserField.entity.firstName.name, UserField.entity.lastName.name
         ];
 
         filter[UserField.entity.email.name] = email;

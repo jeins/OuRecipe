@@ -14,13 +14,13 @@
 
                     <md-input-container flex="30" flex-xs="100">
                         <label translate="m_user.label.filter_search"></label>
-                        <input ng-model="userShow.filter.search">
+                        <input ng-model="userShow.filter.keyword">
                     </md-input-container>
 
                     <div flex="5" hide-xs hide-sm></div>
 
                     <md-input-container flex="30" flex-xs="100">
-                        <md-button md-colors="{background: 'green'}" style="width: 100%" ng-click="userShow.doSearch()">
+                        <md-button md-colors="{background: 'green'}" style="width: 100%" ng-click="userShow.loadFavoriteRecipeData()">
                             <span translate="m_recipe.button.filter_search" layout-align="center"></span>
                         </md-button>
                     </md-input-container>
@@ -65,7 +65,7 @@
         <or-pagination flex
                        or-pages="userShow.favoriteRecipepagination.total"
                        or-steps="userShow.favoriteRecipepagination.steps"
-                       or-page-changed="userShow.loadFavoriteRecipe()"
+                       or-page-changed="userShow.loadFavoriteRecipeData()"
                        or-align="center center"
                        or-current-page="userShow.pagination.current"
         ></or-pagination>

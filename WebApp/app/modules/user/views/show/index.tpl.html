@@ -6,7 +6,7 @@
                     <ng-include src="'modules/user/views/show/_profile.tpl.html'"></ng-include>
                 </md-tab>
 
-                <md-tab label="{{'m_user.label.tab_favorite_recipe' | translate}}">
+                <md-tab ng-if="session.user.id == userShow.userId" label="{{'m_user.label.tab_favorite_recipe' | translate}}">
                     <ng-include src="'modules/user/views/show/_favorite_recipe.tpl.html'"></ng-include>
                 </md-tab>
 
