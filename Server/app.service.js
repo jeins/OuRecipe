@@ -33,6 +33,7 @@ app.use(corsMiddleware);
 app.all('/api/auth/*', authMiddleware);
 
 // API URI
+app.use('/version', (req, res)=>{res.send({version: '1.0.0'});});
 app.use('/', UserController());
 app.use('/', AuthController());
 app.use('/', RecipeController());
