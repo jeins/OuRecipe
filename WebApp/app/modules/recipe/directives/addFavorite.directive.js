@@ -25,6 +25,6 @@ function AddFavoriteDirective(ApiFavorite){
             ApiFavorite.addFavoriteRecipe(reqBody, function(res){
                 elem.addClass('marked');
             });
-        })
+        });
     }
 }

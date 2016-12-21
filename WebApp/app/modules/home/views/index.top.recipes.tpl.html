@@ -17,7 +17,7 @@
               md-gutter="50px" md-gutter-gt-sm="50px" >
 
     <md-card ng-repeat="categorie in home.loadTopRecipes">
-        <img ng-src="assets/washedout.png" class="md-card-image" alt="Washed Out">
+        <img ng-src="{{categorie.imageUrl}}" class="md-card-image">
         <md-card-title>
             <md-card-title-text>
                 <span class="md-headline">{{categorie.name}}</span>

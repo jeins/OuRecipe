@@ -2,8 +2,8 @@ angular
     .module('app.shared')
     .factory('ApiUser', ApiUser);
 
-ApiUser.$inject = ['$log', 'API_URL', '$http'];
-function ApiUser($log, API_URL, $http) {
+ApiUser.$inject = ['$log', 'API_URL', '$http', 'NO_IMAGE'];
+function ApiUser($log, API_URL, $http, NO_IMAGE) {
     var userPrefix = 'user';
 
     return{
@@ -15,6 +15,7 @@ function ApiUser($log, API_URL, $http) {
     function userList(reqBody, cb){
         return $http(_setupRequest('POST', userPrefix + '/list', reqBody))
             .then(function(res){
+                _checkImage(res.data.data);
                 cb(res.data);
             });
     }
@@ -22,6 +23,7 @@ function ApiUser($log, API_URL, $http) {
     function getUserById(reqBody, cb){
         return $http(_setupRequest('POST', userPrefix + '/view', reqBody))
             .then(function(res){
+                _checkImage(res.data);
                 cb(res.data);
             });
     }
@@ -29,8 +31,17 @@ function ApiUser($log, API_URL, $http) {
     function getTopUser(cb){
         return $http(_setupRequest('POST', userPrefix + '/top'))
             .then(function(res){
+                _checkImage(res.data);
                 cb(res.data);
             });
+    }
+
+    function _checkImage(data){
+        data.forEach(function(i){
+            if(!i.imageUrl){
+                i.imageUrl = NO_IMAGE.USER;
+            }
+        });
     }
 
     function _setupRequest(method, uri, data){

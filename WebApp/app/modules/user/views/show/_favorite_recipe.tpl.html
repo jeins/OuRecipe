@@ -53,8 +53,7 @@
                 </md-card-title-text>
             </md-card-title>
             <md-card-content layout="row" layout-align="center center">
-                <img ng-if="favRecipe.recipe.photoName == ''" ng-src="assets/washedout.png" class="md-media-xl card-media">
-                <img ng-if="favRecipe.recipe.photoName != ''" ng-src="{{favRecipe.recipe.photoName}}" class="md-media-xl card-media">
+                <img ng-src="{{favRecipe.recipe.imageUrl}}" class="md-media-xl card-media">
             </md-card-content>
         </md-card>
     </section>

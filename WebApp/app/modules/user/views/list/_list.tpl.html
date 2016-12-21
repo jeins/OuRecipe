@@ -2,8 +2,7 @@
     <md-card ng-repeat="user in userList.loadUsers" style="min-width: 28%; margin-bottom: 30px; margin-right: 50px" class="md-whiteframe-10dp">
         <md-card-title>
             <md-card-title-media>
-                <img ng-if="user.photoName == null" src="assets/no_photo_profile.png" class="md-media-sm" style="background-color: #999999; margin-right: 30px">
-                <img ng-if="user.photoName != null" src="assets/{{user.photoName}}" class="md-media-sm" style="background-color: #999999; margin-right: 30px">
+                <img src="{{user.imageUrl}}" class="md-media-sm" style="background-color: #999999; margin-right: 30px">
             </md-card-title-media>
             <md-card-title-text>
                 <span class="md-headline">{{user.firstName}} {{user.lastName}}</span>

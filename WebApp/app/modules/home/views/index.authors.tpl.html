@@ -18,8 +18,7 @@
 
     <md-grid-tile style="background-color: #eee;" ng-repeat="author in home.loadTopAuthors">
         <md-grid-tile>
-            <img ng-if="author.photoName == null" src="assets/no_photo_profile.png">
-            <img ng-if="author.photoName != null" src="{{author.photoName}}">
+            <img src="{{author.imageUrl}}">
         </md-grid-tile>
         <md-grid-tile-footer layout-align="center center">
             <a ng-href="/profile-show?userId={{author.id}}">

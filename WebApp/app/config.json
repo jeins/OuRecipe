@@ -10,6 +10,10 @@
         "suffix": ".json",
         "sanitize": "escaped",
         "default": "dev"
+      },
+      "NO_IMAGE":{
+        "RECIPE": "assets/recipe_profile_no_photo.jpg",
+        "USER": "assets/no_photo_profile.png"
       }
     },
     "production": {

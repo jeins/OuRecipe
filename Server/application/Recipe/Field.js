@@ -40,8 +40,8 @@ module.exports = {
         difficultyLevel:{
             name: 'difficultyLevel', type: 'STRING'
         },
-        photoName:{
-            name: 'photoName', type: 'STRING'
+        imageUrl:{
+            name: 'imageUrl', type: 'STRING'
         },
         videoUrl:{
             name: 'videoUrl', type:'STRING'

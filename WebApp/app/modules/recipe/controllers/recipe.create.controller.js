@@ -28,7 +28,7 @@ function RecipeCreateController($log, UploadService, Recipe, ApiRecipe, $state, 
     function onSave(){
         vm.recipe.ingredients = vm.ingredients;
         vm.recipe.steps = vm.steps;
-        vm.recipe.photoName = vm.imageName;
+        vm.recipe.imageUrl = IMG_URL_RECIPE + m.imageName;
 
         ApiRecipe.addNewRecipe(vm.recipe, function (result) {
             if(result){

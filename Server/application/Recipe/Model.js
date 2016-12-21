@@ -35,7 +35,7 @@ class Recipe extends AbstractModel{
             RecipeField.entity.description.name,
             RecipeField.entity.cookTime.name,
             RecipeField.entity.serving.name,
-            RecipeField.entity.photoName
+            RecipeField.entity.imageUrl.name
         ];
         let userAttributes = [
             UserField.entity.id.name,
@@ -66,7 +66,7 @@ class Recipe extends AbstractModel{
             UserField.entity.id.name,
             UserField.entity.firstName.name,
             UserField.entity.lastName.name,
-            UserField.entity.photoName.name
+            UserField.entity.imageUrl.name
         ];
         let filter = {};
         filter[RecipeField.entity.id.name] = id;
@@ -116,7 +116,7 @@ class Recipe extends AbstractModel{
             RecipeField.entity.cuisine.name,
             RecipeField.entity.category.name,
             RecipeField.entity.difficultyLevel.name,
-            RecipeField.entity.photoName.name,
+            RecipeField.entity.imageUrl.name,
             RecipeField.entity.videoUrl.name
         ];
         let newRecipeData = this.validateBody(data, allowedFields);
@@ -139,7 +139,7 @@ class Recipe extends AbstractModel{
             RecipeField.entity.cuisine.name,
             RecipeField.entity.category.name,
             RecipeField.entity.difficultyLevel.name,
-            RecipeField.entity.photoName.name,
+            RecipeField.entity.imageUrl.name,
             RecipeField.entity.videoUrl.name
         ];
         let newRecipeData = this.validateBody(data, allowedFields);

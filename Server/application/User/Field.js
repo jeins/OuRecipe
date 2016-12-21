@@ -20,8 +20,8 @@ module.exports = {
             name: 'password', type: 'STRING',
             validate:{isEmail: true, notNull: true}
         },
-        photoName: {
-            name: 'photoName', type: 'STRING'
+        imageUrl: {
+            name: 'imageUrl', type: 'STRING'
         },
         country: {
             name: 'country', type: 'STRING'

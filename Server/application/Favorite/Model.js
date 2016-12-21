@@ -41,7 +41,7 @@ class Favorite extends AbstractModel {
             RecipeField.entity.title.name,
             RecipeField.entity.cookTime.name,
             RecipeField.entity.serving.name,
-            RecipeField.entity.photoName.name
+            RecipeField.entity.imageUrl.name
         ];
 
         this.favorite.findAll({

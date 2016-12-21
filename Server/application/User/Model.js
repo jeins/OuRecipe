@@ -26,7 +26,7 @@ class User extends AbstractModel{
             UserField.entity.id.name,
             UserField.entity.firstName.name,
             UserField.entity.lastName.name,
-            UserField.entity.photoName.name
+            UserField.entity.imageUrl.name
         ];
 
         this.user.findAll({
@@ -57,7 +57,7 @@ class User extends AbstractModel{
     getUserWithMostRecipe(cb){
         this.db
             .query(
-            "SELECT u.id, u.firstName, u.lastName, u.photoName " +
+            "SELECT u.id, u.firstName, u.lastName, u.imageUrl " +
             "FROM recipes AS r " +
             "LEFT JOIN users AS u ON u.id=r.userId " +
             "GROUP BY r.userId ORDER BY count(r.userId) DESC")
@@ -130,7 +130,7 @@ class User extends AbstractModel{
             UserField.entity.city.name,
             UserField.entity.aboutMe.name,
             UserField.entity.socialMedia.name,
-            UserField.entity.photoName.name
+            UserField.entity.imageUrl.name
         ];
         let filter = {};
         filter[UserField.entity.id.name] = userId;
