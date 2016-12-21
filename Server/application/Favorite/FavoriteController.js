@@ -45,7 +45,7 @@ export default ()=>{
      */
     router.post(prefix, (req, res)=>{
         favoriteModel.add(
-            req.body,
+            req.body.data,
             (err, result)=>{_response(res, err, result)}
         );
     });

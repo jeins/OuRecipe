@@ -74,7 +74,7 @@ class Favorite extends AbstractModel {
         ];
         let newFavoriteRecipe = this.validateBody(data, allowedFields);
 
-        this.recipe.create(newFavoriteRecipe)
+        this.favorite.create(newFavoriteRecipe)
             .then((favRecipe)=>{cb(null, favRecipe.get())})
             .catch((err)=>{cb(err.message, null)})
         ;
