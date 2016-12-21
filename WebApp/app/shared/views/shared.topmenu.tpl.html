@@ -49,12 +49,12 @@
                 </md-menu-item>
             </md-menu-content>
         </md-menu>
-    </section>
 
-    <md-button ng-if="isUserLogedIn" ng-controller="UserLogoutController as userLogout" ng-click="userLogout.logout()">
-        <md-icon md-font-icon="fa-sign-out" class="fa"></md-icon>
-        <span translate="g.b.logout"></span>
-    </md-button>
+        <md-button ng-if="isUserLogedIn" ng-controller="UserLogoutController as userLogout" ng-click="userLogout.logout()">
+            <md-icon md-font-icon="fa-sign-out" class="fa"></md-icon>
+            <span translate="g.b.logout"></span>
+        </md-button>
+    </section>
 
     <section hide-gt-sm="hide-gt-sm" layout-align="end center">
         <md-button ng-click="shared.toggleSidenav('left')" class="md-icon-button">

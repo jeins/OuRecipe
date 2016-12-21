@@ -89,17 +89,17 @@ hr{
 }
 
 .or-recipe-card-favorite {
-  background-color: rgba(0,0,0,0.5);
+  background-color: transparent;
   position: absolute;
   width: 62px;
   height: 62px;
-  background-position: 2px .5rem;
+  //background-position: 2px .5rem;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
   background-image: url(/assets/icons/heart-icons.svg),none;
   background-repeat: no-repeat;
-  border-color: rgba(0,0,0,0.5);
+  border-color: transparent;
 }
 
 .or-recipe-card-favorite.marked{
