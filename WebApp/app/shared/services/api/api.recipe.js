@@ -16,7 +16,7 @@ function ApiRecipe($log, API_URL, $http, NO_IMAGE) {
     function getRecipeById(reqBody, cb){
         return $http(_setupRequest('POST', recipePrefix + '/view', reqBody))
             .then(function(res){
-                _checkImage(res.data);
+                _checkImage(res.data);console.log("HAI: " + JSON.stringify(res.data));
                 cb(res.data);
             });
     }
@@ -44,11 +44,17 @@ function ApiRecipe($log, API_URL, $http, NO_IMAGE) {
     }
 
     function _checkImage(data){
-        data.forEach(function(i){
-            if(!i.imageUrl){
-                i.imageUrl = NO_IMAGE.RECIPE;
+        if(!Array.isArray(data)){
+            if(!data.imageUrl) {
+                data.imageUrl = NO_IMAGE.RECIPE;
             }
-        });
+        } else{
+            data.forEach(function(i){
+                if(!i.imageUrl){
+                    i.imageUrl = NO_IMAGE.RECIPE;
+                }
+            });
+        }
     }
 
     function _setupRequest(method, uri, data){

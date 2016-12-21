@@ -37,11 +37,17 @@ function ApiUser($log, API_URL, $http, NO_IMAGE) {
     }
 
     function _checkImage(data){
-        data.forEach(function(i){
-            if(!i.imageUrl){
-                i.imageUrl = NO_IMAGE.USER;
+        if(!Array.isArray(data)){
+            if(!data.imageUrl) {
+                data.imageUrl = NO_IMAGE.USER;
             }
-        });
+        } else{
+            data.forEach(function(i){
+                if(!i.imageUrl){
+                    i.imageUrl = NO_IMAGE.USER;
+                }
+            });
+        }
     }
 
     function _setupRequest(method, uri, data){

@@ -27,11 +27,13 @@ function ApiFavorite($log, API_URL, $http, NO_IMAGE) {
     }
 
     function _checkImage(data){
-        data.forEach(function(i){
-            if(!i.recipe.imageUrl){
-                i.recipe.imageUrl = NO_IMAGE.RECIPE;
-            }
-        });
+        if(Array.isArray(data)){
+            data.forEach(function(i){
+                if(!i.recipe.imageUrl){
+                    i.recipe.imageUrl = NO_IMAGE.RECIPE;
+                }
+            });
+        }
     }
 
     function _setupRequest(method, uri, data){
