@@ -43,7 +43,8 @@ class Recipe extends AbstractModel{
         let userAttributes = [
             UserField.entity.id.name,
             UserField.entity.firstName.name,
-            UserField.entity.lastName.name
+            UserField.entity.lastName.name,
+            UserField.entity.imageUrl.name
         ];
 
         this.recipe.findAll({
@@ -175,7 +176,8 @@ class Recipe extends AbstractModel{
         let jsonRecipes = (typeof recipes === 'object') ? recipes : JSON.parse(recipes);
 
         let setupImgAndVid = (recipe)=>{
-            recipe.imageUrl = (recipe.imageUrl === "") ? config.url + config.no_image.recipe : config.url + recipe.imageUrl;
+            recipe.imageUrl = (!recipe.imageUrl) ? config.url + config.no_image.recipe : config.url + recipe.imageUrl;
+            recipe.user.imageUrl = (!recipe.user.imageUrl) ? config.url + config.no_image.user : config.url + recipe.user.imageUrl;
 
             if(recipe.videoUrl != ""){
                 recipe.videoUrl = String("https://www.youtube.com/embed/"+recipe.videoUrl.split('v=')[1]+"?rel=0");
