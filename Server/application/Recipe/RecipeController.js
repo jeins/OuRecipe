@@ -19,8 +19,6 @@ export default ()=>{
         let limitPage = req.body.limit;
         let query = _generateFilter(req.body.filter);
 
-        console.log(JSON.stringify(query));
-
         waterfall([
             (cb)=>{
                 Paginator.getPagination(recipeModel.getModel(), query.filter, currPage, limitPage, (result)=>{
@@ -29,7 +27,7 @@ export default ()=>{
             },
             (pagination, cb)=>{
                 recipeModel.getList(query.filter, query.order, pagination.currPage, limitPage, (err, result)=>{
-                    if(!err){console.log(pagination);
+                    if(!err){
                         cb(null, {data: result, pagination: pagination});
                     }
                     else cb(err, null);
@@ -48,7 +46,6 @@ export default ()=>{
         recipeModel.getById(
             recipeId,
             (err, result)=>{
-                _jsonDecode([RecipeField.entity.ingredients.name, RecipeField.entity.steps.name], result);
                 _response(res, err, result)
             }
         );
@@ -118,12 +115,6 @@ export default ()=>{
         } else{
             res.status(500).send({message: err});
         }
-    }
-
-    function _jsonDecode(keys, obj){
-        _.forEach(keys, (key)=>{
-            obj[key] = (JSON).parse(obj[key]);
-        });
     }
 
     /**

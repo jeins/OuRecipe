@@ -3,6 +3,8 @@ import RecipeField from './Field';
 import User from '../User/Model';
 import UserField from '../User/Field';
 import FavoriteField from '../Favorite/Field';
+import _ from 'lodash';
+import config from '../../config/config';
 
 class Recipe extends AbstractModel{
     constructor(){
@@ -28,6 +30,7 @@ class Recipe extends AbstractModel{
 
     getList(filter, order, currPage, limit, cb){
         currPage = (currPage === 1) ? 0 : currPage;
+        let me = this;
         let offset = currPage * limit;
         let recipeAttributes = [
             RecipeField.entity.id.name,
@@ -55,13 +58,14 @@ class Recipe extends AbstractModel{
             limit: limit
         })
             .then((recipes)=>{
-                cb(null, recipes);
+                cb(null, me._setupImageAndVideo(JSON.stringify(recipes)));
             })
             .catch((err)=>{cb(err.message, null);})
         ;
     }
 
     getById(id, cb){
+        let me = this;
         let userAttributes = [
             UserField.entity.id.name,
             UserField.entity.firstName.name,
@@ -78,7 +82,12 @@ class Recipe extends AbstractModel{
             ]
         })
             .then((recipe)=>{
-                cb(null, recipe);
+                let decodeIngredientsAndSteps = me._jsonDecode(
+                    [RecipeField.entity.ingredients.name, RecipeField.entity.steps.name],
+                    JSON.stringify(recipe));
+                let setupImageAndVideo = me._setupImageAndVideo(decodeIngredientsAndSteps);
+
+                cb(null, setupImageAndVideo);
             })
             .catch((err)=>{cb(err.message, null);})
         ;
@@ -160,6 +169,38 @@ class Recipe extends AbstractModel{
             .then((result)=>{cb(null, result);})
             .catch((err)=>{cb(err.message, null)})
         ;
+    }
+
+    _setupImageAndVideo(recipes){
+        let jsonRecipes = (typeof recipes === 'object') ? recipes : JSON.parse(recipes);
+
+        let setupImgAndVid = (recipe)=>{
+            recipe.imageUrl = (recipe.imageUrl === "") ? config.url + config.no_image.recipe : config.url + recipe.imageUrl;
+
+            if(recipe.videoUrl != ""){
+                recipe.videoUrl = String("https://www.youtube.com/embed/"+recipe.videoUrl.split('v=')[1]+"?rel=0");
+            }
+        };
+
+        if(_.isArray(jsonRecipes)){
+            _.forEach(jsonRecipes, (recipe)=>{
+                setupImgAndVid(recipe);
+            });
+        } else{
+            setupImgAndVid(jsonRecipes);
+        }
+
+        return jsonRecipes;
+    }
+
+    _jsonDecode(keys, obj){
+        obj = JSON.parse(obj);
+
+        _.forEach(keys, (key)=>{
+            obj[key] = (JSON).parse(obj[key]);
+        });
+
+        return obj;
     }
 }
 

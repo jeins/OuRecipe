@@ -25,7 +25,7 @@
     "sequelize": "^3.27.0"
   },
   "scripts": {
-    "start server": "node index.js",
+    "start server": "nodemon index.js --debug",
     "run migrate": "node_modules\\.bin\\sequelize db:migrate",
     "run seed": "node_modules\\.bin\\sequelize db:seed:all"
   }

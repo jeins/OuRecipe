@@ -2,8 +2,8 @@ angular
     .module('app.shared')
     .factory('ApiRecipe', ApiRecipe);
 
-ApiRecipe.$inject = ['$log', 'API_URL', '$http', 'NO_IMAGE'];
-function ApiRecipe($log, API_URL, $http, NO_IMAGE) {
+ApiRecipe.$inject = ['$log', 'API_URL', '$http'];
+function ApiRecipe($log, API_URL, $http) {
     let recipePrefix = 'recipe';
 
     return{
@@ -16,7 +16,6 @@ function ApiRecipe($log, API_URL, $http, NO_IMAGE) {
     function getRecipeById(reqBody, cb){
         return $http(_setupRequest('POST', recipePrefix + '/view', reqBody))
             .then(function(res){
-                _checkImage(res.data);console.log("HAI: " + JSON.stringify(res.data));
                 cb(res.data);
             });
     }
@@ -24,7 +23,6 @@ function ApiRecipe($log, API_URL, $http, NO_IMAGE) {
     function getRecipeList(reqBody, cb){
         return $http(_setupRequest('POST', recipePrefix + '/list', reqBody))
             .then(function(res){
-                _checkImage(res.data.data);
                 cb(res.data);
             });
     }
@@ -41,20 +39,6 @@ function ApiRecipe($log, API_URL, $http, NO_IMAGE) {
             .then(function(res){
                 cb(res.data);
             });
-    }
-
-    function _checkImage(data){
-        if(!Array.isArray(data)){
-            if(!data.imageUrl) {
-                data.imageUrl = NO_IMAGE.RECIPE;
-            }
-        } else{
-            data.forEach(function(i){
-                if(!i.imageUrl){
-                    i.imageUrl = NO_IMAGE.RECIPE;
-                }
-            });
-        }
     }
 
     function _setupRequest(method, uri, data){
