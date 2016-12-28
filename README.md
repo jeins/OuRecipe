@@ -2,12 +2,17 @@ OuRecipe
 ===================
 
 ----------
-### Backend Technologie
-- NodeJS 6 (ES 6)
-- PostgreSQL
+### Install Backend
+- `$ npm install`
+- setup config => /Server/config/config.js
+- setup database => /Server/config/database.js
+- `$ npm run-script db:migrate`
+- `$ npm run-script db:seed`
+- `$ npm run-script run`
 
 ----------
-### Frontend Technologie
-- Angular
-- Angular Material
-- Bower & Gulp
+### Install Frontend
+- `$ npm install`
+- `$ bower install`
+- run & watch : `$ npm run-script run`
+- build production / minify: `$ npm run-script built`
