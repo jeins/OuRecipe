@@ -29,7 +29,7 @@ class Recipe extends AbstractModel{
     }
 
     getList(filter, order, currPage, limit, cb){
-        currPage = (currPage === 1) ? 0 : currPage;
+        currPage = (currPage === 1) ? 0 : currPage-1;
         let me = this;
         let offset = currPage * limit;
         let recipeAttributes = [
