@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      OuRecipe
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="cards-bg">
+
+  <ion-card *ngFor="let recipe of recipes">
+
+    <img src="{{recipe.imageUrl}}"/>
+
+    <ion-card-content>
+      <ion-card-title (click)="viewDetailRecipe(recipe.id)">{{recipe.title}}</ion-card-title>
+      <p>{{recipe.description}}</p>
+    </ion-card-content>
+
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="{{recipe.user.imageUrl}}">
+      </ion-avatar>
+      <h2>Recipe by: {{recipe.user.lastName}}</h2>
+      <p>{{recipe.createdAt | date: 'dd.MM.yyyy'}}</p>
+    </ion-item>
+
+  </ion-card>
+
+</ion-content>
