@@ -18,6 +18,8 @@ function UserEditController($log, CountriesStateService, UploadService, ApiUser,
         vm.loadStates = CountriesStateService.getState(0);
         vm.location = {"iCountry": "0", "state": ""};
 
+        _getUserData();
+
         $log.info(vm.location.iCountry);
         $log.info("Edit User Profile Page Opened");
     }
@@ -42,6 +44,14 @@ function UserEditController($log, CountriesStateService, UploadService, ApiUser,
 
         ApiUser.updateUserProfile({userId: vm.currUser.id, data: vm.user}, function(result){
             $location.path('/profile-show?page=0&userId=' + vm.currUser.id);
+        });
+    }
+
+    function _getUserData(){
+        ApiUser.getUserById({userId: vm.currUser.id}, function(result){
+            vm.user = result;
+            vm.location.country = vm.user.country;
+            vm.location.city = vm.user.city;
         });
     }
 }
