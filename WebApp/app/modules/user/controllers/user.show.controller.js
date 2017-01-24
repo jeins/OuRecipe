@@ -41,7 +41,7 @@ function UserShowController($log, $stateParams, $location, ApiUser, ApiRecipe, A
 
         ApiFavorite.getFavoriteRecipeByUserId(reqBody, function (res) {
             vm.loadFavoriteRecipe = res.data;
-            vm.favoriteRecipepagination = res.pagination.totalPage;
+            vm.favoriteRecipepagination.total = res.pagination.totalPage;
 
             $log.info("FavoriteRecipe: " + JSON.stringify(vm.loadFavoriteRecipe));
             $log.info("Filter: %s", JSON.stringify(vm.filter));
@@ -49,12 +49,14 @@ function UserShowController($log, $stateParams, $location, ApiUser, ApiRecipe, A
     }
 
     function loadPersonalRecipeData(){
-        vm.personalRecipePagination = {current: 1, limit: 6, steps: 5};
+        vm.personalRecipePagination = {current: 1, limit: 5, steps: 5};
         var reqBody = {
             filter: vm.filter,
             currPage: vm.personalRecipePagination.current,
             limit: vm.personalRecipePagination.limit
         };
+
+        $log.info("Request: " + JSON.stringify(reqBody));
 
         ApiRecipe.getRecipeList(reqBody, function(res){
             vm.loadPersonalRecipe = res.data;

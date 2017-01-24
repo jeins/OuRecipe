@@ -79,7 +79,8 @@ class Recipe extends AbstractModel{
         this.recipe.find({
             where: filter,
             include: [
-                {model: this.user, attributes: userAttributes}
+                {model: this.user, attributes: userAttributes},
+                {model: this.favorite}
             ]
         })
             .then((recipe)=>{

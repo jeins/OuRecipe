@@ -99,7 +99,9 @@
       "filter_keyword": "Keyword",
       "filter_ingredients": "Ingredients (separate with comma)",
       "add_to_favorite": "Add To Favorite",
-      "my_favorite": "My Favorite"
+      "my_favorite": "My Favorite",
+      "share_to_facebook": "Share To Facebook",
+      "share_to_twitter": "Share To Twitter"
     },
     "button":{
       "filter_search": "Search For Recipes",

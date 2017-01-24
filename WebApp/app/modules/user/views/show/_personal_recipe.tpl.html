@@ -37,15 +37,4 @@
     </section>
 
     <div style="height: 60px"></div>
-
-    <section ng-if="userShow.personalRecipePagination.total > 1" layout="row" layout-padding="">
-        <or-pagination flex
-                       or-pages="userShow.personalRecipePagination.total"
-                       or-steps="userShow.personalRecipePagination.steps"
-                       or-page-changed="userShow.loadPersonalRecipeData()"
-                       or-align="center center"
-                       or-current-page="userShow.personalRecipePagination.current"
-        ></or-pagination>
-
-    </section>
 </md-content>
