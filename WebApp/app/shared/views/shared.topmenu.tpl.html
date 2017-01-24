@@ -30,13 +30,13 @@
                     </md-button>
                 </md-menu-item>
                 <md-menu-item>
-                    <md-button ng-href="/profile-show?page=1&userId=1">
+                    <md-button ng-href="/profile-show?page=1&userId={{session.user.id}}">
                         <md-icon class="fa" md-font-icon="fa-heart"></md-icon>
                         Favorites
                     </md-button>
                 </md-menu-item>
                 <md-menu-item>
-                    <md-button ng-href="/profile-show?page=2&userId=1">
+                    <md-button ng-href="/profile-show?page=2&userId={{session.user.id}}">
                         <md-icon class="fa" md-font-icon="fa-cutlery"></md-icon>
                         My Recipe
                     </md-button>
