@@ -2,7 +2,7 @@ angular
     .module('app.user')
     .controller('UserLoginController', UserLoginController);
 
-UserLoginController.$inject = ['$log', '$mdDialog', '$auth', '$location', '$window'];
+UserLoginController.$inject = ['$log', '$mdDialog', '$auth', '$location', '$window', '$mdToast', '$document'];
 function UserLoginController($log, $mdDialog){
     this.showDialog = function(ev){
         $mdDialog.show({
@@ -21,7 +21,7 @@ function UserLoginController($log, $mdDialog){
         ;
     };
 
-    function dialogController($log, $mdDialog, $auth, $location, $window){
+    function dialogController($log, $mdDialog, $auth, $location, $window, $mdToast, $document){
         var vm = this;
         vm.cancel = cancel;
         vm.login = login;
@@ -39,6 +39,7 @@ function UserLoginController($log, $mdDialog){
                 .then(function(response) {
                     if(response.data.message){
                         $log.error("Error: " + response.data.message);
+                        _displayToast(response.data.message);
                     } else{
                         $log.info("Response" + JSON.stringify(response.data));
                         $location.path('/');
@@ -47,11 +48,23 @@ function UserLoginController($log, $mdDialog){
                 })
                 .catch(function(response) {
                     $log.error(response);
+                    _displayToast(response.data.message);
                 });
         }
 
         function cancel(){
             $mdDialog.cancel();
+        }
+
+        function _displayToast(message){
+            $mdToast.show(
+                $mdToast.simple({
+                    textContent : message,
+                    parent : $document[0].querySelector('#toastContainer'),
+                    position: 'top right',
+                    hideDelay: 3000
+                })
+            );
         }
     }
 }
