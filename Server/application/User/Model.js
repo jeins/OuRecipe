@@ -41,6 +41,7 @@ class User extends AbstractModel{
     }
 
     getById(id, cb){
+        let me = this;
         let filter = {};
         let excludeAttributes = [UserField.entity.password.name, UserField.entity.updatedAt.name];
         filter[UserField.entity.id.name] = id;
@@ -49,7 +50,7 @@ class User extends AbstractModel{
             attributes: {exclude: excludeAttributes},
             where: filter
         })
-            .then((user)=>{cb(null, user);})
+            .then((user)=>{cb(null, me._jsonDecode([UserField.entity.socialMedia.name], JSON.stringify(user)));})
             .catch((err)=>{cb(err.message, null);})
         ;
     }
@@ -125,7 +126,6 @@ class User extends AbstractModel{
         let allowedFields = [
             UserField.entity.firstName.name,
             UserField.entity.lastName.name,
-            UserField.entity.password.name,
             UserField.entity.country.name,
             UserField.entity.city.name,
             UserField.entity.aboutMe.name,
@@ -137,6 +137,10 @@ class User extends AbstractModel{
 
         if(_.has(data, UserField.entity.password.name)){
             data[UserField.entity.password.name] = this._getHash(data[UserField.entity.password.name]);
+        }
+
+        if(_.has(data, UserField.entity.socialMedia.name)){
+            data[UserField.entity.socialMedia.name] = JSON.stringify(data[UserField.entity.socialMedia.name]);
         }
 
         let newUserData = this.validateBody(data, allowedFields);
@@ -153,6 +157,16 @@ class User extends AbstractModel{
             .update(string)
             .digest('hex');
     };
+
+    _jsonDecode(keys, obj){
+        obj = JSON.parse(obj);
+
+        _.forEach(keys, (key)=>{
+            obj[key] = (JSON).parse(obj[key]);
+        });
+
+        return obj;
+    }
 }
 
 module.exports = User;

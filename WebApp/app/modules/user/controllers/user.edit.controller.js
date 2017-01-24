@@ -2,8 +2,8 @@ angular
     .module('app.user')
     .controller('UserEditController', UserEditController);
 
-UserEditController.$inject = ['$log', 'CountriesStateService', 'UploadService'];
-function UserEditController($log, CountriesStateService, UploadService) {
+UserEditController.$inject = ['$log', 'CountriesStateService', 'UploadService', 'ApiUser', '$location', 'Session'];
+function UserEditController($log, CountriesStateService, UploadService, ApiUser, $location, Session) {
     var vm = this;
     vm.getStates = getStates;
     vm.save = save;
@@ -12,6 +12,7 @@ function UserEditController($log, CountriesStateService, UploadService) {
     init();
 
     function init() {
+        vm.currUser = Session.getUser();
         vm.user = {};
         vm.loadCountries = CountriesStateService.getCountries();
         vm.loadStates = CountriesStateService.getState(0);
@@ -34,7 +35,13 @@ function UserEditController($log, CountriesStateService, UploadService) {
     }
 
     function save(){
-        vm.user.location = vm.location;
+        vm.user.country = vm.location.country;
+        vm.user.city = vm.location.city;
+
         $log.info(vm.user);
+
+        ApiUser.updateUserProfile({userId: vm.currUser.id, data: vm.user}, function(result){
+            $location.path('/profile-show?page=0&userId=' + vm.currUser.id);
+        });
     }
 }

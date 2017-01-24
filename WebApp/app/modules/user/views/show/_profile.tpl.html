@@ -1,3 +1,46 @@
 <md-content class="md-padding">
-    {{userShow.userData | json}}
+    <md-card class="md-whiteframe-10dp">
+        <md-card-title>
+            <md-card-title-media style="margin-right: 30px">
+                <img ng-src="{{userShow.userData.imageUrl}}" class="md-media-lg card-media">
+            </md-card-title-media>
+            <md-card-title-text>
+                <span class="md-headline">{{userShow.userData.firstName}} {{userShow.userData.lastName}}</span>
+                <div class="md-subhead"  layout="row" layout-sm="column">
+                    <div flex>
+                        {{userShow.userData.aboutMe}}
+                        <br>
+
+                        <table style="margin-top: 20px">
+                            <tr>
+                                <td>Join Since</td>
+                                <td>: {{userShow.userData.createdAt | date:'MMM dd, yyyy'}}</td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td>: {{userShow.userData.email}}</td>
+                            </tr>
+                            <tr>
+                                <td>Country From</td>
+                                <td>: {{userShow.userData.country}}</td>
+                            </tr>
+                            <tr>
+                                <td>City From</td>
+                                <td>: {{userShow.userData.city}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div flex>
+                        <table>
+                            <tr ng-repeat="(key, val) in userShow.userData.socialMedia">
+                                <td>{{key}}</td>
+                                <td ng-if="val">: {{val}}</td>
+                                <td ng-if="val === ''">: -</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </md-card-title-text>
+        </md-card-title>
+    </md-card>
 </md-content>

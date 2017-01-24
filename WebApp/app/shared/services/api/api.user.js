@@ -9,7 +9,8 @@ function ApiUser($log, API_URL, $http, NO_IMAGE) {
     return{
         userList: userList,
         getUserById: getUserById,
-        getTopUser: getTopUser
+        getTopUser: getTopUser,
+        updateUserProfile: updateUserProfile
     };
 
     function userList(reqBody, cb){
@@ -32,6 +33,13 @@ function ApiUser($log, API_URL, $http, NO_IMAGE) {
         return $http(_setupRequest('POST', userPrefix + '/top'))
             .then(function(res){
                 _checkImage(res.data);
+                cb(res.data);
+            });
+    }
+
+    function updateUserProfile(reqBody, cb){
+        return $http(_setupRequest('PUT', userPrefix, reqBody))
+            .then(function(res){
                 cb(res.data);
             });
     }

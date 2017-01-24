@@ -11,13 +11,13 @@
 <!--FirstName-->
 <md-input-container class="md-block">
     <label translate="m_user.label.first_name"></label>
-    <input ng-model="userEdit.user.first_name">
+    <input ng-model="userEdit.user.firstName">
 </md-input-container>
 
 <!--LastName-->
 <md-input-container class="md-block">
     <label translate="m_user.label.last_name"></label>
-    <input ng-model="userEdit.user.last_name">
+    <input ng-model="userEdit.user.lastName">
 </md-input-container>
 
 <!--Country-->
@@ -31,7 +31,7 @@
 <!--City-->
 <md-input-container class="md-block">
     <label translate="m_user.label.city"></label>
-    <md-select ng-disabled="userEdit.location.iCountry == 0" ng-model="userEdit.location.state">
+    <md-select ng-disabled="userEdit.location.iCountry == 0" ng-model="userEdit.location.city">
         <md-option ng-repeat="state in userEdit.loadStates track by $index" ng-value="state">{{state}}</md-option>
     </md-select>
 </md-input-container>
@@ -39,7 +39,7 @@
 <!--AboutMe-->
 <md-input-container class="md-block">
     <label translate="m_user.label.about_description"></label>
-    <textarea ng-model="m_user.user.about"
+    <textarea ng-model="userEdit.user.aboutMe"
               md-maxlength="500" rows="3" md-select-on-focus >
     </textarea>
 </md-input-container>
