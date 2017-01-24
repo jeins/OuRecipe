@@ -27,7 +27,7 @@ function ApiAuth($log, API_URL, $http) {
     }
 
     function getMe(token, cb){
-        return $http(_setupRequest('POST', prefix + '/me', token))
+        return $http(_setupRequest('POST', API_URL + prefix + '/me', token))
             .then(function(res){
                 cb(res.data);
             });
@@ -35,7 +35,7 @@ function ApiAuth($log, API_URL, $http) {
 
     function _setupRequest(method, uri, data){
         return {
-            url: API_URL + uri,
+            url: uri,
             method: method,
             data: data
         };

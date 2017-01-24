@@ -12,7 +12,7 @@ export default ()=>{
     });
 
     router.post(prefix + '/signup', (req, res)=>{
-        let data = req.body.data;
+        let data = req.body;
 
         userModel.isUserExistByEmail(data.email, (err, existingUser)=>{
             if(existingUser){
