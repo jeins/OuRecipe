@@ -4,7 +4,7 @@ import dbConf from '../../config/database';
 
 class AbstractModel{
     getConnection(){
-        var config = process.env.NODE_ENV || dbConf.development;
+        let config = process.env.NODE_ENV || dbConf.development;
         return new Sequelize(
             config.database,
             config.username,

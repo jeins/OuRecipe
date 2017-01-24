@@ -21,7 +21,7 @@ function HomeController($log, Recipe, ApiRecipe, ApiUser) {
 
     function loadNewRecipes(){
         var reqBody = {
-            filter: {sort: "createdAt_asc", ingredients: []},
+            filter: {sort: "createdAt_desc", ingredients: []},
             currPage: 1,
             limit: 3
         };

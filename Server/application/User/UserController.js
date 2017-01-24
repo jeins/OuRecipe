@@ -1,4 +1,5 @@
 import User from './Model';
+import Recipe from '../Recipe/Model';
 import Paginator from '../Default/Paginator';
 import {Router} from 'express';
 import waterfall from 'async/waterfall';
@@ -19,7 +20,10 @@ export default ()=>{
 
         waterfall([
             (cb)=>{
-                Paginator.getPagination(userModel.getModel(), filter, currPage, limitPage, (result)=>{
+                let rawQuery = 'SELECT COUNT(u.id) as count ' +
+                               'FROM recipes as r, users as u ' +
+                               'WHERE r.userId=u.id';
+                Paginator.getPaginationRawQuery(rawQuery, currPage, limitPage, (result)=>{
                     cb(null, result);
                 });
             },

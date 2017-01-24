@@ -7,7 +7,7 @@
 
 <ng-include src="'modules/user/views/list/_list.tpl.html'"></ng-include>
 
-<section layout="row" layout-padding="">
+<section ng-if="userList.pagination.total > 1" layout="row" layout-padding="">
     <or-pagination flex
                    or-pages="userList.pagination.total"
                    or-steps="userList.pagination.steps"

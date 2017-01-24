@@ -1,18 +1,18 @@
 <div class="md-padding" layout="row" layout-wrap layout-align="center">
-    <md-card ng-repeat="user in userList.loadUsers" style="min-width: 28%; margin-bottom: 30px;" class="md-whiteframe-10dp">
+    <md-card ng-repeat="user in userList.loadUsers" style="width: 28%; margin-bottom: 30px;" class="md-whiteframe-10dp">
         <md-card-title>
             <md-card-title-media>
                 <img src="{{user.imageUrl}}" class="md-media-sm" style="background-color: #999999; margin-right: 30px">
             </md-card-title-media>
             <md-card-title-text>
                 <span class="md-headline">{{user.firstName}} {{user.lastName}}</span>
-                <span class="md-subhead">Joined: {{user.createdAt}}</span>
-                <span class="md-subhead">Total Recipe: 10 recipes</span>
+                <span class="md-subhead">Joined: {{user.createdAt | date:'MMM dd, yyyy'}}</span>
+                <span class="md-subhead">Total Recipe: {{user.totalRecipe}} recipes</span>
             </md-card-title-text>
         </md-card-title>
         <md-card-actions layout="row" layout-align="center center">
             <md-button ng-href="/profile-show?userId={{user.id}}">Profile</md-button>
-            <md-button>Recipes</md-button>
+            <md-button ng-href="/profile-show?page=1&userId={{user.id}}">Recipes</md-button>
         </md-card-actions>
     </md-card>
 </div>

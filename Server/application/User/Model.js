@@ -1,5 +1,6 @@
 import AbstractModel from '../Default/AbstractModel';
 import UserField from './Field';
+import RecipeField from '../Recipe/Field';
 import crypto from 'crypto';
 import config from '../../config/config';
 import _ from 'lodash';
@@ -9,10 +10,12 @@ class User extends AbstractModel{
         super();
 
         this.db = this.getConnection();
-        this.user = this.db.define(UserField.tableName, this.generateEntities(UserField.entity));
 
-        // this.recipe = new Recipe().getModel();
-        // this.recipe.belongsTo(this.user);
+        this.user = this.db.define(UserField.tableName, this.generateEntities(UserField.entity));
+        this.recipe = this.db.define(RecipeField.tableName, this.generateEntities(RecipeField.entity));
+
+        this.recipe.belongsTo(this.user);
+        this.user.hasMany(this.recipe);
     }
 
     getModel(){
@@ -20,24 +23,39 @@ class User extends AbstractModel{
     }
 
     getList(filter, currPage, limit, cb){
-        currPage = (currPage === 1) ? 0 : currPage;
+        currPage -= 1;
         let offset = currPage * limit;
         let attributes = [
             UserField.entity.id.name,
             UserField.entity.firstName.name,
             UserField.entity.lastName.name,
-            UserField.entity.imageUrl.name
+            UserField.entity.imageUrl.name,
+            UserField.entity.createdAt.name
         ];
 
-        this.user.findAll({
-            attributes: attributes,
-            where: filter,
-            offset: offset,
-            limit: limit
-        })
-            .then((user)=>{cb(null, user);})
-            .catch((err)=>{cb(err.message, null);})
-        ;
+        this.db
+            .query(
+                "SELECT u.id, u.firstName, u.lastName, u.imageUrl, u.createdAt, COUNT(r.userId) AS totalRecipe " +
+                "FROM recipes AS r " +
+                "LEFT JOIN users AS u ON u.id=r.userId " +
+                "GROUP BY r.userId ORDER BY totalRecipe DESC "+
+                "LIMIT " + offset + ',' + limit)
+            .spread((results, metadata)=>{
+                cb(null, results);
+            });
+
+        // this.user.findAll({
+        //     attributes: attributes,
+        //     where: filter,
+        //     include: [
+        //         {model: this.recipe, attributes: [[this.db.fn('COUNT', this.db.col('userId')), 'totalRecipe']]}
+        //     ],
+        //     offset: offset,
+        //     limit: limit
+        // })
+        //     .then((user)=>{cb(null, user);})
+        //     .catch((err)=>{cb(err.message, null);})
+        // ;
     }
 
     getById(id, cb){
