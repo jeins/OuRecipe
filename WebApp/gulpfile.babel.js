@@ -30,7 +30,8 @@ const PATHS = {
   assets: 'app/assets/images/**/*',
   bower: 'bower_components/**/*',
   translations: 'app/translations/*.json',
-  font_awesome_fonts: 'bower_components/components-font-awesome/fonts/*'
+  font_awesome_fonts: 'bower_components/components-font-awesome/fonts/*',
+  icofont: 'app/assets/icofonts/*'
 };
 
 gulp.task('prepare', [
@@ -40,7 +41,8 @@ gulp.task('prepare', [
   'copy:assets',
   'copy:bower',
   'copy:translations',
-  'copy:fontawesome_fonts'
+  'copy:fontawesome_fonts',
+  'copy:icofont'
 ]);
 
 gulp.task('run', cb => {
@@ -121,6 +123,12 @@ gulp.task('copy:fontawesome_fonts', ()=>{
   return gulp.src(PATHS.font_awesome_fonts)
       .pipe(gulp.dest('dist/fonts'))
       .pipe(connect.reload());
+});
+
+gulp.task('copy:icofont', ()=>{
+    return gulp.src(PATHS.icofont)
+        .pipe(gulp.dest('dist/fonts'))
+        .pipe(connect.reload());
 });
 
 gulp.task('copy:translations', ()=>{

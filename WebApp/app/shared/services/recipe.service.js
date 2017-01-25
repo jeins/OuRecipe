@@ -12,15 +12,15 @@ function Recipe($log) {
 
     function categories(){
         return [
-            {name: "Salad", icon: "fa-home", uri: 'salad'},
-            {name: "Drinks", icon: "fa-home", uri: 'drinks'},
-            {name: "Soups", icon: "fa-home", uri: 'soups'},
-            {name: "Pasta and Noodles", icon: "fa-home", uri: 'pasta_and_noodles'},
-            {name: "Main Dishes", icon: "fa-home", uri: 'main_dishes'},
-            {name: "Seafood", icon: "fa-home", uri: 'seafood'},
-            {name: "Cake and Snacks", icon: "fa-home", uri: 'cake_and_snacks'},
-            {name: "Diet", icon: "fa-home", uri: 'diet'},
-            {name: "Simple Recipe", icon: "fa-home", uri: 'simple_recipe'},
+            {name: "Salad", icon: "icofont-broccoli", uri: 'salad'},
+            {name: "Drinks", icon: "icofont-cocktail", uri: 'drinks'},
+            {name: "Soups", icon: "icofont-soup-bowl", uri: 'soups'},
+            {name: "Pasta and Noodles", icon: "icofont-noodles", uri: 'pasta_and_noodles'},
+            {name: "Main Dishes", icon: 'icofont-restaurant', uri: 'main_dishes'},
+            {name: "Seafood", icon: "icofont-fish", uri: 'seafood'},
+            {name: "Cake and Snacks", icon: "icofont-cup-cake", uri: 'cake_and_snacks'},
+            {name: "Diet", icon: "icofont-waiter-alt", uri: 'diet'},
+            {name: "Simple Recipe", icon: "icofont-fast-food", uri: 'simple_recipe'},
         ];
     }
 

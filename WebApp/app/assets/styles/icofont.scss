@@ -1,0 +1,395 @@
+@font-face {
+  font-family: 'icofont';
+  src: url('fonts/icofont.eot?v=1.0.0-beta');
+  src: url('fonts/icofont.eot?v=1.0.0-beta#iefix') format('embedded-opentype'),
+  url('fonts/icofont.ttf?v=1.0.0-beta') format('truetype'),
+  url('fonts/icofont.woff?v=1.0.0-beta') format('woff'),
+  url('fonts/icofont.svg?v=1.0.0-beta#icofont') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icofont {
+  font-family: 'IcoFont' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icofont-apple:before {
+  content: "\ec25";
+}
+.icofont-arabian-coffee:before {
+  content: "\ec26";
+}
+.icofont-artichoke:before {
+  content: "\ec27";
+}
+.icofont-asparagus:before {
+  content: "\ec28";
+}
+.icofont-avocado:before {
+  content: "\ec29";
+}
+.icofont-baby-food:before {
+  content: "\ec2a";
+}
+.icofont-banana:before {
+  content: "\ec2b";
+}
+.icofont-bbq:before {
+  content: "\ec2c";
+}
+.icofont-beans:before {
+  content: "\ec2d";
+}
+.icofont-beer:before {
+  content: "\ec2e";
+}
+.icofont-bell-pepper-capsicum:before {
+  content: "\ec2f";
+}
+.icofont-birthday-cake:before {
+  content: "\ec30";
+}
+.icofont-bread:before {
+  content: "\ec31";
+}
+.icofont-broccoli:before {
+  content: "\ec32";
+}
+.icofont-burger:before {
+  content: "\ec33";
+}
+.icofont-cabbage:before {
+  content: "\ec34";
+}
+.icofont-carrot:before {
+  content: "\ec35";
+}
+.icofont-cauli-flower:before {
+  content: "\ec36";
+}
+.icofont-cheese:before {
+  content: "\ec37";
+}
+.icofont-chef:before {
+  content: "\ec38";
+}
+.icofont-cherry:before {
+  content: "\ec39";
+}
+.icofont-chicken-fry:before {
+  content: "\ec3a";
+}
+.icofont-chicken:before {
+  content: "\ec3b";
+}
+.icofont-cocktail:before {
+  content: "\ec3c";
+}
+.icofont-coconut:before {
+  content: "\ec3d";
+}
+.icofont-coffee-alt:before {
+  content: "\ec3e";
+}
+.icofont-coffee-mug:before {
+  content: "\ec3f";
+}
+.icofont-coffee-pot:before {
+  content: "\ec40";
+}
+.icofont-cola:before {
+  content: "\ec41";
+}
+.icofont-corn:before {
+  content: "\ec42";
+}
+.icofont-croissant:before {
+  content: "\ec43";
+}
+.icofont-crop-plant:before {
+  content: "\ec44";
+}
+.icofont-cucumber:before {
+  content: "\ec45";
+}
+.icofont-cup-cake:before {
+  content: "\ec46";
+}
+.icofont-dining-table:before {
+  content: "\ec47";
+}
+.icofont-donut:before {
+  content: "\ec48";
+}
+.icofont-egg-plant:before {
+  content: "\ec49";
+}
+.icofont-egg-poached:before {
+  content: "\ec4a";
+}
+.icofont-farmer:before {
+  content: "\ec4b";
+}
+.icofont-farmer1:before {
+  content: "\ec4c";
+}
+.icofont-fast-food:before {
+  content: "\ec4d";
+}
+.icofont-fish:before {
+  content: "\ec4e";
+}
+.icofont-food-basket:before {
+  content: "\ec4f";
+}
+.icofont-food-cart:before {
+  content: "\ec50";
+}
+.icofont-fork-and-knife:before {
+  content: "\ec51";
+}
+.icofont-french-fries:before {
+  content: "\ec52";
+}
+.icofont-fresh-juice:before {
+  content: "\ec53";
+}
+.icofont-fruits:before {
+  content: "\ec54";
+}
+.icofont-grapes:before {
+  content: "\ec55";
+}
+.icofont-honey:before {
+  content: "\ec56";
+}
+.icofont-hot-dog:before {
+  content: "\ec57";
+}
+.icofont-hotel-alt:before {
+  content: "\ec58";
+}
+.icofont-ice-cream-alt:before {
+  content: "\ec59";
+}
+.icofont-ice-cream:before {
+  content: "\ec5a";
+}
+.icofont-ketchup:before {
+  content: "\ec5b";
+}
+.icofont-kiwi:before {
+  content: "\ec5c";
+}
+.icofont-layered-cake:before {
+  content: "\ec5d";
+}
+.icofont-lemon-alt:before {
+  content: "\ec5e";
+}
+.icofont-lobster:before {
+  content: "\ec5f";
+}
+.icofont-mango:before {
+  content: "\ec60";
+}
+.icofont-milk:before {
+  content: "\ec61";
+}
+.icofont-mushroom:before {
+  content: "\ec62";
+}
+.icofont-noodles:before {
+  content: "\ec63";
+}
+.icofont-onion:before {
+  content: "\ec64";
+}
+.icofont-orange:before {
+  content: "\ec65";
+}
+.icofont-pear:before {
+  content: "\ec66";
+}
+.icofont-peas:before {
+  content: "\ec67";
+}
+.icofont-pepper:before {
+  content: "\ec68";
+}
+.icofont-pie-alt:before {
+  content: "\ec69";
+}
+.icofont-pineapple:before {
+  content: "\ec6a";
+}
+.icofont-pizza-slice:before {
+  content: "\ec6b";
+}
+.icofont-pizza:before {
+  content: "\ec6c";
+}
+.icofont-plant:before {
+  content: "\ec6d";
+}
+.icofont-popcorn:before {
+  content: "\ec6e";
+}
+.icofont-potato:before {
+  content: "\ec6f";
+}
+.icofont-pumpkin:before {
+  content: "\ec70";
+}
+.icofont-raddish:before {
+  content: "\ec71";
+}
+.icofont-restaurant-menu:before {
+  content: "\ec72";
+}
+.icofont-restaurant:before {
+  content: "\ec73";
+}
+.icofont-salt-and-pepper:before {
+  content: "\ec74";
+}
+.icofont-sandwich:before {
+  content: "\ec75";
+}
+.icofont-sausage:before {
+  content: "\ec76";
+}
+.icofont-shrimp:before {
+  content: "\ec77";
+}
+.icofont-sof-drinks:before {
+  content: "\ec78";
+}
+.icofont-soup-bowl:before {
+  content: "\ec79";
+}
+.icofont-spoon-and-fork:before {
+  content: "\ec7a";
+}
+.icofont-steak:before {
+  content: "\ec7b";
+}
+.icofont-strawberry:before {
+  content: "\ec7c";
+}
+.icofont-sub-sandwich:before {
+  content: "\ec7d";
+}
+.icofont-sushi:before {
+  content: "\ec7e";
+}
+.icofont-taco:before {
+  content: "\ec7f";
+}
+.icofont-tea-pot:before {
+  content: "\ec80";
+}
+.icofont-tea:before {
+  content: "\ec81";
+}
+.icofont-tomato:before {
+  content: "\ec82";
+}
+.icofont-waiter-alt:before {
+  content: "\ec83";
+}
+.icofont-watermelon:before {
+  content: "\ec84";
+}
+.icofont-wheat:before {
+  content: "\ec85";
+}
+
+/*Font size*/
+.icofont-lg {
+  font-size: 1.33333333em;
+  line-height: .75em;
+  vertical-align: -15%
+}
+
+.icofont-2x {
+  font-size: 2em
+}
+
+.icofont-3x {
+  font-size: 3em
+}
+
+.icofont-4x {
+  font-size: 4em
+}
+
+.icofont-5x {
+  font-size: 5em
+}
+
+.icofont-fw {
+  display: inline-block;
+  width: 1.28571429em;
+  text-align: center
+}
+
+/*Fixed Width Icons*/
+.icofont-fw {
+  width: 1.28571429em;
+  text-align: center;
+}
+
+/*Custom list icons*/
+.icofont-ul {
+  padding-left: 0;
+  margin-left: 2.14285714em;
+  list-style-type: none;
+}
+.icofont-ul>li {
+  position: relative;
+}
+.icofont-li {
+  position: absolute;
+  left: -2.14285714em;
+  width: 2.14285714em;
+  top: .14285714em;
+  text-align: center;
+}
+
+/*Animation*/
+.icofont-rotate {
+  -webkit-animation: icofont-rotate 2s infinite linear;
+  animation: icofont-rotate 2s infinite linear
+}
+
+@-webkit-keyframes icofont-rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg)
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg)
+  }
+}
+
+@keyframes icofont-rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg)
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg)
+  }
+}
