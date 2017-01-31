@@ -41,7 +41,8 @@
   "m_user":{
     "title":{
       "login": "User Login",
-      "register": "User Register"
+      "register": "User Register",
+      "edit_profile": "Edit Profile"
     },
     "label":{
       "tab_profile": "User Profile",
@@ -91,7 +92,7 @@
       "difficulty_level": "Difficulty Level",
       "ratings": "Ratings",
       "created": "Created",
-      "video_url": "Video URL",
+      "video_url": "Youtube URL",
       "add_image": "Add a photo",
       "filter_category": "Recipe Category",
       "filter_cuisine": "Recipe Cuisine",
