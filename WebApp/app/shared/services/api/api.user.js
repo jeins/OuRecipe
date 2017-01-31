@@ -18,6 +18,9 @@ function ApiUser($log, API_URL, $http, NO_IMAGE) {
             .then(function(res){
                 _checkImage(res.data.data);
                 cb(res.data);
+            })
+            .catch(function(res){
+                cb(res.data);
             });
     }
 
@@ -25,6 +28,9 @@ function ApiUser($log, API_URL, $http, NO_IMAGE) {
         return $http(_setupRequest('POST', userPrefix + '/view', reqBody))
             .then(function(res){
                 _checkImage(res.data);
+                cb(res.data);
+            })
+            .catch(function(res){
                 cb(res.data);
             });
     }
@@ -34,12 +40,18 @@ function ApiUser($log, API_URL, $http, NO_IMAGE) {
             .then(function(res){
                 _checkImage(res.data);
                 cb(res.data);
+            })
+            .catch(function(res){
+                cb(res.data);
             });
     }
 
     function updateUserProfile(reqBody, cb){
         return $http(_setupRequest('PUT', userPrefix, reqBody))
             .then(function(res){
+                cb(res.data);
+            })
+            .catch(function(res){
                 cb(res.data);
             });
     }

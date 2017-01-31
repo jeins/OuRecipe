@@ -17,12 +17,18 @@ function ApiRecipe($log, API_URL, $http) {
         return $http(_setupRequest('POST', recipePrefix + '/view', reqBody))
             .then(function(res){
                 cb(res.data);
+            })
+            .catch(function(res){
+                cb(res.data);
             });
     }
 
     function getRecipeList(reqBody, cb){
         return $http(_setupRequest('POST', recipePrefix + '/list', reqBody))
             .then(function(res){
+                cb(res.data);
+            })
+            .catch(function(res){
                 cb(res.data);
             });
     }
@@ -31,12 +37,18 @@ function ApiRecipe($log, API_URL, $http) {
         return $http(_setupRequest('POST', recipePrefix, reqBody))
             .then(function(res){
                 cb(res.data);
+            })
+            .catch(function(res){
+                cb(res.data);
             });
     }
 
     function getRecipeBySuggestTitle(reqBody, cb){
         return $http(_setupRequest('POST', recipePrefix + '/search', reqBody))
             .then(function(res){
+                cb(res.data);
+            })
+            .catch(function(res){
                 cb(res.data);
             });
     }
