@@ -113,7 +113,7 @@ export default ()=>{
         if(!err){
             res.json(result);
         } else{
-            res.status(500).send({message: err});
+            res.status(500).send({error:true, message: err});
         }
     }
 

@@ -25,6 +25,10 @@ function RecipeProfileController($log, $stateParams, $location, ApiRecipe, $sce,
 
     function loadRecipeData(){
         ApiRecipe.getRecipeById({recipeId: vm.recipeId}, function(res){
+            if(res.error){
+                $location.path('/recipe-search');
+            }
+
             vm.recipe = res;
 
             _isUserFavorite();
@@ -47,7 +51,7 @@ function RecipeProfileController($log, $stateParams, $location, ApiRecipe, $sce,
     }
 
     function _isUserFavorite(){
-        vm.recipe.favorites.forEach(function(favorite){console.log(favorite.userId); console.log(vm.currUser.id);
+        vm.recipe.favorites.forEach(function(favorite){
             if(favorite.userId === vm.currUser.id){
                 vm.favoriteStyle = {"color": "red"};
             }

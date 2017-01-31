@@ -16,7 +16,7 @@ function UserShowController($log, $stateParams, $location, ApiUser, ApiRecipe, A
         vm.filter = {userId: vm.userId, sort: "title_asc"};
         vm.loadSort = _getSortRecipes();
 
-        if(vm.userId === undefined) $location.path('/');
+        if(vm.userId === undefined) $location.path('/user-list');
 
         loadUserInfo();
         loadFavoriteRecipeData();
@@ -27,6 +27,9 @@ function UserShowController($log, $stateParams, $location, ApiUser, ApiRecipe, A
 
     function loadUserInfo(){
         ApiUser.getUserById({userId: vm.userId}, function(res){
+            if(res.error){
+                $location.path('/user-list');
+            }
             vm.userData = res;
         });
     }
