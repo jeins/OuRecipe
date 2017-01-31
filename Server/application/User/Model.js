@@ -79,7 +79,7 @@ class User extends AbstractModel{
             "SELECT u.id, u.firstName, u.lastName, u.imageUrl " +
             "FROM recipes AS r " +
             "LEFT JOIN users AS u ON u.id=r.userId " +
-            "GROUP BY r.userId ORDER BY count(r.userId) DESC")
+            "GROUP BY r.userId ORDER BY count(r.userId) DESC LIMIT 6")
             .spread((results, metadata)=>{
                 cb(null, results);
             })
