@@ -7,7 +7,7 @@
                 <md-icon ng-if="recipeCreate.imageName === null" md-font-icon="fa-camera" class="fa or-recipe-upload-img" style="font-size: 5em"></md-icon>
                 <span ng-if="recipeCreate.imageName === null" class="or-recipe-upload-img" translate="m_recipe.label.add_image"></span>
 
-                <img ng-if="recipeCreate.imageName != null " src="{{recipeCreate.imageUrl}}">
+                <img ng-if="recipeCreate.imageName != null " src="{{recipeCreate.imageUrl}}" style="width: 100%">
 
             </div>
         </md-input-container>
