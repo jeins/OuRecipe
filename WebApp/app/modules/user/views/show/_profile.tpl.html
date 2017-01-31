@@ -20,11 +20,11 @@
                                 <td>Email</td>
                                 <td>: {{userShow.userData.email}}</td>
                             </tr>
-                            <tr>
+                            <tr ng-if="userShow.userData.country">
                                 <td>Country From</td>
                                 <td>: {{userShow.userData.country}}</td>
                             </tr>
-                            <tr>
+                            <tr ng-if="userShow.userData.city">
                                 <td>City From</td>
                                 <td>: {{userShow.userData.city}}</td>
                             </tr>
