@@ -20,9 +20,8 @@ export default ()=>{
 
         waterfall([
             (cb)=>{
-                let rawQuery = 'SELECT COUNT(u.id) as count ' +
-                               'FROM recipes as r, users as u ' +
-                               'WHERE r.userId=u.id';
+                let rawQuery = 'SELECT Count(*) FROM (' +
+                            'SELECT users.id FROM recipes, users WHERE recipes.userId=users.id GROUP BY users.id) AS US';
                 Paginator.getPaginationRawQuery(rawQuery, currPage, limitPage, (result)=>{
                     cb(null, result);
                 });
